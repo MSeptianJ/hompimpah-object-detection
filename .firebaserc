@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "end-task-projects"
+  },
+  "targets": {
+    "end-task-projects": {
+      "hosting": {
+        "dev": [
+          "dev-hompimpah"
+        ],
+        "pro": [
+          "hompimpah"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
