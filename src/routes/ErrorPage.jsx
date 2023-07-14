@@ -1,4 +1,5 @@
-// eslint-disable-next-line
+import PropTypes from 'prop-types';
+
 const ErrorPage = ({ error }) => {
 	const goBack = () => {
 		history.back();
@@ -18,6 +19,10 @@ const ErrorPage = ({ error }) => {
 			</div>
 		</div>
 	);
+};
+
+ErrorPage.propTypes = {
+	error: PropTypes.string,
 };
 
 export default ErrorPage;
