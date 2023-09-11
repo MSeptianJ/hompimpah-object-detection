@@ -3,8 +3,12 @@ import BtnList from '../../components/BtnList';
 const Start = () => {
 	const textMenus = [
 		{
-			url: '/start',
-			text: 'Start Game',
+			url: '/single',
+			text: 'Single Player',
+		},
+		{
+			url: '/multi',
+			text: 'Multi Player',
 		},
 		{
 			url: '/tutorial',
@@ -13,10 +17,6 @@ const Start = () => {
 		{
 			url: '/about',
 			text: 'About',
-		},
-		{
-			url: '/quit',
-			text: 'Quit Game',
 		},
 	];
 
