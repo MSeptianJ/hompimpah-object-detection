@@ -1,13 +1,17 @@
-import PropTypes from 'prop-types';
+import { useRouteError } from 'react-router-dom';
 
-const ErrorPage = ({ error }) => {
+const ErrorPage = () => {
+	const errorData = useRouteError();
 	const goBack = () => {
 		history.back();
 	};
 	return (
 		<div className="grid h-screen w-screen content-center bg-slate-700">
 			<div className="m-auto w-full text-center">
-				<p className="text-xl text-white">Error : {error || '-_-'}</p>
+				<p className="text-xl text-white">
+					Status : {errorData['status'] || '-_-'}
+				</p>
+				<p className="text-xl text-white">{errorData['data'] || '-_-'}</p>
 			</div>
 			<div className=" border-accent bg-primary_bg m-auto my-10 w-3/4 max-w-md rounded-md border-2 bg-gray-800 text-center transition-all hover:bg-opacity-70">
 				<button
@@ -19,10 +23,6 @@ const ErrorPage = ({ error }) => {
 			</div>
 		</div>
 	);
-};
-
-ErrorPage.propTypes = {
-	error: PropTypes.string,
 };
 
 export default ErrorPage;
