@@ -21,7 +21,7 @@ const Start = () => {
 	];
 
 	return (
-		<div className="m-auto flex h-full w-full flex-col justify-center text-center">
+		<div className="m-auto flex min-h-screen w-full flex-col justify-center text-center">
 			<div className=" w-full p-4 text-center text-red-400">
 				<h1 className=" text-4xl font-bold uppercase">HOMPIMPAH</h1>
 			</div>
