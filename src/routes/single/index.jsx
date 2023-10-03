@@ -3,7 +3,7 @@ import TitlePage from '../../components/TitlePage';
 
 const Single = () => {
 	return (
-		<div className="m-auto flex w-full flex-col justify-center text-center">
+		<div className="m-auto flex min-h-screen w-full flex-col text-center">
 			<TitlePage titleText="Single Player" />
 
 			<div className=" mx-auto w-full">
