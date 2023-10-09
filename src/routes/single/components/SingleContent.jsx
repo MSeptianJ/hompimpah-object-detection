@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import Scores from './Scores';
-import Choices from './Choices';
+import Scores from '../../../components/Scores';
+import Choices from '../../../components/Choices';
 
 const SingleContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
 	return (
