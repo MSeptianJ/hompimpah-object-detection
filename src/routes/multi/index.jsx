@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useAtom } from 'jotai';
+import { backConfirmAtom } from '../../Helper/globStates';
 import BackConfirmation from '../../components/BackConfirmation';
 import GameMenu from '../../components/GameMenu';
 import TitlePage from '../../components/TitlePage';
 import MultiContent from './components/MultiContent';
 
 const Multi = () => {
-	const [backConfirm, setBackConfirm] = useState(false);
+	const [back] = useAtom(backConfirmAtom);
+
 	const P1Choise = 2;
 	const P2Choise = 1;
 	const P1Score = 1;
@@ -26,15 +28,9 @@ const Multi = () => {
 				</div>
 			</div>
 
-			<GameMenu backFunc={setBackConfirm} backState={backConfirm} />
+			<GameMenu />
 
-			{backConfirm && (
-				<BackConfirmation
-					text="Apakah anda benar ingin kembali ke menu awal?"
-					backFunc={setBackConfirm}
-					backState={backConfirm}
-				/>
-			)}
+			{back && <BackConfirmation />}
 		</div>
 	);
 };

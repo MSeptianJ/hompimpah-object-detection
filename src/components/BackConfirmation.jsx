@@ -1,18 +1,23 @@
-import PropTypes from 'prop-types';
+import { useAtom } from 'jotai';
+import { backConfirmAtom } from '../Helper/GlobStates';
 
-const BackConfirmation = ({ text, backFunc, backState }) => {
+const BackConfirmation = () => {
+	const [back, setBack] = useAtom(backConfirmAtom);
+
 	const handle = () => {
-		backFunc(!backState);
+		setBack(!back);
 	};
 
 	const goBack = () => {
 		history.back();
+		setBack(!back);
 	};
+
 	return (
 		<div className=" absolute flex h-full w-full items-center justify-center backdrop-blur-sm">
 			<div className="w-9/12 rounded-md bg-slate-400 p-3 shadow-lg">
 				<div className=" mb-3">
-					<p>{text}</p>
+					<p>Apakah anda benar ingin kembali ke menu awal?</p>
 				</div>
 				<div className=" flex w-full items-center justify-evenly">
 					<button
@@ -33,10 +38,6 @@ const BackConfirmation = ({ text, backFunc, backState }) => {
 	);
 };
 
-BackConfirmation.propTypes = {
-	text: PropTypes.string,
-	backFunc: PropTypes.func,
-	backState: PropTypes.bool,
-};
+BackConfirmation.propTypes = {};
 
 export default BackConfirmation;

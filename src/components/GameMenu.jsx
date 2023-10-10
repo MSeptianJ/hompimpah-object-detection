@@ -1,12 +1,17 @@
-import PropTypes from 'prop-types';
+import { useAtom } from 'jotai';
+import { backConfirmAtom } from '../Helper/GlobStates';
 
-const GameMenu = ({ backFunc, backState }) => {
+const GameMenu = () => {
+	const [back, setBack] = useAtom(backConfirmAtom);
+
 	const handleGoBack = () => {
-		backFunc(!backState);
+		setBack(!back);
 	};
+
 	const handleDisplayCam = () => {
 		console.log('Camera');
 	};
+
 	const handleTutorial = () => {
 		console.log('Tutorial');
 	};
@@ -35,9 +40,6 @@ const GameMenu = ({ backFunc, backState }) => {
 	);
 };
 
-GameMenu.propTypes = {
-	backFunc: PropTypes.func,
-	backState: PropTypes.bool,
-};
+GameMenu.propTypes = {};
 
 export default GameMenu;
