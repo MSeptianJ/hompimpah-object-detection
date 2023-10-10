@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import GameMenu from '../../components/GameMenu';
 import TitlePage from '../../components/TitlePage';
 import SingleContent from './components/SingleContent';
+import BackConfirmation from '../../components/BackConfirmation';
 
 const Single = () => {
+	const [backConfirm, setBackConfirm] = useState(false);
+
 	const P1Choise = 0;
 	const P2Choise = 2;
 	const P1Score = 0;
@@ -23,7 +27,15 @@ const Single = () => {
 				</div>
 			</div>
 
-			<GameMenu />
+			<GameMenu backFunc={setBackConfirm} backState={backConfirm} />
+
+			{backConfirm && (
+				<BackConfirmation
+					text="Apakah anda benar ingin kembali ke menu awal?"
+					backFunc={setBackConfirm}
+					backState={backConfirm}
+				/>
+			)}
 		</div>
 	);
 };

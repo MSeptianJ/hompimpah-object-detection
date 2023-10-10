@@ -1,6 +1,8 @@
-const GameMenu = () => {
+import PropTypes from 'prop-types';
+
+const GameMenu = ({ backFunc, backState }) => {
 	const handleGoBack = () => {
-		console.log('Back');
+		backFunc(!backState);
 	};
 	const handleDisplayCam = () => {
 		console.log('Camera');
@@ -33,6 +35,9 @@ const GameMenu = () => {
 	);
 };
 
-GameMenu.propTypes = {};
+GameMenu.propTypes = {
+	backFunc: PropTypes.func,
+	backState: PropTypes.bool,
+};
 
 export default GameMenu;
