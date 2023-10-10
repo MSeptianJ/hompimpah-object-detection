@@ -1,4 +1,4 @@
-import BtnMenu from '../../components/BtnMenu';
+import GameMenu from '../../components/GameMenu';
 import TitlePage from '../../components/TitlePage';
 import MultiContent from './components/MultiContent';
 
@@ -23,7 +23,7 @@ const Multi = () => {
 				</div>
 			</div>
 
-			<BtnMenu />
+			<GameMenu />
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import BtnMenu from '../../components/BtnMenu';
+import GameMenu from '../../components/GameMenu';
 import TitlePage from '../../components/TitlePage';
 import SingleContent from './components/SingleContent';
 
@@ -23,7 +23,7 @@ const Single = () => {
 				</div>
 			</div>
 
-			<BtnMenu />
+			<GameMenu />
 		</div>
 	);
 };
