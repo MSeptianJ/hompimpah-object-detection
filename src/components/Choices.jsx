@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { PaperIlust, RockIlust, ScissorIlust } from '../Helper/ilusts';
+import { PaperIlust, RockIlust, ScissorIlust } from './Ilusts';
 
 const Choices = ({ choice }) => {
 	const show = [

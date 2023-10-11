@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StarFillIcon, StarOutlineIcon } from '../Helper/icons';
+import { StarFillIcon, StarOutlineIcon } from '../libs/icons';
 
 const Scores = ({ score }) => {
 	if (score === 0) {

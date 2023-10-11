@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom } from '../../Helper/globStates';
+import { backConfirmAtom } from '../../libs/atoms';
 import BackConfirmation from '../../components/BackConfirmation';
 import GameMenu from '../../components/GameMenu';
 import TitlePage from '../../components/TitlePage';
