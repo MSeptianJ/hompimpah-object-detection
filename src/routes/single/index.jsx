@@ -1,12 +1,14 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom } from '../../Helper/GlobStates';
-import BackConfirmation from '../../components/BackConfirmation';
-import GameMenu from '../../components/GameMenu';
-import TitlePage from '../../components/TitlePage';
+import { backConfirmAtom, tutorGameAtom } from '../../libs/atoms';
+import BackConfirmation from '../../components/modalComponents/BackConfirmation';
+import GameMenu from '../../components/smallComponents/GameMenu';
+import TitlePage from '../../components/smallComponents/TitlePage';
 import SingleContent from './components/SingleContent';
+import TutorGame from '../../components/modalComponents/TutorGame';
 
 const Single = () => {
 	const [back] = useAtom(backConfirmAtom);
+	const [tutor] = useAtom(tutorGameAtom);
 
 	const P1Choise = 0;
 	const P2Choise = 2;
@@ -18,7 +20,7 @@ const Single = () => {
 			<TitlePage titleText="Single Player" />
 
 			<div className=" mx-auto w-full">
-				<div className=" m-auto max-h-[30rem] w-3/4 gap-4 rounded-md bg-slate-300 p-6">
+				<div className=" m-auto max-h-[30rem] w-2/3 gap-4 rounded-md bg-slate-300 p-6">
 					<SingleContent
 						P1Choise={P1Choise}
 						P1Score={P1Score}
@@ -31,6 +33,7 @@ const Single = () => {
 			<GameMenu />
 
 			{back && <BackConfirmation />}
+			{tutor && <TutorGame />}
 		</div>
 	);
 };

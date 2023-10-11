@@ -7,7 +7,7 @@ const BtnMenu = () => {
 				to={'/'}
 				className=" mx-auto block w-full cursor-pointer p-2 text-lg font-bold uppercase text-gray-900"
 			>
-				Menu
+				Back
 			</Link>
 		</div>
 	);
