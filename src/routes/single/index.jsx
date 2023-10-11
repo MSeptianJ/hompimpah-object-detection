@@ -20,7 +20,7 @@ const Single = () => {
 			<TitlePage titleText="Single Player" />
 
 			<div className=" mx-auto w-full">
-				<div className=" m-auto max-h-[30rem] w-3/4 gap-4 rounded-md bg-slate-300 p-6">
+				<div className=" m-auto max-h-[30rem] w-2/3 gap-4 rounded-md bg-slate-300 p-6">
 					<SingleContent
 						P1Choise={P1Choise}
 						P1Score={P1Score}
