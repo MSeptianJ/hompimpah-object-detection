@@ -1,8 +1,13 @@
-import BtnMenu from '../../components/BtnMenu';
+import { useAtom } from 'jotai';
+import { backConfirmAtom } from '../../Helper/GlobStates';
+import BackConfirmation from '../../components/BackConfirmation';
+import GameMenu from '../../components/GameMenu';
 import TitlePage from '../../components/TitlePage';
 import SingleContent from './components/SingleContent';
 
 const Single = () => {
+	const [back] = useAtom(backConfirmAtom);
+
 	const P1Choise = 0;
 	const P2Choise = 2;
 	const P1Score = 0;
@@ -23,7 +28,9 @@ const Single = () => {
 				</div>
 			</div>
 
-			<BtnMenu />
+			<GameMenu />
+
+			{back && <BackConfirmation />}
 		</div>
 	);
 };

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Scores from '../../../components/Scores';
 import Choices from '../../../components/Choices';
 
-const SingleContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
+const MultiContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
 	return (
 		<>
 			<div className=" mx-auto mb-4">
@@ -32,11 +32,11 @@ const SingleContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
 	);
 };
 
-SingleContent.propTypes = {
+MultiContent.propTypes = {
 	P1Choise: PropTypes.number,
 	P1Score: PropTypes.number,
 	P2Choise: PropTypes.number,
 	P2Score: PropTypes.number,
 };
 
-export default SingleContent;
+export default MultiContent;
