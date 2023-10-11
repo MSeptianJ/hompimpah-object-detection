@@ -1,8 +1,9 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom } from '../libs/atoms';
+import { backConfirmAtom, tutorGameAtom } from '../libs/atoms';
 
 const GameMenu = () => {
 	const [back, setBack] = useAtom(backConfirmAtom);
+	const [tutor, setTutor] = useAtom(tutorGameAtom);
 
 	const handleGoBack = () => {
 		setBack(!back);
@@ -13,7 +14,7 @@ const GameMenu = () => {
 	};
 
 	const handleTutorial = () => {
-		console.log('Tutorial');
+		setTutor(!tutor);
 	};
 
 	return (

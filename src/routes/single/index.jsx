@@ -1,12 +1,14 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom } from '../../libs/atoms';
+import { backConfirmAtom, tutorGameAtom } from '../../libs/atoms';
 import BackConfirmation from '../../components/BackConfirmation';
 import GameMenu from '../../components/GameMenu';
 import TitlePage from '../../components/TitlePage';
 import SingleContent from './components/SingleContent';
+import TutorGame from '../../components/TutorGame';
 
 const Single = () => {
 	const [back] = useAtom(backConfirmAtom);
+	const [tutor] = useAtom(tutorGameAtom);
 
 	const P1Choise = 0;
 	const P2Choise = 2;
@@ -31,6 +33,7 @@ const Single = () => {
 			<GameMenu />
 
 			{back && <BackConfirmation />}
+			{tutor && <TutorGame />}
 		</div>
 	);
 };
