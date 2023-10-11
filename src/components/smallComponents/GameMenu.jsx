@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom, tutorGameAtom } from '../libs/atoms';
+import { backConfirmAtom, tutorGameAtom } from '../../libs/atoms';
 
 const GameMenu = () => {
 	const [back, setBack] = useAtom(backConfirmAtom);

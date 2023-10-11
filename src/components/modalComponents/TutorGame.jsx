@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
-import Ilust from '../assets/img/KGB.svg';
-import { tutorGameAtom } from '../libs/atoms';
+import Ilust from '../../assets/img/KGB.svg';
+import { tutorGameAtom } from '../../libs/atoms';
 
 const TutorGame = () => {
 	const [tutor, setTutor] = useAtom(tutorGameAtom);

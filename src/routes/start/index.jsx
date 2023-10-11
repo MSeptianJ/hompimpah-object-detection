@@ -1,4 +1,4 @@
-import BtnList from '../../components/BtnList';
+import BtnList from './components/BtnList';
 
 const Start = () => {
 	const textMenus = [

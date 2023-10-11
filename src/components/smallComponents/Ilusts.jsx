@@ -1,6 +1,6 @@
-import ROCK from '../assets/img/rock-ilust.svg';
-import PAPER from '../assets/img/paper-ilust.svg';
-import SCISSOR from '../assets/img/scissors-ilust.svg';
+import ROCK from '../../assets/img/rock-ilust.svg';
+import PAPER from '../../assets/img/paper-ilust.svg';
+import SCISSOR from '../../assets/img/scissors-ilust.svg';
 
 export const RockIlust = () => {
 	return (

@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom } from '../libs/atoms';
+import { backConfirmAtom } from '../../libs/atoms';
 
 const BackConfirmation = () => {
 	const [back, setBack] = useAtom(backConfirmAtom);

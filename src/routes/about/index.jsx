@@ -1,5 +1,5 @@
-import BtnMenu from '../../components/BtnMenu';
-import TitlePage from '../../components/TitlePage';
+import BtnMenu from '../../components/smallComponents/BtnMenu';
+import TitlePage from '../../components/smallComponents/TitlePage';
 import AboutContent from './components/AboutContent';
 
 const About = () => {

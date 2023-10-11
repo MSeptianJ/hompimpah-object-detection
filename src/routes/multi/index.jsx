@@ -1,10 +1,10 @@
 import { useAtom } from 'jotai';
 import { backConfirmAtom, tutorGameAtom } from '../../libs/atoms';
-import BackConfirmation from '../../components/BackConfirmation';
-import GameMenu from '../../components/GameMenu';
-import TitlePage from '../../components/TitlePage';
+import BackConfirmation from '../../components/modalComponents/BackConfirmation';
+import GameMenu from '../../components/smallComponents/GameMenu';
+import TitlePage from '../../components/smallComponents/TitlePage';
 import MultiContent from './components/MultiContent';
-import TutorGame from '../../components/TutorGame';
+import TutorGame from '../../components/modalComponents/TutorGame';
 
 const Multi = () => {
 	const [back] = useAtom(backConfirmAtom);
