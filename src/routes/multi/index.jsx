@@ -1,14 +1,16 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom, tutorGameAtom } from '../../libs/atoms';
-import BackConfirmation from '../../components/modalComponents/BackConfirmation';
+import { backConfirmAtom, tutorGameAtom, webCamAtom } from '../../libs/atoms';
+import BackConfirmation from '../../components/modalComponents/BackModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import MultiContent from './components/MultiContent';
-import TutorGame from '../../components/modalComponents/TutorGame';
+import TutorGame from '../../components/modalComponents/TutorialModal';
+import WebCamModal from '../../components/modalComponents/WebCamModal';
 
 const Multi = () => {
 	const [back] = useAtom(backConfirmAtom);
 	const [tutor] = useAtom(tutorGameAtom);
+	const [cam] = useAtom(webCamAtom);
 
 	const P1Choise = 2;
 	const P2Choise = 1;
@@ -34,6 +36,7 @@ const Multi = () => {
 
 			{back && <BackConfirmation />}
 			{tutor && <TutorGame />}
+			{cam && <WebCamModal />}
 		</div>
 	);
 };

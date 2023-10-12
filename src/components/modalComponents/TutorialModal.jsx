@@ -1,6 +1,7 @@
 import { useAtom } from 'jotai';
 import Ilust from '../../assets/img/KGB.svg';
 import { tutorGameAtom } from '../../libs/atoms';
+import TitlePage from '../smallComponents/TitlePage';
 
 const TutorGame = () => {
 	const [tutor, setTutor] = useAtom(tutorGameAtom);
@@ -10,9 +11,11 @@ const TutorGame = () => {
 	};
 
 	return (
-		<div className=" absolute flex h-full w-full flex-col items-center justify-center gap-5 backdrop-blur-sm ">
+		<div className=" absolute flex h-full w-full flex-col items-center justify-around gap-5 backdrop-blur-sm ">
+			<TitlePage titleText="Hompimpah" />
+
 			<div className=" mx-auto w-full ">
-				<div className=" m-auto flex max-h-[35rem] w-3/4 flex-col gap-4 overflow-y-auto rounded-md bg-slate-500 p-6 shadow-lg">
+				<div className=" mx-auto h-[30rem] max-h-[30rem] w-3/4 gap-4 overflow-y-auto rounded-md bg-slate-500 p-6 shadow-lg">
 					<section className=" w-full text-sm">
 						<h4 className=" mb-3 w-full text-left text-xl font-bold">
 							Description
@@ -60,9 +63,9 @@ const TutorGame = () => {
 				</div>
 			</div>
 
-			<div className=" mx-auto w-1/4 rounded-md bg-slate-500  text-center transition-all hover:bg-gray-700">
+			<div className="mx-auto flex w-full max-w-md items-center justify-around text-center">
 				<button
-					className=" block w-full p-2 text-sm font-bold uppercase"
+					className=" block w-1/5 rounded-md bg-slate-500 p-3 text-sm font-bold uppercase transition-all hover:bg-gray-700"
 					onClick={handle}
 				>
 					Back
