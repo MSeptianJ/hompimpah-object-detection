@@ -1,16 +1,17 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom, tutorGameAtom } from '../../libs/atoms';
+import { backConfirmAtom, tutorGameAtom, webCamAtom } from '../../libs/atoms';
 
 const GameMenu = () => {
 	const [back, setBack] = useAtom(backConfirmAtom);
 	const [tutor, setTutor] = useAtom(tutorGameAtom);
+	const [cam, setCam] = useAtom(webCamAtom);
 
 	const handleGoBack = () => {
 		setBack(!back);
 	};
 
 	const handleDisplayCam = () => {
-		console.log('Camera');
+		setCam(!cam);
 	};
 
 	const handleTutorial = () => {
