@@ -5,7 +5,7 @@ import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import MultiContent from './components/MultiContent';
 import TutorGame from '../../components/modalComponents/TutorialModal';
-import WebCamModal from '../../components/modalComponents/WebCamModal';
+import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 
 const Multi = () => {
 	const [back] = useAtom(backConfirmAtom);

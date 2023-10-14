@@ -5,7 +5,7 @@ import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import SingleContent from './components/SingleContent';
 import TutorGame from '../../components/modalComponents/TutorialModal';
-import WebCamModal from '../../components/modalComponents/WebCamModal';
+import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 
 const Single = () => {
 	const [back] = useAtom(backConfirmAtom);
