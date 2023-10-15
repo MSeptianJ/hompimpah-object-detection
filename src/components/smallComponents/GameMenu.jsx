@@ -19,22 +19,22 @@ const GameMenu = () => {
 	};
 
 	return (
-		<div className=" mx-auto flex w-full max-w-md items-center justify-around text-center">
+		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 			<button
 				onClick={handleGoBack}
-				className=" block w-1/5 cursor-pointer rounded-md bg-slate-300 p-3 text-sm font-bold uppercase text-gray-900 transition-all hover:bg-opacity-40"
+				className=" w-full cursor-pointer rounded-sm bg-slate-300 p-4 text-sm font-bold uppercase text-gray-900 transition-all hover:bg-opacity-40"
 			>
 				Exit
 			</button>
 			<button
 				onClick={handleDisplayCam}
-				className=" block w-1/5 cursor-pointer rounded-md bg-slate-300 p-3 text-sm font-bold uppercase text-gray-900 transition-all hover:bg-opacity-40"
+				className=" w-full cursor-pointer rounded-sm bg-slate-300 p-4 text-sm font-bold uppercase text-gray-900 transition-all hover:bg-opacity-40"
 			>
 				Camera
 			</button>
 			<button
 				onClick={handleTutorial}
-				className=" block w-1/5 cursor-pointer rounded-md bg-slate-300 p-3 text-sm font-bold uppercase text-gray-900 transition-all hover:bg-opacity-40"
+				className=" w-full cursor-pointer rounded-sm bg-slate-300 p-4 text-sm font-bold uppercase text-gray-900 transition-all hover:bg-opacity-40"
 			>
 				Tutorial
 			</button>
