@@ -56,7 +56,7 @@ const WebCamModal = () => {
 			<TitlePage titleText="Hompimpah" />
 
 			<div className=" mx-auto w-full">
-				<div className=" mx-auto flex h-[30rem] max-h-[30rem] w-3/4 flex-col justify-between gap-4 overflow-y-auto rounded-md bg-slate-500 p-6 shadow-lg">
+				<div className=" mx-auto flex h-[30rem] max-h-[30rem] w-3/4 flex-col justify-between gap-4 overflow-y-auto rounded-md bg-slate-500 p-3 shadow-lg">
 					<WebCamDetect
 						camRef={webCamRef}
 						handleBack={handleBack}
