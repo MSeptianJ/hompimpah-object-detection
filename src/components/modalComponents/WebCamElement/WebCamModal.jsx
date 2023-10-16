@@ -1,5 +1,7 @@
+import { useMutation } from '@tanstack/react-query';
 import { useAtom, useSetAtom } from 'jotai';
 import { useCallback, useRef } from 'react';
+import { detectImg } from '../../../libs/apiCalls';
 import {
 	camModeAtom,
 	detDataAtom,
@@ -9,8 +11,6 @@ import {
 import TitlePage from '../../smallComponents/TitlePage';
 import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
-import { useMutation } from '@tanstack/react-query';
-import { detectImg } from '../../../libs/apiCalls';
 
 const WebCamModal = () => {
 	const [cam, setCam] = useAtom(webCamAtom);
