@@ -1,5 +1,7 @@
+import { useMutation } from '@tanstack/react-query';
 import { useAtom, useSetAtom } from 'jotai';
 import { useCallback, useRef } from 'react';
+import { detectImg } from '../../../libs/apiCalls';
 import {
 	camModeAtom,
 	detDataAtom,
@@ -9,8 +11,6 @@ import {
 import TitlePage from '../../smallComponents/TitlePage';
 import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
-import { useMutation } from '@tanstack/react-query';
-import { detectImg } from '../../../libs/apiCalls';
 
 const WebCamModal = () => {
 	const [cam, setCam] = useAtom(webCamAtom);
@@ -56,7 +56,7 @@ const WebCamModal = () => {
 			<TitlePage titleText="Hompimpah" />
 
 			<div className=" mx-auto w-full">
-				<div className=" mx-auto flex h-[30rem] max-h-[30rem] w-3/4 flex-col justify-between gap-4 overflow-y-auto rounded-md bg-slate-500 p-6 shadow-lg">
+				<div className=" mx-auto flex h-[30rem] max-h-[30rem] w-3/4 flex-col justify-between gap-4 overflow-y-auto rounded-md bg-slate-500 p-3 shadow-lg">
 					<WebCamDetect
 						camRef={webCamRef}
 						handleBack={handleBack}

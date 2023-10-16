@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
@@ -7,15 +9,13 @@ import {
 	RouterProvider,
 } from 'react-router-dom';
 import './assets/style/index.css';
+import About from './routes/about';
 import ErrorPage from './routes/ErrorPage';
+import Multi from './routes/multi';
 import Root from './routes/Root';
+import Single from './routes/single';
 import Start from './routes/start';
 import Tutorial from './routes/tutorial';
-import About from './routes/about';
-import Single from './routes/single';
-import Multi from './routes/multi';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const client = new QueryClient();
 

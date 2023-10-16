@@ -1,26 +1,24 @@
 import PropTypes from 'prop-types';
+import BtnPrimary from '../../smallComponents/BtnPrimary';
 
 const WebCamButton = ({ handleBack, handleDetect, handleChangeCam }) => {
 	return (
-		<div className=" mx-auto flex w-full  max-w-md items-center justify-around text-center">
-			<button
-				className=" block w-1/5 rounded-md bg-slate-500 p-3 text-sm font-bold uppercase transition-all hover:bg-gray-700"
-				onClick={handleBack}
-			>
-				Back
-			</button>
-			<button
-				className=" block w-1/5 rounded-md bg-slate-500 p-3 text-sm font-bold uppercase transition-all hover:bg-gray-700"
-				onClick={handleDetect}
-			>
-				Detect
-			</button>
-			<button
-				className=" block w-1/5 rounded-md bg-slate-500 p-3 text-sm font-bold uppercase transition-all hover:bg-gray-700"
-				onClick={handleChangeCam}
-			>
-				Change Camera
-			</button>
+		<div className=" text-cente grid w-full max-w-md grid-cols-3 gap-4 px-4">
+			<BtnPrimary
+				text="Back"
+				btnFunction={handleBack}
+				btnStyles={'bg-slate-500 hover:bg-gray-700'}
+			/>
+			<BtnPrimary
+				text="Detect"
+				btnFunction={handleDetect}
+				btnStyles={'bg-slate-500 hover:bg-gray-700'}
+			/>
+			<BtnPrimary
+				text="Switch"
+				btnFunction={handleChangeCam}
+				btnStyles={'bg-slate-500 hover:bg-gray-700'}
+			/>
 		</div>
 	);
 };
