@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import BtnPrimary from '../../smallComponents/BtnPrimary';
+import { playCameraSound } from '../../../libs/sound';
 
 const WebCamButton = ({ handleBack, handleDetect, handleChangeCam }) => {
 	return (
@@ -12,6 +13,7 @@ const WebCamButton = ({ handleBack, handleDetect, handleChangeCam }) => {
 			<BtnPrimary
 				text="Detect"
 				btnFunction={handleDetect}
+				btnSound={playCameraSound}
 				btnStyles={'bg-slate-500 hover:bg-gray-700'}
 			/>
 			<BtnPrimary
