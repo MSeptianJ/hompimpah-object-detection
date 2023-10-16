@@ -1,15 +1,16 @@
 import { useAtom } from 'jotai';
 import { backConfirmAtom } from '../../libs/atoms';
 import TitlePage from '../smallComponents/TitlePage';
+import BtnPrimary from '../smallComponents/BtnPrimary';
 
 const BackConfirmation = () => {
 	const [back, setBack] = useAtom(backConfirmAtom);
 
-	const handle = () => {
+	const handleCancel = () => {
 		setBack(!back);
 	};
 
-	const goBack = () => {
+	const handleGoBack = () => {
 		history.back();
 		setBack(!back);
 	};
@@ -24,19 +25,17 @@ const BackConfirmation = () => {
 				</div>
 			</div>
 
-			<div className=" mx-auto flex w-full max-w-md items-center justify-around text-center">
-				<button
-					className=" block w-1/5 rounded-md bg-slate-500 p-3 text-sm font-bold uppercase transition-all hover:bg-gray-700"
-					onClick={goBack}
-				>
-					Yes
-				</button>
-				<button
-					className=" block w-1/5 rounded-md bg-slate-500 p-3 text-sm font-bold uppercase transition-all hover:bg-gray-700"
-					onClick={handle}
-				>
-					Cancel
-				</button>
+			<div className=" mx-auto grid w-full max-w-md grid-cols-2 gap-4 px-4 text-center">
+				<BtnPrimary
+					text="Yes"
+					btnFunction={handleGoBack}
+					btnStyles="bg-slate-500 hover:bg-gray-700"
+				/>
+				<BtnPrimary
+					text="Cancel"
+					btnFunction={handleCancel}
+					btnStyles="bg-slate-500 hover:bg-gray-700"
+				/>
 			</div>
 		</div>
 	);
