@@ -64,7 +64,7 @@ const TutorGame = () => {
 				</div>
 			</div>
 
-			<div className="mx-auto w-full max-w-md px-6 text-center">
+			<div className="mx-auto w-1/2 max-w-md px-6 text-center">
 				<BtnPrimary
 					text="Back"
 					btnFunction={handle}
