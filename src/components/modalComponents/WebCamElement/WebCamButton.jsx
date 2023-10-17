@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
 import BtnPrimary from '../../smallComponents/BtnPrimary';
-import { playCameraSound } from '../../../libs/sound';
-import { useAtom } from 'jotai';
-import { detImgAtom } from '../../../libs/atoms';
+import { playCameraSound } from '../../../scripts/sound';
+import { useAtom, useSetAtom } from 'jotai';
+import { detDataAtom, detImgAtom } from '../../../libs/atoms';
 
 const WebCamButton = ({ handleBack, handleDetect, handleChangeCam }) => {
 	const [img, setImg] = useAtom(detImgAtom);
+	const setDetect = useSetAtom(detDataAtom);
 
 	const handleRetry = () => {
 		setImg(null);
+		setDetect(null);
 	};
 
 	return (

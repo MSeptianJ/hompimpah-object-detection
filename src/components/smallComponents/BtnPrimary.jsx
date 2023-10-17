@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { playButtonSound } from '../../libs/sound';
+import { playButtonSound } from '../../scripts/sound';
 
 const BtnPrimary = ({ text, btnFunction, btnStyles, btnSound }) => {
 	const handleBtnClick = () => {

@@ -41,6 +41,7 @@ const WebCamModal = () => {
 	const handleBack = () => {
 		setCam(!cam);
 		setImg(null);
+		setDetData(null)
 	};
 
 	const handleDetect = () => {
