@@ -18,11 +18,11 @@ const Multi = () => {
 	const P2Score = 2;
 
 	return (
-		<div className="m-auto flex max-h-screen min-h-screen w-full flex-col items-center justify-around text-center">
+		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
 			<TitlePage titleText="Multi Player" />
 
-			<div className=" mx-auto w-full">
-				<div className=" m-auto max-h-[30rem] w-2/3 gap-4 rounded-md bg-slate-300 p-6">
+			<div className=" row-span-4 h-full w-full">
+				<div className=" mx-auto grid h-full w-2/3 grid-rows-2 items-center gap-3 overflow-y-auto rounded-sm bg-slate-300 p-6">
 					<MultiContent
 						P1Choise={P1Choise}
 						P1Score={P1Score}
