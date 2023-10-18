@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
-import { playButtonSound } from '../../libs/sound';
+import { playButtonSound } from '../../scripts/sound';
 
-const BtnPrimary = ({ text, btnFunction, btnStyles }) => {
+const BtnPrimary = ({ text, btnFunction, btnStyles, btnSound }) => {
 	const handleBtnClick = () => {
-		playButtonSound();
+		if (btnSound) {
+			btnSound();
+		} else {
+			playButtonSound();
+		}
 
 		if (btnFunction) {
 			btnFunction();
@@ -22,6 +26,7 @@ const BtnPrimary = ({ text, btnFunction, btnStyles }) => {
 BtnPrimary.propTypes = {
 	text: PropTypes.string,
 	btnFunction: PropTypes.func,
+	btnSound: PropTypes.func,
 	btnStyles: PropTypes.string,
 };
 

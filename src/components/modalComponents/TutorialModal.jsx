@@ -2,6 +2,7 @@ import { useAtom } from 'jotai';
 import Ilust from '../../assets/img/KGB.svg';
 import { tutorGameAtom } from '../../libs/atoms';
 import TitlePage from '../smallComponents/TitlePage';
+import BtnPrimary from '../smallComponents/BtnPrimary';
 
 const TutorGame = () => {
 	const [tutor, setTutor] = useAtom(tutorGameAtom);
@@ -63,13 +64,12 @@ const TutorGame = () => {
 				</div>
 			</div>
 
-			<div className="mx-auto flex w-full max-w-md items-center justify-around text-center">
-				<button
-					className=" block w-1/5 rounded-md bg-slate-500 p-3 text-sm font-bold uppercase transition-all hover:bg-gray-700"
-					onClick={handle}
-				>
-					Back
-				</button>
+			<div className="mx-auto w-1/2 max-w-md px-6 text-center">
+				<BtnPrimary
+					text="Back"
+					btnFunction={handle}
+					btnStyles="bg-slate-500 hover:bg-gray-700"
+				/>
 			</div>
 		</div>
 	);
