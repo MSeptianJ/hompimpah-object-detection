@@ -8,7 +8,7 @@ const About = () => {
 			<TitlePage titleText="About" />
 
 			<div className=" row-span-4 h-full w-full">
-				<div className=" mx-auto flex h-full w-3/4 flex-col gap-4 overflow-y-auto rounded-sm bg-slate-300 p-6">
+				<div className=" mx-auto flex h-full w-3/4 flex-col gap-4 overflow-y-auto rounded-sm bg-slate-300 p-6 shadow-lg">
 					<AboutContent />
 				</div>
 			</div>
