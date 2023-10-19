@@ -3,7 +3,7 @@ import { backConfirmAtom } from '../../libs/atoms';
 import TitlePage from '../smallComponents/TitlePage';
 import BtnPrimary from '../smallComponents/BtnPrimary';
 
-const BackConfirmation = () => {
+const BackModal = () => {
 	const [back, setBack] = useAtom(backConfirmAtom);
 
 	const handleCancel = () => {
@@ -16,11 +16,11 @@ const BackConfirmation = () => {
 	};
 
 	return (
-		<div className=" absolute flex h-full w-full flex-col items-center justify-around gap-5 backdrop-blur-sm">
+		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
 			<TitlePage titleText="Hompimpah" />
 
-			<div className=" mx-auto w-full">
-				<div className=" mx-auto max-h-[25rem] w-3/4 gap-4 rounded-md bg-slate-500 p-6 shadow-lg">
+			<div className=" row-span-4 w-full">
+				<div className=" mx-auto h-full w-3/4 gap-4 rounded-sm bg-slate-500 p-6 shadow-lg">
 					<p>Apakah benar anda ingin keluar dari permainan?</p>
 				</div>
 			</div>
@@ -41,6 +41,6 @@ const BackConfirmation = () => {
 	);
 };
 
-BackConfirmation.propTypes = {};
+BackModal.propTypes = {};
 
-export default BackConfirmation;
+export default BackModal;

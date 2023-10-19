@@ -42,13 +42,18 @@ const CanvasRect = ({ isSuccess }) => {
 			} else {
 				// Label bg
 				ctx.fillStyle = 'rgba(100, 116, 139, 0.6)';
-				ctx.fillRect(0, 0, pred.width, 15);
+				ctx.fillRect(0, 0, detection?.image.width, 15);
 
 				ctx.fillStyle = 'black';
-				ctx.fillText('Detection Score not High Enough', 10, 10);
+				ctx.textAlign = 'center';
+				ctx.fillText(
+					'Detection Score not High Enough',
+					detection?.image.width / 2,
+					10
+				);
 			}
 		});
-		// console.log(detection);
+		console.log(detection);
 	};
 
 	useEffect(() => {

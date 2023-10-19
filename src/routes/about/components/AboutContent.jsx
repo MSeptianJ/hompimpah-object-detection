@@ -18,6 +18,30 @@ const AboutContent = () => {
 			</section>
 
 			<section className=" w-full text-sm">
+				<h4 className=" mb-3 w-full text-left text-xl font-bold">Assets</h4>
+				<p className=" mb-1 px-3 text-left">
+					Sound Effects from{' '}
+					<a
+						href="https://www.zapsplat.com/sound-effect-category/button-clicks/"
+						className=" font-bold text-black"
+						target="blank"
+					>
+						ZapSplat
+					</a>
+				</p>
+				<p className=" mb-1 px-3 text-left">
+					Ilustration from{' '}
+					<a
+						href="https://www.vecteezy.com/vector-art/690792-rock-paper-scissors-hand-icons"
+						className=" font-bold text-black"
+						target="blank"
+					>
+						Vecteezy
+					</a>
+				</p>
+			</section>
+
+			<section className=" w-full text-sm">
 				<h4 className=" mb-3 w-full text-left text-xl font-bold">
 					Development
 				</h4>

@@ -14,7 +14,7 @@ const WebCamButton = ({ handleBack, handleDetect, handleChangeCam }) => {
 	};
 
 	return (
-		<div className=" text-cente grid w-full max-w-md grid-cols-3 gap-4 px-4">
+		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 			<BtnPrimary
 				text="Back"
 				btnFunction={handleBack}
