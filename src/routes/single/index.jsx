@@ -1,10 +1,10 @@
 import { useAtom } from 'jotai';
 import { backConfirmAtom, tutorGameAtom, webCamAtom } from '../../libs/atoms';
-import BackConfirmation from '../../components/modalComponents/BackModal';
+import BackModal from '../../components/modalComponents/BackModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import SingleContent from './components/SingleContent';
-import TutorGame from '../../components/modalComponents/TutorialModal';
+import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 
 const Single = () => {
@@ -34,8 +34,8 @@ const Single = () => {
 
 			<GameMenu />
 
-			{back && <BackConfirmation />}
-			{tutor && <TutorGame />}
+			{back && <BackModal />}
+			{tutor && <TutorialModal />}
 			{cam && <WebCamModal />}
 		</div>
 	);

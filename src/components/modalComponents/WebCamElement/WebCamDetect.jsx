@@ -20,18 +20,25 @@ const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 			{img ? (
 				<div className=" relative h-full w-full rounded-sm bg-slate-700">
 					<CanvasRect isSuccess={isSuccess} />
-					<img src={img} className="" />
+					<img src={img} className=" aspect-square h-full w-full" />
 
-					<div className=" absolute top-0 mx-auto w-full bg-slate-500 bg-opacity-60">
-						{isLoading && <p>Detecting Image...</p>}
+					<div className=" absolute top-0 mx-auto w-full ">
+						{isLoading && (
+							<p className=" mx-auto w-full bg-yellow-500 bg-opacity-50">
+								Detecting Image...
+							</p>
+						)}
 
-						{isError && <p>There is an Error</p>}
+						{isError && (
+							<p className=" mx-auto w-full bg-red-500 bg-opacity-50">
+								There is an Error
+							</p>
+						)}
+
 						{isSuccess && (
-							<>
-								<p>
-									{!detection?.predictions.length ? 'Nothing detected' : null}
-								</p>
-							</>
+							<p className=" mx-auto w-full bg-slate-500 bg-opacity-50">
+								{!detection?.predictions.length ? 'Nothing detected' : null}
+							</p>
 						)}
 					</div>
 				</div>
@@ -44,7 +51,7 @@ const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 						...videoConstraints,
 						facingMode,
 					}}
-					className=" h-full w-full rounded-md bg-slate-700"
+					className=" h-full w-full rounded-sm bg-slate-700"
 				/>
 			)}
 		</>

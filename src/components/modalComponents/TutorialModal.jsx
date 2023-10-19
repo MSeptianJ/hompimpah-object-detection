@@ -4,7 +4,7 @@ import { tutorGameAtom } from '../../libs/atoms';
 import TitlePage from '../smallComponents/TitlePage';
 import BtnPrimary from '../smallComponents/BtnPrimary';
 
-const TutorGame = () => {
+const TutorialModal = () => {
 	const [tutor, setTutor] = useAtom(tutorGameAtom);
 
 	const handle = () => {
@@ -12,11 +12,11 @@ const TutorGame = () => {
 	};
 
 	return (
-		<div className=" absolute flex h-full w-full flex-col items-center justify-around gap-5 backdrop-blur-sm ">
+		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
 			<TitlePage titleText="Hompimpah" />
 
-			<div className=" mx-auto w-full ">
-				<div className=" mx-auto h-[30rem] max-h-[30rem] w-3/4 gap-4 overflow-y-auto rounded-md bg-slate-500 p-6 shadow-lg">
+			<div className=" row-span-4 h-full w-full">
+				<div className=" mx-auto flex h-full w-3/4 flex-col gap-4 overflow-y-auto rounded-sm bg-slate-500 p-6 shadow-lg">
 					<section className=" w-full text-sm">
 						<h4 className=" mb-3 w-full text-left text-xl font-bold">
 							Description
@@ -64,7 +64,7 @@ const TutorGame = () => {
 				</div>
 			</div>
 
-			<div className="mx-auto w-1/2 max-w-md px-6 text-center">
+			<div className="mx-auto w-3/4 max-w-md text-center">
 				<BtnPrimary
 					text="Back"
 					btnFunction={handle}
@@ -75,6 +75,6 @@ const TutorGame = () => {
 	);
 };
 
-TutorGame.propTypes = {};
+TutorialModal.propTypes = {};
 
-export default TutorGame;
+export default TutorialModal;
