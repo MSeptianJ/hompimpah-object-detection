@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
 import { camModeAtom, detDataAtom, detImgAtom } from '../../../libs/atoms';
 import CanvasRect from '../../featureComponents/CanvasRect';
+import LoadIcon from '../../../assets/img/loading.svg';
 
 const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 	const videoConstraints = {
@@ -24,19 +25,24 @@ const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 
 					<div className=" absolute top-0 mx-auto w-full ">
 						{isLoading && (
-							<p className=" mx-auto w-full bg-yellow-500 bg-opacity-50">
-								Detecting Image...
-							</p>
+							<div className=" mx-auto w-full bg-yellow-500 bg-opacity-50 text-sm">
+								<p>Detecting Image...</p>
+								<img
+									src={LoadIcon}
+									alt="Loading Icon"
+									className=" mx-auto w-10"
+								/>
+							</div>
 						)}
 
 						{isError && (
-							<p className=" mx-auto w-full bg-red-500 bg-opacity-50">
+							<p className=" mx-auto w-full bg-red-500 bg-opacity-50 text-sm">
 								There is an Error
 							</p>
 						)}
 
 						{isSuccess && (
-							<p className=" mx-auto w-full bg-slate-500 bg-opacity-50">
+							<p className=" mx-auto w-full bg-slate-500 bg-opacity-50 text-sm">
 								{!detection?.predictions.length ? 'Nothing detected' : null}
 							</p>
 						)}
