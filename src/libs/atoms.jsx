@@ -9,3 +9,6 @@ export const webCamAtom = atom(false);
 export const detImgAtom = atom(null);
 export const camModeAtom = atom('user');
 export const detDataAtom = atom(null);
+
+// Auth
+export const anonUserAtom = atom({});

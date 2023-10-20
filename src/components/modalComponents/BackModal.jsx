@@ -1,10 +1,12 @@
-import { useAtom } from 'jotai';
-import { backConfirmAtom } from '../../libs/atoms';
-import TitlePage from '../smallComponents/TitlePage';
+import { useAtom, useSetAtom } from 'jotai';
+import { anonUserAtom, backConfirmAtom } from '../../libs/atoms';
+import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import BtnPrimary from '../smallComponents/BtnPrimary';
+import TitlePage from '../smallComponents/TitlePage';
 
 const BackModal = () => {
 	const [back, setBack] = useAtom(backConfirmAtom);
+	const setUserData = useSetAtom(anonUserAtom);
 
 	const handleCancel = () => {
 		setBack(!back);
@@ -13,6 +15,8 @@ const BackModal = () => {
 	const handleGoBack = () => {
 		history.back();
 		setBack(!back);
+		setUserData({});
+		AuthSignOut();
 	};
 
 	return (

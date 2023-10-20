@@ -1,11 +1,11 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom, tutorGameAtom, webCamAtom } from '../../libs/atoms';
 import BackModal from '../../components/modalComponents/BackModal';
-import GameMenu from '../../components/smallComponents/GameMenu';
-import TitlePage from '../../components/smallComponents/TitlePage';
-import SingleContent from './components/SingleContent';
 import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
+import GameMenu from '../../components/smallComponents/GameMenu';
+import TitlePage from '../../components/smallComponents/TitlePage';
+import { backConfirmAtom, tutorGameAtom, webCamAtom } from '../../libs/atoms';
+import SingleContent from './components/SingleContent';
 
 const Single = () => {
 	const [back] = useAtom(backConfirmAtom);

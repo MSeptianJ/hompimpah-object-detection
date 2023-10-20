@@ -13,6 +13,7 @@ const BtnPrimary = ({ text, btnFunction, btnStyles, btnSound }) => {
 			btnFunction();
 		}
 	};
+
 	return (
 		<button
 			className={` w-full rounded-sm p-4 text-center text-sm font-bold uppercase shadow-lg transition-all ${btnStyles}`}
