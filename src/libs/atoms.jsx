@@ -12,3 +12,6 @@ export const detDataAtom = atom(null);
 
 // Auth
 export const anonUserAtom = atom({});
+
+// Game
+export const gameRoundAtom = atom({});

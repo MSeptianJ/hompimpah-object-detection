@@ -6,17 +6,22 @@ import {
 	camModeAtom,
 	detDataAtom,
 	detImgAtom,
+	gameRoundAtom,
 	webCamAtom,
 } from '../../../libs/atoms';
 import TitlePage from '../../smallComponents/TitlePage';
 import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
+import { addGameRound, getAllGame } from '../../../libs/firebase/FirebaseDB';
+import useGetUser from '../../../hooks/useGetUser';
 
 const WebCamModal = () => {
 	const [cam, setCam] = useAtom(webCamAtom);
 	const setImg = useSetAtom(detImgAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
-	const setDetData = useSetAtom(detDataAtom);
+	const [detData, setDetData] = useAtom(detDataAtom);
+	const setGameData = useSetAtom(gameRoundAtom);
+	const userData = useGetUser();
 	const webCamRef = useRef(null);
 
 	const { mutate, isLoading, isError, isSuccess } = useMutation({
@@ -52,6 +57,19 @@ const WebCamModal = () => {
 		switchCamera();
 	};
 
+	const handleRetry = () => {
+		setImg(null);
+		setDetData(null);
+	};
+
+	const handleAccept = () => {
+		addGameRound(userData, detData);
+		setCam(!cam);
+		setImg(null);
+		setDetData(null);
+		setGameData(getAllGame());
+	};
+
 	return (
 		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
 			<TitlePage titleText="Hompimpah" />
@@ -69,9 +87,11 @@ const WebCamModal = () => {
 			</div>
 
 			<WebCamButton
-				handleBack={handleBack}
-				handleDetect={handleDetect}
-				handleChangeCam={handleChangeCam}
+				backBtn={handleBack}
+				detectBtn={handleDetect}
+				switchCamBtn={handleChangeCam}
+				retryBtn={handleRetry}
+				accBtn={handleAccept}
 			/>
 		</div>
 	);
