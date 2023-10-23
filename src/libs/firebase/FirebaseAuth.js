@@ -1,33 +1,21 @@
-import { onAuthStateChanged, signInAnonymously, signOut } from 'firebase/auth';
+import { signInAnonymously, signOut } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
 export const AuthSignIn = async () => {
 	try {
 		await signInAnonymously(auth);
-	} catch (err) {
-		console.error(err);
+	} catch (error) {
+		console.error(error);
+		return error;
 	}
 };
 
 export const AuthSignOut = async () => {
 	try {
 		signOut(auth);
-		onAuthStateChanged(auth, (user) => {
-			user?.delete();
-		});
+		auth?.currentUser?.delete();
 	} catch (error) {
 		console.error(error);
-	}
-};
-
-export const GetUserInfo = async () => {
-	try {
-		onAuthStateChanged(auth, (user) => {
-			if (user) {
-				return user;
-			}
-		});
-	} catch (error) {
-		console.error(error);
+		return error;
 	}
 };
