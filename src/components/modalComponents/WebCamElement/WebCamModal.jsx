@@ -92,6 +92,7 @@ const WebCamModal = () => {
 				switchCamBtn={handleChangeCam}
 				retryBtn={handleRetry}
 				accBtn={handleAccept}
+				isLoading={isLoading}
 			/>
 		</div>
 	);
