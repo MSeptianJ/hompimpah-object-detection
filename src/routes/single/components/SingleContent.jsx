@@ -33,9 +33,9 @@ const SingleContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
 };
 
 SingleContent.propTypes = {
-	P1Choise: PropTypes.number,
+	P1Choise: PropTypes.string,
 	P1Score: PropTypes.number,
-	P2Choise: PropTypes.number,
+	P2Choise: PropTypes.string,
 	P2Score: PropTypes.number,
 };
 

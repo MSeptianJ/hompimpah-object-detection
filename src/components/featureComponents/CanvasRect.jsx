@@ -24,36 +24,21 @@ const CanvasRect = ({ isSuccess }) => {
 			ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
 			const color = randomColor();
 
-			if (confNum >= 79) {
-				ctx.font = '14px sans-serif';
+			ctx.font = '14px sans-serif';
 
-				// bounding box
-				ctx.lineWidth = 2;
-				ctx.strokeStyle = color;
-				ctx.strokeRect(pred.x, pred.y, pred.width, pred.height);
+			// bounding box
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = color;
+			ctx.strokeRect(pred.x, pred.y, pred.width, pred.height);
 
-				// Label bg
-				ctx.fillStyle = color;
-				ctx.fillRect(pred.x - 1, pred.y - 14, pred.width + 2, 14);
+			// Label bg
+			ctx.fillStyle = color;
+			ctx.fillRect(pred.x - 1, pred.y - 14, pred.width + 2, 14);
 
-				// Label
-				ctx.fillStyle = 'black';
-				ctx.fillText(`${pred.class} ${confNum}%`, pred.x - 1, pred.y - 3);
-			} else {
-				// Label bg
-				ctx.fillStyle = 'rgba(100, 116, 139, 0.6)';
-				ctx.fillRect(0, 0, detection?.image.width, 15);
-
-				ctx.fillStyle = 'black';
-				ctx.textAlign = 'center';
-				ctx.fillText(
-					'Detection Score not High Enough',
-					detection?.image.width / 2,
-					10
-				);
-			}
+			// Label
+			ctx.fillStyle = 'black';
+			ctx.fillText(`${pred.class} ${confNum}%`, pred.x - 1, pred.y - 3);
 		});
-		console.log(detection);
 	};
 
 	useEffect(() => {

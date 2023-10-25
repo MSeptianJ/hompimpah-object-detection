@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
 	createBrowserRouter,
@@ -35,7 +35,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<QueryClientProvider client={client}>
-			<RouterProvider router={router} />
+			<Suspense fallback={<p>Loading...</p>}>
+				<RouterProvider router={router} />
+			</Suspense>
 			<ReactQueryDevtools />
 		</QueryClientProvider>
 	</React.StrictMode>

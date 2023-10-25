@@ -16,7 +16,8 @@ const Choices = ({ choice }) => {
 			ilust: <ScissorIlust />,
 		},
 	];
-	if (choice === 0) {
+
+	if (choice === 'Rock') {
 		return (
 			<>
 				{show[0].ilust}
@@ -25,7 +26,7 @@ const Choices = ({ choice }) => {
 		);
 	}
 
-	if (choice === 1) {
+	if (choice === 'Paper') {
 		return (
 			<>
 				{show[1].ilust}
@@ -34,7 +35,7 @@ const Choices = ({ choice }) => {
 		);
 	}
 
-	if (choice === 2) {
+	if (choice === 'Scissors') {
 		return (
 			<>
 				{show[2].ilust}
@@ -43,11 +44,11 @@ const Choices = ({ choice }) => {
 		);
 	}
 
-	return null;
+	return <p className=" text-lg font-bold">Press Camera</p>;
 };
 
 Choices.propTypes = {
-	choice: PropTypes.number,
+	choice: PropTypes.string,
 };
 
 export default Choices;

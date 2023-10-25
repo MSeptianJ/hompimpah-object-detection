@@ -1,10 +1,13 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom } from '../../libs/atoms';
-import TitlePage from '../smallComponents/TitlePage';
+import { anonUserAtom, backConfirmAtom } from '../../libs/atoms';
+import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import BtnPrimary from '../smallComponents/BtnPrimary';
+import TitlePage from '../smallComponents/TitlePage';
+import { delGameRound } from '../../libs/firebase/FirebaseDB';
 
 const BackModal = () => {
 	const [back, setBack] = useAtom(backConfirmAtom);
+	const [userData, setUserData] = useAtom(anonUserAtom);
 
 	const handleCancel = () => {
 		setBack(!back);
@@ -13,6 +16,9 @@ const BackModal = () => {
 	const handleGoBack = () => {
 		history.back();
 		setBack(!back);
+		delGameRound(userData);
+		setUserData({});
+		AuthSignOut();
 	};
 
 	return (
