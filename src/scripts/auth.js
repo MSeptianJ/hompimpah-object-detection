@@ -1,7 +1,10 @@
 import { AuthSignIn } from '../libs/firebase/FirebaseAuth';
 
-export const SignIn = (user) => {
+const SignIn = async (user) => {
 	if (!user.length) {
-		AuthSignIn();
+		const userdata = await AuthSignIn();
+		return userdata;
 	}
 };
+
+export default SignIn;

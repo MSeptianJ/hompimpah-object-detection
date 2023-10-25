@@ -4,18 +4,28 @@ import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
-import { backConfirmAtom, tutorGameAtom, webCamAtom } from '../../libs/atoms';
+import {
+	anonUserAtom,
+	backConfirmAtom,
+	gameRoundAtom,
+	tutorGameAtom,
+	webCamAtom,
+} from '../../libs/atoms';
 import SingleContent from './components/SingleContent';
 
 const Single = () => {
 	const [back] = useAtom(backConfirmAtom);
 	const [tutor] = useAtom(tutorGameAtom);
 	const [cam] = useAtom(webCamAtom);
+	const [games] = useAtom(gameRoundAtom);
+	const [user] = useAtom(anonUserAtom);
 
-	const P1Choise = 0;
-	const P2Choise = 2;
-	const P1Score = 0;
-	const P2Score = 3;
+	const gameRound = games.find((game) => game?.userId === user?.uid);
+
+	const P1Choise = gameRound?.choisePA;
+	const P2Choise = gameRound?.choisePB;
+	const P1Score = gameRound?.scorePA;
+	const P2Score = gameRound?.scorePB;
 
 	return (
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
@@ -28,6 +38,8 @@ const Single = () => {
 						P1Score={P1Score}
 						P2Choise={P2Choise}
 						P2Score={P2Score}
+						gameRound={gameRound}
+						userData={user}
 					/>
 				</div>
 			</div>

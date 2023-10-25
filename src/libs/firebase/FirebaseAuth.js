@@ -4,6 +4,7 @@ import { auth } from '../config/firebase';
 export const AuthSignIn = async () => {
 	try {
 		await signInAnonymously(auth);
+		return auth?.currentUser;
 	} catch (error) {
 		console.error(error);
 		return error;

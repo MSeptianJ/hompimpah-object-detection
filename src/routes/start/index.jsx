@@ -1,5 +1,5 @@
 import useGetUser from '../../hooks/useGetUser';
-import { SignIn } from '../../scripts/auth';
+import SignIn from '../../scripts/auth';
 import BtnList from './components/BtnList';
 
 const Start = () => {

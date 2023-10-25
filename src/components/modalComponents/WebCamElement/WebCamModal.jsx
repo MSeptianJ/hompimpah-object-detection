@@ -62,12 +62,12 @@ const WebCamModal = () => {
 		setDetData(null);
 	};
 
-	const handleAccept = () => {
+	const handleAccept = async () => {
 		addGameRound(userData, detData);
 		setCam(!cam);
 		setImg(null);
 		setDetData(null);
-		setGameData(getAllGame());
+		setGameData(await getAllGame());
 	};
 
 	return (

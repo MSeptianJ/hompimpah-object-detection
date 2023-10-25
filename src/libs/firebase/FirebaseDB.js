@@ -8,7 +8,7 @@ import {
 	setDoc,
 } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import dateFormater from '../../scripts/dateFormater';
+import choiseSelector from '../../scripts/choiseSelector';
 
 const gameColRef = query(collection(db, 'game'));
 
@@ -20,9 +20,6 @@ export const getAllGame = async () => {
 			id: doc.id,
 		}));
 
-		docs.map((data) => {
-			return (data.createdAt = dateFormater(data?.createdAt?.toDate()));
-		});
 		return docs;
 	} catch (error) {
 		console.error(error);
@@ -33,7 +30,7 @@ export const getAllGame = async () => {
 export const addGameRound = async (userData, predData) => {
 	try {
 		const docRef = doc(db, 'game', userData.uid);
-		const createdAt = serverTimestamp();
+		const timeStamp = serverTimestamp();
 		const choisePA = predData?.predictions.map((pred) => {
 			return pred.class;
 		});
@@ -41,10 +38,10 @@ export const addGameRound = async (userData, predData) => {
 		const newGame = {
 			userId: userData.uid,
 			choisePA: String(choisePA),
-			choisePB: 0,
+			choisePB: '',
 			scorePA: 0,
 			scorePB: 0,
-			createdAt,
+			timeStamp,
 		};
 
 		await setDoc(docRef, newGame);
@@ -54,10 +51,42 @@ export const addGameRound = async (userData, predData) => {
 	}
 };
 
+export const addSystemChoise = async (gameRound, userData) => {
+	try {
+		const docRef = doc(db, 'game', userData.uid);
+
+		const sysChoise = choiseSelector();
+		const newGameData = {
+			...gameRound,
+			choisePB: sysChoise,
+		};
+
+		await setDoc(docRef, newGameData);
+	} catch (error) {
+		console.error(error);
+		return error;
+	}
+};
+
+export const addGameScore = async (gameRound, userData) => {
+	try {
+		const docRef = doc(db, 'game', userData.uid);
+
+		const newGameData = {
+			...gameRound,
+		};
+
+		await setDoc(docRef, newGameData);
+	} catch (error) {
+		console.error(error);
+		return error;
+	}
+};
+
 export const delGameRound = async (userData) => {
 	try {
-		const docData = doc(db, 'game', userData.uid);
-		await deleteDoc(docData);
+		const docRef = doc(db, 'game', userData.uid);
+		await deleteDoc(docRef);
 	} catch (error) {
 		console.error(error);
 		return error;
