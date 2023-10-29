@@ -1,24 +1,33 @@
 import { useAtom } from 'jotai';
+import { useCallback, useEffect } from 'react';
 import BackModal from '../../components/modalComponents/BackModal';
 import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import {
+	accImgAtom,
 	anonUserAtom,
 	backConfirmAtom,
+	gameResultAtom,
 	gameRoundAtom,
+	sysMovedAtom,
 	tutorGameAtom,
 	webCamAtom,
 } from '../../libs/atoms';
+import { addSystemChoise, getAllGame } from '../../libs/firebase/FirebaseDB';
+import { Score } from '../../scripts/rps';
 import SingleContent from './components/SingleContent';
 
 const Single = () => {
 	const [back] = useAtom(backConfirmAtom);
 	const [tutor] = useAtom(tutorGameAtom);
 	const [cam] = useAtom(webCamAtom);
-	const [games] = useAtom(gameRoundAtom);
+	const [games, setGameData] = useAtom(gameRoundAtom);
 	const [user] = useAtom(anonUserAtom);
+	const [accImg, setAccImg] = useAtom(accImgAtom);
+	const [sysMoved, setSysMoved] = useAtom(sysMovedAtom);
+	const [gameResult, setGameResult] = useAtom(gameResultAtom);
 
 	const gameRound = games.find((game) => game?.userId === user?.uid);
 
@@ -26,6 +35,28 @@ const Single = () => {
 	const P2Choise = gameRound?.choisePB;
 	const P1Score = gameRound?.scorePA;
 	const P2Score = gameRound?.scorePB;
+
+	const systemChoise = useCallback(async () => {
+		if (accImg) {
+			addSystemChoise(gameRound, user);
+			setGameData(await getAllGame());
+			setAccImg(false);
+			setSysMoved(true);
+		}
+	}, [accImg]); // eslint-disable-line
+
+	const Scoring = useCallback(async () => {
+		if (sysMoved) {
+			const result = Score(P1Choise, P2Choise);
+			setGameResult(result);
+			setSysMoved(false);
+		}
+	}, [sysMoved]); // eslint-disable-line
+
+	useEffect(() => {
+		systemChoise();
+		Scoring();
+	}, [systemChoise, Scoring]);
 
 	return (
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
@@ -41,6 +72,7 @@ const Single = () => {
 						gameRound={gameRound}
 						userData={user}
 					/>
+					{gameResult && <h3 className=" w-full">{gameResult || ''}</h3>}
 				</div>
 			</div>
 

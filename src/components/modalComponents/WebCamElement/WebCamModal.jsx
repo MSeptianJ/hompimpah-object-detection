@@ -3,6 +3,7 @@ import { useAtom, useSetAtom } from 'jotai';
 import { useCallback, useRef } from 'react';
 import { detectImg } from '../../../libs/apiCalls';
 import {
+	accImgAtom,
 	camModeAtom,
 	detDataAtom,
 	detImgAtom,
@@ -21,6 +22,7 @@ const WebCamModal = () => {
 	const setFaceMode = useSetAtom(camModeAtom);
 	const [detData, setDetData] = useAtom(detDataAtom);
 	const setGameData = useSetAtom(gameRoundAtom);
+	const setAccImg = useSetAtom(accImgAtom);
 	const userData = useGetUser();
 	const webCamRef = useRef(null);
 
@@ -63,11 +65,12 @@ const WebCamModal = () => {
 	};
 
 	const handleAccept = async () => {
-		addGameRound(userData, detData);
+		await addGameRound(userData, detData);
+		setGameData(await getAllGame());
 		setCam(!cam);
 		setImg(null);
 		setDetData(null);
-		setGameData(await getAllGame());
+		setAccImg(true);
 	};
 
 	return (

@@ -15,3 +15,8 @@ export const anonUserAtom = atom({});
 
 // Game
 export const gameRoundAtom = atom([]);
+export const gameResultAtom = atom(null);
+
+// States
+export const accImgAtom = atom(false);
+export const sysMovedAtom = atom(false);

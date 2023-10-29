@@ -14,10 +14,6 @@ const Start = () => {
 			},
 		},
 		{
-			url: '/multi',
-			text: 'Multi Player',
-		},
-		{
 			url: '/tutorial',
 			text: 'Tutorial',
 		},
