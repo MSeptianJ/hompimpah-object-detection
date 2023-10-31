@@ -1,3 +1,5 @@
+import { playLoseSound, playTieSound, playWinSound } from './sound';
+
 export const Score = (move1, move2) => {
 	const moveList = ['Rock', 'Paper', 'Scissors'];
 	const indexMove1 = moveList.findIndex((move) => {
@@ -9,10 +11,13 @@ export const Score = (move1, move2) => {
 	const result = indexMove1 - indexMove2;
 
 	if (result == 1 || result + 3 == 1) {
+		playWinSound();
 		return 'Win';
 	} else if (result == 2 || result + 3 == 2) {
+		playLoseSound();
 		return 'Lose';
 	} else {
+		playTieSound();
 		return 'Tie';
 	}
 };
