@@ -42,6 +42,10 @@ const Scores = ({ score }) => {
 		);
 	}
 
+	if (score >= 3) {
+		return <p>You Win !!!</p>;
+	}
+
 	return null;
 };
 

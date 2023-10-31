@@ -27,24 +27,34 @@ export const getAllGame = async () => {
 	}
 };
 
-export const addGameRound = async (userData, predData) => {
+export const addGameRound = async (userData, predData, games) => {
 	try {
 		const docRef = doc(db, 'game', userData.uid);
 		const timeStamp = serverTimestamp();
 		const choisePA = predData?.predictions.map((pred) => {
 			return pred.class;
 		});
+		const gameRound = games.find((game) => game?.userId === userData?.uid);
 
-		const newGame = {
-			userId: userData.uid,
-			choisePA: String(choisePA),
-			choisePB: '',
-			scorePA: 0,
-			scorePB: 0,
-			timeStamp,
-		};
+		if (!gameRound) {
+			const newGame = {
+				userId: userData.uid,
+				choisePA: String(choisePA),
+				choisePB: '',
+				scorePA: 0,
+				scorePB: 0,
+				timeStamp,
+			};
 
-		await setDoc(docRef, newGame);
+			await setDoc(docRef, newGame);
+		} else if (gameRound) {
+			const newGame = {
+				...gameRound,
+				choisePA: String(choisePA),
+			};
+
+			await setDoc(docRef, newGame);
+		}
 	} catch (error) {
 		console.error(error);
 		return error;
@@ -68,6 +78,40 @@ export const addSystemChoise = async (gameRound, userData) => {
 	}
 };
 
+export const addPlayerScore = async (gameRound, userData) => {
+	try {
+		const docRef = doc(db, 'game', userData.uid);
+
+		const lastScore = gameRound.scorePA;
+
+		const newGameData = {
+			...gameRound,
+			scorePA: lastScore + 1,
+		};
+
+		await setDoc(docRef, newGameData);
+	} catch (error) {
+		console.error(error);
+		return error;
+	}
+};
+
+export const addSystemScore = async (gameRound, userData) => {
+	try {
+		const docRef = doc(db, 'game', userData.uid);
+		const lastScore = gameRound.scorePB;
+
+		const newGameData = {
+			...gameRound,
+			scorePB: lastScore + 1,
+		};
+
+		await setDoc(docRef, newGameData);
+	} catch (error) {
+		console.error(error);
+		return error;
+	}
+};
 export const addGameScore = async (gameRound, userData) => {
 	try {
 		const docRef = doc(db, 'game', userData.uid);
