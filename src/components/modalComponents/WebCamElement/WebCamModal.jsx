@@ -21,7 +21,7 @@ const WebCamModal = () => {
 	const setImg = useSetAtom(detImgAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
 	const [detData, setDetData] = useAtom(detDataAtom);
-	const setGameData = useSetAtom(gamesAtom);
+	const [games, setGameData] = useAtom(gamesAtom);
 	const setAccImg = useSetAtom(accImgAtom);
 	const userData = useGetUser();
 	const webCamRef = useRef(null);
@@ -65,7 +65,7 @@ const WebCamModal = () => {
 	};
 
 	const handleAccept = async () => {
-		await addGameRound(userData, detData);
+		await addGameRound(userData, detData, games);
 		setGameData(await getAllGame());
 		setCam(!cam);
 		setImg(null);

@@ -50,7 +50,8 @@ const Single = () => {
 
 	const Scoring = useCallback(async () => {
 		if (sysMoved) {
-			const result = Score(P1Choise, P2Choise);
+			const result = await Score(P1Choise, P2Choise, gameRound, user);
+			setGameData(await getAllGame());
 			setGameResult(result);
 			setSysMoved(false);
 			setResult(true);
