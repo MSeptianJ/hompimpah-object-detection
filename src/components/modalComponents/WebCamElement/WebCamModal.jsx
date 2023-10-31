@@ -7,7 +7,7 @@ import {
 	camModeAtom,
 	detDataAtom,
 	detImgAtom,
-	gameRoundAtom,
+	gamesAtom,
 	webCamAtom,
 } from '../../../libs/atoms';
 import TitlePage from '../../smallComponents/TitlePage';
@@ -21,7 +21,7 @@ const WebCamModal = () => {
 	const setImg = useSetAtom(detImgAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
 	const [detData, setDetData] = useAtom(detDataAtom);
-	const setGameData = useSetAtom(gameRoundAtom);
+	const setGameData = useSetAtom(gamesAtom);
 	const setAccImg = useSetAtom(accImgAtom);
 	const userData = useGetUser();
 	const webCamRef = useRef(null);

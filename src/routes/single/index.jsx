@@ -10,7 +10,8 @@ import {
 	anonUserAtom,
 	backConfirmAtom,
 	gameResultAtom,
-	gameRoundAtom,
+	gamesAtom,
+	resultAtom,
 	sysMovedAtom,
 	tutorGameAtom,
 	webCamAtom,
@@ -18,16 +19,18 @@ import {
 import { addSystemChoise, getAllGame } from '../../libs/firebase/FirebaseDB';
 import { Score } from '../../scripts/rps';
 import SingleContent from './components/SingleContent';
+import ResultModal from '../../components/modalComponents/ResultModal';
 
 const Single = () => {
 	const [back] = useAtom(backConfirmAtom);
 	const [tutor] = useAtom(tutorGameAtom);
 	const [cam] = useAtom(webCamAtom);
-	const [games, setGameData] = useAtom(gameRoundAtom);
+	const [games, setGameData] = useAtom(gamesAtom);
 	const [user] = useAtom(anonUserAtom);
 	const [accImg, setAccImg] = useAtom(accImgAtom);
 	const [sysMoved, setSysMoved] = useAtom(sysMovedAtom);
 	const [gameResult, setGameResult] = useAtom(gameResultAtom);
+	const [result, setResult] = useAtom(resultAtom);
 
 	const gameRound = games.find((game) => game?.userId === user?.uid);
 
@@ -38,7 +41,7 @@ const Single = () => {
 
 	const systemChoise = useCallback(async () => {
 		if (accImg) {
-			addSystemChoise(gameRound, user);
+			await addSystemChoise(gameRound, user);
 			setGameData(await getAllGame());
 			setAccImg(false);
 			setSysMoved(true);
@@ -50,6 +53,7 @@ const Single = () => {
 			const result = Score(P1Choise, P2Choise);
 			setGameResult(result);
 			setSysMoved(false);
+			setResult(true);
 		}
 	}, [sysMoved]); // eslint-disable-line
 
@@ -69,15 +73,13 @@ const Single = () => {
 						P1Score={P1Score}
 						P2Choise={P2Choise}
 						P2Score={P2Score}
-						gameRound={gameRound}
-						userData={user}
 					/>
-					{gameResult && <h3 className=" w-full">{gameResult || ''}</h3>}
 				</div>
 			</div>
 
 			<GameMenu />
 
+			{result && <ResultModal result={gameResult} />}
 			{back && <BackModal />}
 			{tutor && <TutorialModal />}
 			{cam && <WebCamModal />}

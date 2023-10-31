@@ -5,11 +5,13 @@ import { auth } from '../libs/config/firebase';
 
 const useGetUser = () => {
 	const [userData, setUserData] = useAtom(anonUserAtom);
-	onAuthStateChanged(auth, (user) => {
+	const unSub = onAuthStateChanged(auth, (user) => {
 		if (user) {
 			setUserData(user);
 		}
 	});
+
+	unSub();
 
 	return userData;
 };
