@@ -21,9 +21,9 @@ const BackModal = () => {
 		setBack(!back);
 	};
 
-	const handleGoBack = () => {
-		delGameRound(userData);
-		AuthSignOut();
+	const handleGoBack = async () => {
+		await delGameRound(userData);
+		await AuthSignOut();
 		history.back();
 		setBack(!back);
 		setGameResult(null);

@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
 import wait from '../../scripts/wait';
 import { useAtom } from 'jotai';
-import { resultAtom } from '../../libs/atoms';
+import { roundStateAtom } from '../../libs/atoms';
 
-const ResultModal = ({ result }) => {
-	const [resultState, setResult] = useAtom(resultAtom);
+const RoundResultModal = ({ result }) => {
+	const [resultState, setResult] = useAtom(roundStateAtom);
 
 	const resultDisplay = useCallback(async () => {
 		if (resultState) {
@@ -29,8 +29,8 @@ const ResultModal = ({ result }) => {
 	);
 };
 
-ResultModal.propTypes = {
+RoundResultModal.propTypes = {
 	result: PropTypes.string,
 };
 
-export default ResultModal;
+export default RoundResultModal;

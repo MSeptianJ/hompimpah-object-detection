@@ -10,8 +10,9 @@ import {
 	anonUserAtom,
 	backConfirmAtom,
 	gameResultAtom,
+	gameStateAtom,
 	gamesAtom,
-	resultAtom,
+	roundStateAtom,
 	sysMovedAtom,
 	tutorGameAtom,
 	webCamAtom,
@@ -19,18 +20,25 @@ import {
 import { addSystemChoise, getAllGame } from '../../libs/firebase/FirebaseDB';
 import { Score } from '../../scripts/rps';
 import SingleContent from './components/SingleContent';
-import ResultModal from '../../components/modalComponents/ResultModal';
+import RoundResultModal from '../../components/modalComponents/RoundResultModal';
+import GameResultModal from '../../components/modalComponents/GameResultModal';
 
 const Single = () => {
+	// Modals
 	const [back] = useAtom(backConfirmAtom);
 	const [tutor] = useAtom(tutorGameAtom);
 	const [cam] = useAtom(webCamAtom);
-	const [games, setGameData] = useAtom(gamesAtom);
-	const [user] = useAtom(anonUserAtom);
+	const [resultState, setResultState] = useAtom(roundStateAtom);
+	const [gameState, setGameState] = useAtom(gameStateAtom);
+
+	// State
 	const [accImg, setAccImg] = useAtom(accImgAtom);
 	const [sysMoved, setSysMoved] = useAtom(sysMovedAtom);
+
+	// Something inside
+	const [user] = useAtom(anonUserAtom);
+	const [games, setGameData] = useAtom(gamesAtom);
 	const [gameResult, setGameResult] = useAtom(gameResultAtom);
-	const [result, setResult] = useAtom(resultAtom);
 
 	const gameRound = games.find((game) => game?.userId === user?.uid);
 
@@ -54,14 +62,21 @@ const Single = () => {
 			setGameData(await getAllGame());
 			setGameResult(result);
 			setSysMoved(false);
-			setResult(true);
+			setResultState(true);
 		}
 	}, [sysMoved]); // eslint-disable-line
+
+	const EndGame = useCallback(async () => {
+		if (P1Score === 3 || P2Score === 3) {
+			setGameState(true);
+		}
+	}, [P1Score, P2Score]); // eslint-disable-line
 
 	useEffect(() => {
 		systemChoise();
 		Scoring();
-	}, [systemChoise, Scoring]);
+		EndGame();
+	}, [systemChoise, Scoring, EndGame]);
 
 	return (
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
@@ -80,7 +95,8 @@ const Single = () => {
 
 			<GameMenu />
 
-			{result && <ResultModal result={gameResult} />}
+			{gameState && <GameResultModal result={gameResult} />}
+			{resultState && <RoundResultModal result={gameResult} />}
 			{back && <BackModal />}
 			{tutor && <TutorialModal />}
 			{cam && <WebCamModal />}
