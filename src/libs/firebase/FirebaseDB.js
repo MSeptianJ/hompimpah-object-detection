@@ -3,18 +3,24 @@ import {
 	deleteDoc,
 	doc,
 	getDocs,
-	query,
 	serverTimestamp,
 	setDoc,
 } from 'firebase/firestore';
-import { db } from '../config/firebase';
 import choiseSelector from '../../scripts/choiseSelector';
+import { db } from '../config/firebase';
 
-const gameColRef = query(collection(db, 'game'));
+const gameColRef = () => {
+	return collection(db, 'game');
+};
+
+const gameDocRef = (uid) => {
+	return doc(db, 'game', uid);
+};
 
 export const getAllGame = async () => {
 	try {
-		const gameColData = await getDocs(gameColRef);
+		const colRef = gameColRef();
+		const gameColData = await getDocs(colRef);
 		const docs = gameColData.docs.map((doc) => ({
 			...doc.data(),
 			id: doc.id,
@@ -29,11 +35,12 @@ export const getAllGame = async () => {
 
 export const addGameRound = async (uid, predData, games) => {
 	try {
-		const docRef = doc(db, 'game', uid);
+		const docRef = gameDocRef(uid);
 		const timeStamp = serverTimestamp();
 		const choisePA = predData?.predictions.map((pred) => {
 			return pred.class;
 		});
+
 		const gameRound = games.find((game) => game?.id === uid);
 
 		if (!gameRound) {
@@ -62,8 +69,7 @@ export const addGameRound = async (uid, predData, games) => {
 
 export const addSystemChoise = async (gameRound, uid) => {
 	try {
-		const docRef = doc(db, 'game', uid);
-
+		const docRef = gameDocRef(uid);
 		const sysChoise = choiseSelector();
 		const newGameData = {
 			...gameRound,
@@ -79,10 +85,8 @@ export const addSystemChoise = async (gameRound, uid) => {
 
 export const addPlayerScore = async (gameRound, uid) => {
 	try {
-		const docRef = doc(db, 'game', uid);
-
+		const docRef = gameDocRef(uid);
 		const lastScore = gameRound.scorePA;
-
 		const newGameData = {
 			...gameRound,
 			scorePA: lastScore + 1,
@@ -97,7 +101,7 @@ export const addPlayerScore = async (gameRound, uid) => {
 
 export const addSystemScore = async (gameRound, uid) => {
 	try {
-		const docRef = doc(db, 'game', uid);
+		const docRef = gameDocRef(uid);
 		const lastScore = gameRound.scorePB;
 
 		const newGameData = {
@@ -111,24 +115,11 @@ export const addSystemScore = async (gameRound, uid) => {
 		return error;
 	}
 };
-export const addGameScore = async (gameRound, uid) => {
-	try {
-		const docRef = doc(db, 'game', uid);
-
-		const newGameData = {
-			...gameRound,
-		};
-
-		await setDoc(docRef, newGameData);
-	} catch (error) {
-		console.error(error);
-		return error;
-	}
-};
 
 export const delGameRound = async (uid) => {
 	try {
-		const docRef = doc(db, 'game', uid);
+		const docRef = gameDocRef(uid);
+
 		await deleteDoc(docRef);
 	} catch (error) {
 		console.error(error);
