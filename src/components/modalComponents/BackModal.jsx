@@ -1,4 +1,5 @@
 import { useAtom, useSetAtom } from 'jotai';
+import { RESET } from 'jotai/utils';
 import {
 	backConfirmAtom,
 	gameResultAtom,
@@ -6,26 +7,25 @@ import {
 	uidAtom,
 } from '../../libs/atoms';
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
+import { delGameRound } from '../../libs/firebase/FirebaseDB';
 import BtnPrimary from '../smallComponents/BtnPrimary';
 import TitlePage from '../smallComponents/TitlePage';
-import { delGameRound } from '../../libs/firebase/FirebaseDB';
-import { RESET } from 'jotai/utils';
 
 const BackModal = () => {
-	const [back, setBack] = useAtom(backConfirmAtom);
+	const setBack = useSetAtom(backConfirmAtom);
 	const [uid, setUid] = useAtom(uidAtom);
 	const setGames = useSetAtom(gamesAtom);
 	const setGameResult = useSetAtom(gameResultAtom);
 
 	const handleCancel = () => {
-		setBack(!back);
+		setBack(false);
 	};
 
 	const handleGoBack = async () => {
 		await delGameRound(uid);
 		await AuthSignOut();
 		history.back();
-		setBack(!back);
+		setBack(false);
 		setGameResult(null);
 		setGames(RESET);
 		setUid(RESET);

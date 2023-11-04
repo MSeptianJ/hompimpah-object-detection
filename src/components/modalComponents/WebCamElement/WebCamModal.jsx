@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { useAtom, useSetAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import { useCallback, useRef } from 'react';
 import { detectImg } from '../../../libs/apiCalls';
 import {
@@ -14,7 +14,7 @@ import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
 
 const WebCamModal = () => {
-	const [cam, setCam] = useAtom(webCamAtom);
+	const setCam = useSetAtom(webCamAtom);
 	const setImg = useSetAtom(detImgAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
 	const setDetection = useSetAtom(detDataAtom);
@@ -42,7 +42,7 @@ const WebCamModal = () => {
 
 	// Handle Functions for Button
 	const handleBack = () => {
-		setCam(!cam);
+		setCam(false);
 		setImg(null);
 		setDetection(null);
 	};
@@ -61,7 +61,7 @@ const WebCamModal = () => {
 	};
 
 	const handleAccept = async () => {
-		setCam(!cam);
+		setCam(false);
 		setImg(null);
 		setImgAcc(true);
 	};
