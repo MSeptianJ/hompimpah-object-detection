@@ -27,18 +27,17 @@ export const getAllGame = async () => {
 	}
 };
 
-export const addGameRound = async (userData, predData, games) => {
+export const addGameRound = async (uid, predData, games) => {
 	try {
-		const docRef = doc(db, 'game', userData.uid);
+		const docRef = doc(db, 'game', uid);
 		const timeStamp = serverTimestamp();
 		const choisePA = predData?.predictions.map((pred) => {
 			return pred.class;
 		});
-		const gameRound = games.find((game) => game?.userId === userData?.uid);
+		const gameRound = games.find((game) => game?.id === uid);
 
 		if (!gameRound) {
 			const newGame = {
-				userId: userData.uid,
 				choisePA: String(choisePA),
 				choisePB: '',
 				scorePA: 0,
@@ -61,9 +60,9 @@ export const addGameRound = async (userData, predData, games) => {
 	}
 };
 
-export const addSystemChoise = async (gameRound, userData) => {
+export const addSystemChoise = async (gameRound, uid) => {
 	try {
-		const docRef = doc(db, 'game', userData.uid);
+		const docRef = doc(db, 'game', uid);
 
 		const sysChoise = choiseSelector();
 		const newGameData = {
@@ -78,9 +77,9 @@ export const addSystemChoise = async (gameRound, userData) => {
 	}
 };
 
-export const addPlayerScore = async (gameRound, userData) => {
+export const addPlayerScore = async (gameRound, uid) => {
 	try {
-		const docRef = doc(db, 'game', userData.uid);
+		const docRef = doc(db, 'game', uid);
 
 		const lastScore = gameRound.scorePA;
 
@@ -96,9 +95,9 @@ export const addPlayerScore = async (gameRound, userData) => {
 	}
 };
 
-export const addSystemScore = async (gameRound, userData) => {
+export const addSystemScore = async (gameRound, uid) => {
 	try {
-		const docRef = doc(db, 'game', userData.uid);
+		const docRef = doc(db, 'game', uid);
 		const lastScore = gameRound.scorePB;
 
 		const newGameData = {
@@ -112,9 +111,9 @@ export const addSystemScore = async (gameRound, userData) => {
 		return error;
 	}
 };
-export const addGameScore = async (gameRound, userData) => {
+export const addGameScore = async (gameRound, uid) => {
 	try {
-		const docRef = doc(db, 'game', userData.uid);
+		const docRef = doc(db, 'game', uid);
 
 		const newGameData = {
 			...gameRound,
@@ -127,9 +126,9 @@ export const addGameScore = async (gameRound, userData) => {
 	}
 };
 
-export const delGameRound = async (userData) => {
+export const delGameRound = async (uid) => {
 	try {
-		const docRef = doc(db, 'game', userData.uid);
+		const docRef = doc(db, 'game', uid);
 		await deleteDoc(docRef);
 	} catch (error) {
 		console.error(error);

@@ -1,7 +1,7 @@
 import { addPlayerScore, addSystemScore } from '../libs/firebase/FirebaseDB';
 import { playLoseSound, playTieSound, playWinSound } from './sound';
 
-export const Score = async (move1, move2, gameRound, userData) => {
+export const Score = async (move1, move2, gameRound, uid) => {
 	try {
 		const moveList = ['Rock', 'Paper', 'Scissors'];
 		const indexMove1 = moveList.findIndex((move) => {
@@ -13,11 +13,11 @@ export const Score = async (move1, move2, gameRound, userData) => {
 		const result = indexMove1 - indexMove2;
 
 		if (result == 1 || result + 3 == 1) {
-			await addPlayerScore(gameRound, userData);
+			await addPlayerScore(gameRound, uid);
 			playWinSound();
 			return 'Win';
 		} else if (result == 2 || result + 3 == 2) {
-			await addSystemScore(gameRound, userData);
+			await addSystemScore(gameRound, uid);
 			playLoseSound();
 			return 'Lose';
 		} else {

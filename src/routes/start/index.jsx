@@ -1,16 +1,16 @@
-import useGetUser from '../../hooks/useGetUser';
+import useGetUid from '../../hooks/useGetUser';
 import SignIn from '../../scripts/auth';
 import BtnList from './components/BtnList';
 
 const Start = () => {
-	const userData = useGetUser();
+	const uid = useGetUid();
 
 	const textMenus = [
 		{
 			url: '/single',
 			text: 'Single Player',
 			func: () => {
-				SignIn(userData);
+				SignIn(uid);
 			},
 		},
 		{

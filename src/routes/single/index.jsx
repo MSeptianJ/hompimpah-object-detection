@@ -7,7 +7,7 @@ import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
-import useGetUser from '../../hooks/useGetUser';
+import useGetUid from '../../hooks/useGetUser';
 import {
 	backConfirmAtom,
 	detDataAtom,
@@ -43,12 +43,12 @@ const Single = () => {
 	const [sysMoved, setSysMoved] = useAtom(sysMovedAtom);
 
 	// Something inside
-	const userData = useGetUser();
+	const uid = useGetUid();
 	const [detection, setDetection] = useAtom(detDataAtom);
 	const [games, setGameData] = useAtom(gamesAtom);
 	const [gameResult, setGameResult] = useAtom(gameResultAtom);
 
-	const gameRound = games.find((game) => game?.userId === userData?.uid);
+	const gameRound = games.find((game) => game?.id === uid);
 	const P1Choise = gameRound?.choisePA;
 	const P2Choise = gameRound?.choisePB;
 	const P1Score = gameRound?.scorePA;
@@ -56,7 +56,7 @@ const Single = () => {
 
 	const PlayerMove = useCallback(async () => {
 		if (imgAcc) {
-			await addGameRound(userData, detection, games);
+			await addGameRound(uid, detection, games);
 			setGameData(await getAllGame());
 			setDetection(null);
 
@@ -67,7 +67,7 @@ const Single = () => {
 
 	const SystemMove = useCallback(async () => {
 		if (plyMoved) {
-			await addSystemChoise(gameRound, userData);
+			await addSystemChoise(gameRound, uid);
 			setGameData(await getAllGame());
 
 			setPlyMoved(false);
@@ -77,7 +77,7 @@ const Single = () => {
 
 	const Scoring = useCallback(async () => {
 		if (sysMoved) {
-			const result = await Score(P1Choise, P2Choise, gameRound, userData);
+			const result = await Score(P1Choise, P2Choise, gameRound, uid);
 			setGameData(await getAllGame());
 			setGameResult(result);
 
