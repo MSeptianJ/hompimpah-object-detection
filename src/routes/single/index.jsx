@@ -1,27 +1,34 @@
 import { useAtom } from 'jotai';
 import { useCallback, useEffect } from 'react';
 import BackModal from '../../components/modalComponents/BackModal';
+import GameResultModal from '../../components/modalComponents/GameResultModal';
+import RoundResultModal from '../../components/modalComponents/RoundResultModal';
 import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
+import useGetUser from '../../hooks/useGetUser';
 import {
-	accImgAtom,
 	anonUserAtom,
 	backConfirmAtom,
+	detDataAtom,
 	gameResultAtom,
 	gameStateAtom,
 	gamesAtom,
+	imgAccAtom,
+	plyMovedAtom,
 	roundStateAtom,
 	sysMovedAtom,
 	tutorGameAtom,
 	webCamAtom,
 } from '../../libs/atoms';
-import { addSystemChoise, getAllGame } from '../../libs/firebase/FirebaseDB';
+import {
+	addGameRound,
+	addSystemChoise,
+	getAllGame,
+} from '../../libs/firebase/FirebaseDB';
 import { Score } from '../../scripts/rps';
 import SingleContent from './components/SingleContent';
-import RoundResultModal from '../../components/modalComponents/RoundResultModal';
-import GameResultModal from '../../components/modalComponents/GameResultModal';
 
 const Single = () => {
 	// Modals
@@ -32,29 +39,42 @@ const Single = () => {
 	const [gameState, setGameState] = useAtom(gameStateAtom);
 
 	// State
-	const [accImg, setAccImg] = useAtom(accImgAtom);
+	const [imgAcc, setImgAcc] = useAtom(imgAccAtom);
+	const [plyMoved, setPlyMoved] = useAtom(plyMovedAtom);
 	const [sysMoved, setSysMoved] = useAtom(sysMovedAtom);
 
 	// Something inside
+	const userData = useGetUser();
+	const [detection, setDetection] = useAtom(detDataAtom);
 	const [user] = useAtom(anonUserAtom);
 	const [games, setGameData] = useAtom(gamesAtom);
 	const [gameResult, setGameResult] = useAtom(gameResultAtom);
 
 	const gameRound = games.find((game) => game?.userId === user?.uid);
-
 	const P1Choise = gameRound?.choisePA;
 	const P2Choise = gameRound?.choisePB;
 	const P1Score = gameRound?.scorePA;
 	const P2Score = gameRound?.scorePB;
 
-	const systemChoise = useCallback(async () => {
-		if (accImg) {
+	const PlayerMove = useCallback(async () => {
+		if (imgAcc) {
+			console.log(detection);
+			await addGameRound(userData, detection, games);
+			setGameData(await getAllGame());
+			setImgAcc(false);
+			setPlyMoved(true);
+		}
+	}, [imgAcc]); // eslint-disable-line
+
+	const SystemMove = useCallback(async () => {
+		if (plyMoved) {
 			await addSystemChoise(gameRound, user);
 			setGameData(await getAllGame());
-			setAccImg(false);
+			setDetection(null);
+			setPlyMoved(false);
 			setSysMoved(true);
 		}
-	}, [accImg]); // eslint-disable-line
+	}, [plyMoved]); // eslint-disable-line
 
 	const Scoring = useCallback(async () => {
 		if (sysMoved) {
@@ -73,10 +93,11 @@ const Single = () => {
 	}, [P1Score, P2Score]); // eslint-disable-line
 
 	useEffect(() => {
-		systemChoise();
+		PlayerMove();
+		SystemMove();
 		Scoring();
 		EndGame();
-	}, [systemChoise, Scoring, EndGame]);
+	}, [PlayerMove, SystemMove, Scoring, EndGame]);
 
 	return (
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">

@@ -19,7 +19,8 @@ export const gamesAtom = atomWithStorage('Games', []);
 export const gameResultAtom = atom(null);
 
 // States
-export const accImgAtom = atom(false);
+export const imgAccAtom = atom(false);
+export const plyMovedAtom = atom(false);
 export const sysMovedAtom = atom(false);
 export const roundStateAtom = atom(false);
 export const gameStateAtom = atom(false);

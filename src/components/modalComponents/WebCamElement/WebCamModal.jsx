@@ -3,27 +3,23 @@ import { useAtom, useSetAtom } from 'jotai';
 import { useCallback, useRef } from 'react';
 import { detectImg } from '../../../libs/apiCalls';
 import {
-	accImgAtom,
 	camModeAtom,
 	detDataAtom,
 	detImgAtom,
-	gamesAtom,
+	imgAccAtom,
 	webCamAtom,
 } from '../../../libs/atoms';
 import TitlePage from '../../smallComponents/TitlePage';
 import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
-import { addGameRound, getAllGame } from '../../../libs/firebase/FirebaseDB';
-import useGetUser from '../../../hooks/useGetUser';
 
 const WebCamModal = () => {
 	const [cam, setCam] = useAtom(webCamAtom);
 	const setImg = useSetAtom(detImgAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
-	const [detData, setDetData] = useAtom(detDataAtom);
-	const [games, setGameData] = useAtom(gamesAtom);
-	const setAccImg = useSetAtom(accImgAtom);
-	const userData = useGetUser();
+	const setDetData = useSetAtom(detDataAtom);
+	const setImgAcc = useSetAtom(imgAccAtom);
+
 	const webCamRef = useRef(null);
 
 	const { mutate, isLoading, isError, isSuccess } = useMutation({
@@ -65,12 +61,9 @@ const WebCamModal = () => {
 	};
 
 	const handleAccept = async () => {
-		await addGameRound(userData, detData, games);
-		setGameData(await getAllGame());
 		setCam(!cam);
 		setImg(null);
-		setDetData(null);
-		setAccImg(true);
+		setImgAcc(true);
 	};
 
 	return (
