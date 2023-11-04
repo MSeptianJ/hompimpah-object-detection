@@ -17,7 +17,7 @@ const WebCamModal = () => {
 	const [cam, setCam] = useAtom(webCamAtom);
 	const setImg = useSetAtom(detImgAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
-	const setDetData = useSetAtom(detDataAtom);
+	const setDetection = useSetAtom(detDataAtom);
 	const setImgAcc = useSetAtom(imgAccAtom);
 
 	const webCamRef = useRef(null);
@@ -25,7 +25,7 @@ const WebCamModal = () => {
 	const { mutate, isLoading, isError, isSuccess } = useMutation({
 		mutationFn: detectImg,
 		onSuccess: (data) => {
-			setDetData(data);
+			setDetection(data);
 		},
 	});
 
@@ -44,7 +44,7 @@ const WebCamModal = () => {
 	const handleBack = () => {
 		setCam(!cam);
 		setImg(null);
-		setDetData(null);
+		setDetection(null);
 	};
 
 	const handleDetect = () => {
@@ -57,7 +57,7 @@ const WebCamModal = () => {
 
 	const handleRetry = () => {
 		setImg(null);
-		setDetData(null);
+		setDetection(null);
 	};
 
 	const handleAccept = async () => {

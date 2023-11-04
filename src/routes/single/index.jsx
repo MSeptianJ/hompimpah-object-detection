@@ -9,7 +9,6 @@ import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import useGetUser from '../../hooks/useGetUser';
 import {
-	anonUserAtom,
 	backConfirmAtom,
 	detDataAtom,
 	gameResultAtom,
@@ -46,11 +45,10 @@ const Single = () => {
 	// Something inside
 	const userData = useGetUser();
 	const [detection, setDetection] = useAtom(detDataAtom);
-	const [user] = useAtom(anonUserAtom);
 	const [games, setGameData] = useAtom(gamesAtom);
 	const [gameResult, setGameResult] = useAtom(gameResultAtom);
 
-	const gameRound = games.find((game) => game?.userId === user?.uid);
+	const gameRound = games.find((game) => game?.userId === userData?.uid);
 	const P1Choise = gameRound?.choisePA;
 	const P2Choise = gameRound?.choisePB;
 	const P1Score = gameRound?.scorePA;
@@ -58,9 +56,10 @@ const Single = () => {
 
 	const PlayerMove = useCallback(async () => {
 		if (imgAcc) {
-			console.log(detection);
 			await addGameRound(userData, detection, games);
 			setGameData(await getAllGame());
+			setDetection(null);
+
 			setImgAcc(false);
 			setPlyMoved(true);
 		}
@@ -68,9 +67,9 @@ const Single = () => {
 
 	const SystemMove = useCallback(async () => {
 		if (plyMoved) {
-			await addSystemChoise(gameRound, user);
+			await addSystemChoise(gameRound, userData);
 			setGameData(await getAllGame());
-			setDetection(null);
+
 			setPlyMoved(false);
 			setSysMoved(true);
 		}
@@ -78,9 +77,10 @@ const Single = () => {
 
 	const Scoring = useCallback(async () => {
 		if (sysMoved) {
-			const result = await Score(P1Choise, P2Choise, gameRound, user);
+			const result = await Score(P1Choise, P2Choise, gameRound, userData);
 			setGameData(await getAllGame());
 			setGameResult(result);
+
 			setSysMoved(false);
 			setResultState(true);
 		}
