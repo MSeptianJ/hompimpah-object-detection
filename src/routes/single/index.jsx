@@ -26,7 +26,7 @@ import {
 	addSystemChoise,
 	getAllGame,
 } from '../../libs/firebase/FirebaseDB';
-import { Score } from '../../scripts/rps';
+import ScoringRPS from '../../scripts/ScoringRPS';
 import SingleContent from './components/SingleContent';
 
 const Single = () => {
@@ -77,7 +77,7 @@ const Single = () => {
 
 	const Scoring = useCallback(async () => {
 		if (sysMoved) {
-			const result = await Score(P1Choise, P2Choise, gameRound, uid);
+			const result = await ScoringRPS(P1Choise, P2Choise, gameRound, uid);
 			setGameData(await getAllGame());
 			setGameResult(result);
 

@@ -1,27 +1,31 @@
 import { addPlayerScore, addSystemScore } from '../libs/firebase/FirebaseDB';
 import { playLoseSound, playTieSound, playWinSound } from './sound';
 
-export const Score = async (move1, move2, gameRound, uid) => {
+const ChangeRPSMovetoIndex = (choise) => {
+	const moveList = ['Rock', 'Paper', 'Scissors'];
+	const index = moveList.findIndex((move) => move === choise);
+	return index;
+};
+
+const ScoringRPS = async (move1, move2, gameRound, uid) => {
 	try {
-		const moveList = ['Rock', 'Paper', 'Scissors'];
-		const indexMove1 = moveList.findIndex((move) => {
-			return move === move1;
-		});
-		const indexMove2 = moveList.findIndex((move) => {
-			return move === move2;
-		});
-		const result = indexMove1 - indexMove2;
+		const indexPlayer = ChangeRPSMovetoIndex(move1);
+		const indexSystem = ChangeRPSMovetoIndex(move2);
+		const result = indexPlayer - indexSystem;
 
 		if (result == 1 || result + 3 == 1) {
 			await addPlayerScore(gameRound, uid);
 			playWinSound();
+
 			return 'Win';
 		} else if (result == 2 || result + 3 == 2) {
 			await addSystemScore(gameRound, uid);
 			playLoseSound();
+
 			return 'Lose';
 		} else {
 			playTieSound();
+
 			return 'Tie';
 		}
 	} catch (error) {
@@ -29,3 +33,5 @@ export const Score = async (move1, move2, gameRound, uid) => {
 		return error;
 	}
 };
+
+export default ScoringRPS;
