@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const detectImg = async (img) => {
+const FetchImgDetection = async (img) => {
 	try {
 		const response = await axios({
 			method: 'POST',
@@ -13,8 +13,11 @@ export const detectImg = async (img) => {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
 		});
+
 		return response.data;
 	} catch (error) {
 		return error.message;
 	}
 };
+
+export default FetchImgDetection;

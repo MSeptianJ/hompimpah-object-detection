@@ -8,7 +8,7 @@ export const webCamAtom = atom(false);
 
 // WebCams
 export const camModeAtom = atom('user');
-export const detImgAtom = atom(null);
+export const screenShotAtom = atom(null);
 export const detDataAtom = atom(null);
 
 // Auth
@@ -18,7 +18,7 @@ export const uidAtom = atomWithStorage('User', {});
 export const gamesAtom = atomWithStorage('Games', []);
 export const gameResultAtom = atom(null);
 
-// States
+// Game States
 export const imgAccAtom = atom(false);
 export const plyMovedAtom = atom(false);
 export const sysMovedAtom = atom(false);

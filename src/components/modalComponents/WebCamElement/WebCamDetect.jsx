@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
-import { camModeAtom, detDataAtom, detImgAtom } from '../../../libs/atoms';
+import { camModeAtom, detDataAtom, screenShotAtom } from '../../../libs/atoms';
 import CanvasRect from '../../featureComponents/CanvasRect';
 import LoadIcon from '../../../assets/img/loading.svg';
 
@@ -10,7 +10,7 @@ const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 		aspectRatio: 1,
 	};
 
-	const [img] = useAtom(detImgAtom);
+	const [img] = useAtom(screenShotAtom);
 	const [detection] = useAtom(detDataAtom);
 	const [facingMode] = useAtom(camModeAtom);
 

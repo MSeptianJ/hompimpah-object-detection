@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
 import { useSetAtom } from 'jotai';
 import { useCallback, useRef } from 'react';
-import { detectImg } from '../../../libs/apiCalls';
+import FetchImgDetection from '../../../scripts/FetchImgDetection';
 import {
 	camModeAtom,
 	detDataAtom,
-	detImgAtom,
+	screenShotAtom,
 	imgAccAtom,
 	webCamAtom,
 } from '../../../libs/atoms';
@@ -14,16 +14,28 @@ import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
 
 const WebCamModal = () => {
-	const setCam = useSetAtom(webCamAtom);
-	const setImg = useSetAtom(detImgAtom);
+	// Modal
+	const setCamModal = useSetAtom(webCamAtom);
+
+	// Camera
+	const setScreenShot = useSetAtom(screenShotAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
+
+	// Detection
 	const setDetection = useSetAtom(detDataAtom);
+
+	// Game State
 	const setImgAcc = useSetAtom(imgAccAtom);
 
 	const webCamRef = useRef(null);
 
-	const { mutate, isLoading, isError, isSuccess } = useMutation({
-		mutationFn: detectImg,
+	const {
+		mutate: detectThisImg,
+		isLoading,
+		isError,
+		isSuccess,
+	} = useMutation({
+		mutationFn: FetchImgDetection,
 		onSuccess: (data) => {
 			setDetection(data);
 		},
@@ -31,10 +43,10 @@ const WebCamModal = () => {
 
 	// Feature Functions
 	const captureDetectImg = useCallback(() => {
-		const imageSrc = webCamRef.current.getScreenshot();
-		mutate(imageSrc);
-		setImg(imageSrc);
-	}, [webCamRef, setImg, mutate]);
+		const imgScreenShot = webCamRef.current.getScreenshot();
+		detectThisImg(imgScreenShot);
+		setScreenShot(imgScreenShot);
+	}, [webCamRef, setScreenShot, detectThisImg]);
 
 	const switchCamera = useCallback(() => {
 		setFaceMode((prevState) => (prevState === 'user' ? 'environment' : 'user'));
@@ -42,8 +54,8 @@ const WebCamModal = () => {
 
 	// Handle Functions for Button
 	const handleBack = () => {
-		setCam(false);
-		setImg(null);
+		setCamModal(false);
+		setScreenShot(null);
 		setDetection(null);
 	};
 
@@ -56,13 +68,13 @@ const WebCamModal = () => {
 	};
 
 	const handleRetry = () => {
-		setImg(null);
+		setScreenShot(null);
 		setDetection(null);
 	};
 
 	const handleAccept = async () => {
-		setCam(false);
-		setImg(null);
+		setCamModal(false);
+		setScreenShot(null);
 		setImgAcc(true);
 	};
 

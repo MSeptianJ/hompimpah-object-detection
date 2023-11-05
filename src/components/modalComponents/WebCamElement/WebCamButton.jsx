@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import BtnPrimary from '../../smallComponents/BtnPrimary';
 import { playCameraSound } from '../../../scripts/sound';
 import { useAtom } from 'jotai';
-import { detDataAtom, detImgAtom } from '../../../libs/atoms';
+import { detDataAtom, screenShotAtom } from '../../../libs/atoms';
 
 const WebCamButton = ({
 	backBtn,
@@ -12,7 +12,7 @@ const WebCamButton = ({
 	accBtn,
 	isLoading,
 }) => {
-	const [img] = useAtom(detImgAtom);
+	const [img] = useAtom(screenShotAtom);
 	const [detData] = useAtom(detDataAtom);
 
 	return (
