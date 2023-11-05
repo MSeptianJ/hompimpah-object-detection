@@ -1,22 +1,26 @@
 import { useSetAtom } from 'jotai';
-import { backConfirmAtom, tutorGameAtom, webCamAtom } from '../../libs/atoms';
+import {
+	backModalAtom,
+	tutorModalAtom,
+	webCamModalAtom,
+} from '../../libs/atoms';
 import BtnPrimary from './BtnPrimary';
 
 const GameMenu = () => {
-	const setBack = useSetAtom(backConfirmAtom);
-	const setTutor = useSetAtom(tutorGameAtom);
-	const setCam = useSetAtom(webCamAtom);
+	const setBackModal = useSetAtom(backModalAtom);
+	const setTutorModal = useSetAtom(tutorModalAtom);
+	const setCamModal = useSetAtom(webCamModalAtom);
 
 	const handleGoBack = () => {
-		setBack(true);
+		setBackModal(true);
 	};
 
 	const handleDisplayCam = () => {
-		setCam(true);
+		setCamModal(true);
 	};
 
 	const handleTutorial = () => {
-		setTutor(true);
+		setTutorModal(true);
 	};
 
 	return (

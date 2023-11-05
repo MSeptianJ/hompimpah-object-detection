@@ -1,14 +1,14 @@
 import { useSetAtom } from 'jotai';
 import Ilust from '../../assets/img/KGB.svg';
-import { tutorGameAtom } from '../../libs/atoms';
+import { tutorModalAtom } from '../../libs/atoms';
 import BtnPrimary from '../smallComponents/BtnPrimary';
 import TitlePage from '../smallComponents/TitlePage';
 
 const TutorialModal = () => {
-	const setTutor = useSetAtom(tutorGameAtom);
+	const setTutorModal = useSetAtom(tutorModalAtom);
 
 	const handle = () => {
-		setTutor(false);
+		setTutorModal(false);
 	};
 
 	return (

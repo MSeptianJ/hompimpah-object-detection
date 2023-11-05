@@ -4,10 +4,10 @@ import { useCallback, useRef } from 'react';
 import FetchImgDetection from '../../../scripts/FetchImgDetection';
 import {
 	camModeAtom,
-	detDataAtom,
+	detectDataAtom,
 	screenShotAtom,
-	imgAccAtom,
-	webCamAtom,
+	imgAccStateAtom,
+	webCamModalAtom,
 } from '../../../libs/atoms';
 import TitlePage from '../../smallComponents/TitlePage';
 import WebCamButton from './WebCamButton';
@@ -15,17 +15,17 @@ import WebCamDetect from './WebCamDetect';
 
 const WebCamModal = () => {
 	// Modal
-	const setCamModal = useSetAtom(webCamAtom);
+	const setCamModal = useSetAtom(webCamModalAtom);
 
 	// Camera
 	const setScreenShot = useSetAtom(screenShotAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
 
 	// Detection
-	const setDetection = useSetAtom(detDataAtom);
+	const setDetection = useSetAtom(detectDataAtom);
 
 	// Game State
-	const setImgAcc = useSetAtom(imgAccAtom);
+	const setImgAccState = useSetAtom(imgAccStateAtom);
 
 	const webCamRef = useRef(null);
 
@@ -75,7 +75,7 @@ const WebCamModal = () => {
 	const handleAccept = async () => {
 		setCamModal(false);
 		setScreenShot(null);
-		setImgAcc(true);
+		setImgAccState(true);
 	};
 
 	return (

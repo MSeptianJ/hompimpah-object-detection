@@ -1,7 +1,7 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { RESET } from 'jotai/utils';
 import {
-	backConfirmAtom,
+	backModalAtom,
 	gameResultAtom,
 	gamesAtom,
 	uidAtom,
@@ -12,20 +12,20 @@ import BtnPrimary from '../smallComponents/BtnPrimary';
 import TitlePage from '../smallComponents/TitlePage';
 
 const BackModal = () => {
-	const setBack = useSetAtom(backConfirmAtom);
+	const setBackModal = useSetAtom(backModalAtom);
 	const [uid, setUid] = useAtom(uidAtom);
 	const setGames = useSetAtom(gamesAtom);
 	const setGameResult = useSetAtom(gameResultAtom);
 
 	const handleCancel = () => {
-		setBack(false);
+		setBackModal(false);
 	};
 
 	const handleGoBack = async () => {
 		await delGameRound(uid);
 		await AuthSignOut();
 		history.back();
-		setBack(false);
+		setBackModal(false);
 		setGameResult(null);
 		setGames(RESET);
 		setUid(RESET);

@@ -9,17 +9,17 @@ import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import useGetUid from '../../hooks/useGetUser';
 import {
-	backConfirmAtom,
-	detDataAtom,
+	backModalAtom,
+	detectDataAtom,
 	gameResultAtom,
 	gameStateAtom,
 	gamesAtom,
-	imgAccAtom,
-	plyMovedAtom,
+	imgAccStateAtom,
+	plyMovedStateAtom,
 	roundStateAtom,
-	sysMovedAtom,
-	tutorGameAtom,
-	webCamAtom,
+	sysMovedStateAtom,
+	tutorModalAtom,
+	webCamModalAtom,
 } from '../../libs/atoms';
 import {
 	addGameRound,
@@ -31,20 +31,20 @@ import SingleContent from './components/SingleContent';
 
 const Single = () => {
 	// Modals
-	const [back] = useAtom(backConfirmAtom);
-	const [tutor] = useAtom(tutorGameAtom);
-	const [cam] = useAtom(webCamAtom);
+	const [backModal] = useAtom(backModalAtom);
+	const [tutorModal] = useAtom(tutorModalAtom);
+	const [camModal] = useAtom(webCamModalAtom);
 	const [resultState, setResultState] = useAtom(roundStateAtom);
 	const [gameState, setGameState] = useAtom(gameStateAtom);
 
 	// State
-	const [imgAcc, setImgAcc] = useAtom(imgAccAtom);
-	const [plyMoved, setPlyMoved] = useAtom(plyMovedAtom);
-	const [sysMoved, setSysMoved] = useAtom(sysMovedAtom);
+	const [imgAccState, setImgAccState] = useAtom(imgAccStateAtom);
+	const [plyMovedState, setPlyMovedState] = useAtom(plyMovedStateAtom);
+	const [sysMovedState, setSysMovedState] = useAtom(sysMovedStateAtom);
 
 	// Something inside
 	const uid = useGetUid();
-	const [detection, setDetection] = useAtom(detDataAtom);
+	const [detection, setDetection] = useAtom(detectDataAtom);
 	const [games, setGameData] = useAtom(gamesAtom);
 	const [gameResult, setGameResult] = useAtom(gameResultAtom);
 
@@ -55,36 +55,36 @@ const Single = () => {
 	const P2Score = gameRound?.scorePB;
 
 	const PlayerMove = useCallback(async () => {
-		if (imgAcc) {
+		if (imgAccState) {
 			await addGameRound(uid, detection, games);
 			setGameData(await getAllGame());
 			setDetection(null);
 
-			setImgAcc(false);
-			setPlyMoved(true);
+			setImgAccState(false);
+			setPlyMovedState(true);
 		}
-	}, [imgAcc]); // eslint-disable-line
+	}, [imgAccState]); // eslint-disable-line
 
 	const SystemMove = useCallback(async () => {
-		if (plyMoved) {
+		if (plyMovedState) {
 			await addSystemChoise(gameRound, uid);
 			setGameData(await getAllGame());
 
-			setPlyMoved(false);
-			setSysMoved(true);
+			setPlyMovedState(false);
+			setSysMovedState(true);
 		}
-	}, [plyMoved]); // eslint-disable-line
+	}, [plyMovedState]); // eslint-disable-line
 
 	const Scoring = useCallback(async () => {
-		if (sysMoved) {
+		if (sysMovedState) {
 			const result = await ScoringRPS(P1Choise, P2Choise, gameRound, uid);
 			setGameData(await getAllGame());
 			setGameResult(result);
 
-			setSysMoved(false);
+			setSysMovedState(false);
 			setResultState(true);
 		}
-	}, [sysMoved]); // eslint-disable-line
+	}, [sysMovedState]); // eslint-disable-line
 
 	const EndGame = useCallback(async () => {
 		if (P1Score === 3 || P2Score === 3) {
@@ -118,9 +118,9 @@ const Single = () => {
 
 			{gameState && <GameResultModal result={gameResult} />}
 			{resultState && <RoundResultModal result={gameResult} />}
-			{back && <BackModal />}
-			{tutor && <TutorialModal />}
-			{cam && <WebCamModal />}
+			{backModal && <BackModal />}
+			{tutorModal && <TutorialModal />}
+			{camModal && <WebCamModal />}
 		</div>
 	);
 };
