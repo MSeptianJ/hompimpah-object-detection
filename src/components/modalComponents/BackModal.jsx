@@ -4,7 +4,7 @@ import {
 	backModalAtom,
 	gameResultAtom,
 	gamesAtom,
-	uidAtom,
+	userUIDAtom,
 } from '../../libs/atoms';
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
@@ -13,7 +13,7 @@ import TitlePage from '../smallComponents/TitlePage';
 
 const BackModal = () => {
 	const setBackModal = useSetAtom(backModalAtom);
-	const [uid, setUid] = useAtom(uidAtom);
+	const [userUID, setUserUID] = useAtom(userUIDAtom);
 	const setGames = useSetAtom(gamesAtom);
 	const setGameResult = useSetAtom(gameResultAtom);
 
@@ -22,13 +22,13 @@ const BackModal = () => {
 	};
 
 	const handleGoBack = async () => {
-		await delGameRound(uid);
+		await delGameRound(userUID);
 		await AuthSignOut();
 		history.back();
 		setBackModal(false);
 		setGameResult(null);
 		setGames(RESET);
-		setUid(RESET);
+		setUserUID(RESET);
 	};
 
 	return (

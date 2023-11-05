@@ -1,16 +1,20 @@
-import useGetUid from '../../hooks/useGetUser';
-import SignIn from '../../scripts/auth';
+import { useAtom } from 'jotai';
+import { userUIDAtom } from '../../libs/atoms';
+import { AuthSignIn } from '../../libs/firebase/FirebaseAuth';
 import BtnList from './components/BtnList';
 
 const Start = () => {
-	const uid = useGetUid();
+	const [userUID, setUserUID] = useAtom(userUIDAtom);
 
 	const textMenus = [
 		{
 			url: '/single',
 			text: 'Single Player',
-			func: () => {
-				SignIn(uid);
+			func: async () => {
+				if (!userUID) {
+					const currentUID = await AuthSignIn();
+					setUserUID(currentUID);
+				}
 			},
 		},
 		{

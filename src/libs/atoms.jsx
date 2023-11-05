@@ -12,7 +12,7 @@ export const screenShotAtom = atom(null);
 export const detectDataAtom = atom(null);
 
 // Auth
-export const uidAtom = atomWithStorage('User', {});
+export const userUIDAtom = atomWithStorage('User', null);
 
 // Game
 export const gamesAtom = atomWithStorage('Games', []);

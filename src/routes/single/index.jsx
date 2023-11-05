@@ -7,7 +7,6 @@ import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
-import useGetUid from '../../hooks/useGetUser';
 import {
 	backModalAtom,
 	detectDataAtom,
@@ -19,6 +18,7 @@ import {
 	roundStateAtom,
 	sysMovedStateAtom,
 	tutorModalAtom,
+	userUIDAtom,
 	webCamModalAtom,
 } from '../../libs/atoms';
 import {
@@ -43,12 +43,12 @@ const Single = () => {
 	const [sysMovedState, setSysMovedState] = useAtom(sysMovedStateAtom);
 
 	// Something inside
-	const uid = useGetUid();
+	const [userUID] = useAtom(userUIDAtom);
 	const [detection, setDetection] = useAtom(detectDataAtom);
 	const [games, setGameData] = useAtom(gamesAtom);
 	const [gameResult, setGameResult] = useAtom(gameResultAtom);
 
-	const gameRound = games.find((game) => game?.id === uid);
+	const gameRound = games.find((game) => game?.id === userUID);
 	const P1Choise = gameRound?.choisePA;
 	const P2Choise = gameRound?.choisePB;
 	const P1Score = gameRound?.scorePA;
@@ -56,7 +56,7 @@ const Single = () => {
 
 	const PlayerMove = useCallback(async () => {
 		if (imgAccState) {
-			await addGameRound(uid, detection, games);
+			await addGameRound(userUID, detection, games);
 			setGameData(await getAllGame());
 			setDetection(null);
 
@@ -67,7 +67,7 @@ const Single = () => {
 
 	const SystemMove = useCallback(async () => {
 		if (plyMovedState) {
-			await addSystemChoise(gameRound, uid);
+			await addSystemChoise(gameRound, userUID);
 			setGameData(await getAllGame());
 
 			setPlyMovedState(false);
@@ -77,7 +77,7 @@ const Single = () => {
 
 	const Scoring = useCallback(async () => {
 		if (sysMovedState) {
-			const result = await ScoringRPS(P1Choise, P2Choise, gameRound, uid);
+			const result = await ScoringRPS(P1Choise, P2Choise, gameRound, userUID);
 			setGameData(await getAllGame());
 			setGameResult(result);
 

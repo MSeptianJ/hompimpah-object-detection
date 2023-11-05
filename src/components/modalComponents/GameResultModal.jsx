@@ -1,30 +1,30 @@
-import PropTypes from 'prop-types';
 import { useAtom, useSetAtom } from 'jotai';
+import { RESET } from 'jotai/utils';
+import PropTypes from 'prop-types';
 import {
 	gameResultAtom,
 	gameStateAtom,
 	gamesAtom,
-	uidAtom,
+	userUIDAtom,
 } from '../../libs/atoms';
-import BtnPrimary from '../smallComponents/BtnPrimary';
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
-import { RESET } from 'jotai/utils';
+import BtnPrimary from '../smallComponents/BtnPrimary';
 
 const GameResultModal = ({ result }) => {
-	const [uid, setUid] = useAtom(uidAtom);
+	const [userUID, setUserUID] = useAtom(userUIDAtom);
 	const setGameState = useSetAtom(gameStateAtom);
 	const setGames = useSetAtom(gamesAtom);
 	const setGameResult = useSetAtom(gameResultAtom);
 
 	const handleGoBack = async () => {
-		await delGameRound(uid);
+		await delGameRound(userUID);
 		await AuthSignOut();
 		history.back();
 		setGameState(false);
 		setGameResult(null);
 		setGames(RESET);
-		setUid(RESET);
+		setUserUID(RESET);
 	};
 
 	return (
