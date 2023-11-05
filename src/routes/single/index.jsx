@@ -50,6 +50,7 @@ const Single = () => {
 	const [games, setGameData] = useAtom(gamesAtom);
 	const [gameResult, setGameResult] = useAtom(gameResultAtom);
 
+	// RoundState
 	const gameRound = games.find((game) => game?.id === userUID);
 	const P1Choise = gameRound?.choisePA;
 	const P2Choise = gameRound?.choisePB;
@@ -90,6 +91,7 @@ const Single = () => {
 
 	const EndGame = useCallback(async () => {
 		if (P1Score === 3 || P2Score === 3) {
+			setResultState(false);
 			setGameState(true);
 		}
 	}, [P1Score, P2Score]); // eslint-disable-line

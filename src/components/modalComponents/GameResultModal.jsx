@@ -10,6 +10,8 @@ import {
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
 import BtnPrimary from '../smallComponents/BtnPrimary';
+import WIN from '../../assets/img/win-ilust.svg';
+import LOSE from '../../assets/img/lose-ilust.svg';
 
 const GameResultModal = ({ result }) => {
 	const [userUID, setUserUID] = useAtom(userUIDAtom);
@@ -28,11 +30,38 @@ const GameResultModal = ({ result }) => {
 	};
 
 	return (
-		<div className=" absolute grid h-full w-full grid-rows-4 items-center shadow-lg">
-			<div className=" row-span-4 mx-auto w-3/4 rounded-sm bg-slate-500 p-3">
-				<div className=" mx-auto h-full w-full p-3">
-					<h4 className=" text-lg font-bold uppercase">You {result}</h4>
+		<div className=" absolute grid h-full w-full grid-rows-5 items-center shadow-lg backdrop-blur-sm">
+			<div></div>
+
+			<div className=" row-span-3 mx-auto grid h-full w-3/4 grid-rows-4 items-center rounded-sm bg-slate-500">
+				<div className=" mx-auto w-full p-3">
+					{result === 'Win' ? (
+						<h4 className=" bg-green-500 text-lg font-bold uppercase">
+							You {result}
+						</h4>
+					) : (
+						<h4 className=" bg-red-500 text-lg font-bold uppercase">
+							You {result}
+						</h4>
+					)}
 				</div>
+
+				<div className=" row-span-2 h-full w-full p-2">
+					{result === 'Win' ? (
+						<img
+							className=" h-full w-full object-contain"
+							src={WIN}
+							alt="Winning Ilust"
+						/>
+					) : (
+						<img
+							className=" h-full w-full object-contain"
+							src={LOSE}
+							alt="Losing Ilust"
+						/>
+					)}
+				</div>
+
 				<div className=" mx-auto w-1/2 max-w-md text-center">
 					<BtnPrimary
 						text="Menu"
@@ -41,6 +70,8 @@ const GameResultModal = ({ result }) => {
 					/>
 				</div>
 			</div>
+
+			<div></div>
 		</div>
 	);
 };

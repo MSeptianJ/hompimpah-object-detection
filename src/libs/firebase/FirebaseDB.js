@@ -21,6 +21,7 @@ export const getAllGame = async () => {
 	try {
 		const colRef = gameColRef();
 		const gameColData = await getDocs(colRef);
+
 		const docs = gameColData.docs.map((doc) => ({
 			...doc.data(),
 			id: doc.id,
@@ -33,12 +34,13 @@ export const getAllGame = async () => {
 	}
 };
 
-export const addGameRound = async (uid, predData, games) => {
+export const addGameRound = async (uid, detection, games) => {
 	try {
 		const docRef = gameDocRef(uid);
 		const timeStamp = serverTimestamp();
-		const choisePA = predData?.predictions.map((pred) => {
-			return pred.class;
+
+		const choisePA = detection?.predictions.map((data) => {
+			return data.class;
 		});
 
 		const gameRound = games.find((game) => game?.id === uid);
@@ -71,6 +73,7 @@ export const addSystemChoise = async (gameRound, uid) => {
 	try {
 		const docRef = gameDocRef(uid);
 		const sysChoise = choiseSelector();
+
 		const newGameData = {
 			...gameRound,
 			choisePB: sysChoise,
@@ -87,6 +90,7 @@ export const addPlayerScore = async (gameRound, uid) => {
 	try {
 		const docRef = gameDocRef(uid);
 		const lastScore = gameRound.scorePA;
+
 		const newGameData = {
 			...gameRound,
 			scorePA: lastScore + 1,
