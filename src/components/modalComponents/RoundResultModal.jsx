@@ -5,12 +5,12 @@ import { useAtom } from 'jotai';
 import { roundStateAtom } from '../../libs/atoms';
 
 const RoundResultModal = ({ result }) => {
-	const [resultState, setResult] = useAtom(roundStateAtom);
+	const [resultState, setResultState] = useAtom(roundStateAtom);
 
 	const resultDisplay = useCallback(async () => {
 		if (resultState) {
 			await wait(2000);
-			setResult(false);
+			setResultState(false);
 		}
 	}, [resultState]); // eslint-disable-line
 

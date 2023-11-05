@@ -7,6 +7,7 @@ import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
+import LOADING from '../../assets/img/loading.svg';
 import {
 	backModalAtom,
 	detectDataAtom,
@@ -114,9 +115,14 @@ const Single = () => {
 							P2Score={P2Score}
 						/>
 					) : (
-						<p className="row-span-2 font-semibold">
-							User Not Found, please go to menu again
-						</p>
+						<>
+							<p className=" w-full font-semibold">
+								Wait a Second or Please go to menu again
+							</p>
+							<div className=" w-full">
+								<img className=" w-full" src={LOADING} alt="Loading Icon" />
+							</div>
+						</>
 					)}
 				</div>
 			</div>
