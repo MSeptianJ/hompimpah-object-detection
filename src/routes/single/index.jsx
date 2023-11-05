@@ -28,6 +28,7 @@ import {
 } from '../../libs/firebase/FirebaseDB';
 import ScoringRPS from '../../scripts/ScoringRPS';
 import SingleContent from './components/SingleContent';
+import BackMenuBtn from '../../components/smallComponents/BackMenuBtn';
 
 const Single = () => {
 	// Modals
@@ -105,16 +106,22 @@ const Single = () => {
 
 			<div className=" row-span-4 h-full w-full">
 				<div className=" mx-auto grid h-full w-2/3 grid-rows-2 items-center gap-3 overflow-y-auto rounded-sm bg-slate-300 p-6 shadow-lg">
-					<SingleContent
-						P1Choise={P1Choise}
-						P1Score={P1Score}
-						P2Choise={P2Choise}
-						P2Score={P2Score}
-					/>
+					{userUID ? (
+						<SingleContent
+							P1Choise={P1Choise}
+							P1Score={P1Score}
+							P2Choise={P2Choise}
+							P2Score={P2Score}
+						/>
+					) : (
+						<p className="row-span-2 font-semibold">
+							User Not Found, please go to menu again
+						</p>
+					)}
 				</div>
 			</div>
 
-			<GameMenu />
+			{userUID ? <GameMenu /> : <BackMenuBtn />}
 
 			{gameState && <GameResultModal result={gameResult} />}
 			{resultState && <RoundResultModal result={gameResult} />}
