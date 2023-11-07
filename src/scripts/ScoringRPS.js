@@ -1,5 +1,9 @@
 import { addPlayerScore, addSystemScore } from '../libs/firebase/FirebaseDB';
-import { playLoseSound, playTieSound, playWinSound } from './sound';
+import {
+	playLoseRoundSound,
+	playTieRoundSound,
+	playWinRoundSound,
+} from './sound';
 
 const ChangeRPSMovetoIndex = (choise) => {
 	const moveList = ['Rock', 'Paper', 'Scissors'];
@@ -15,16 +19,16 @@ const ScoringRPS = async (move1, move2, gameRound, uid) => {
 
 		if (result == 1 || result + 3 == 1) {
 			await addPlayerScore(gameRound, uid);
-			playWinSound();
+			playWinRoundSound();
 
 			return 'Win';
 		} else if (result == 2 || result + 3 == 2) {
 			await addSystemScore(gameRound, uid);
-			playLoseSound();
+			playLoseRoundSound();
 
 			return 'Lose';
 		} else {
-			playTieSound();
+			playTieRoundSound();
 
 			return 'Tie';
 		}

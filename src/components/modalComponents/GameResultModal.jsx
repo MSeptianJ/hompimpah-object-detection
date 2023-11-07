@@ -1,6 +1,7 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { RESET } from 'jotai/utils';
 import PropTypes from 'prop-types';
+import { useCallback, useEffect } from 'react';
 import LOSE from '../../assets/img/lose-ilust.svg';
 import WIN from '../../assets/img/win-ilust.svg';
 import {
@@ -12,6 +13,7 @@ import {
 } from '../../libs/atoms';
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
+import { playLoseGameSound, playWinGameSound } from '../../scripts/sound';
 import BtnPrimary from '../smallComponents/BtnPrimary';
 
 const GameResultModal = ({ result }) => {
@@ -45,6 +47,15 @@ const GameResultModal = ({ result }) => {
 
 		history.back();
 	};
+
+	const playSound = useCallback(() => {
+		if (result === 'Win') playWinGameSound();
+		if (result === 'Lose') playLoseGameSound();
+	}, [result]);
+
+	useEffect(() => {
+		playSound();
+	}, [playSound]);
 
 	return (
 		<div className=" absolute grid h-full w-full grid-rows-5 items-center shadow-lg backdrop-blur-sm">
