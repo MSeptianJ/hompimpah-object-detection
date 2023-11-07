@@ -1,81 +1,81 @@
 import { useMutation } from '@tanstack/react-query';
-import { useAtom, useSetAtom } from 'jotai';
-import { useCallback, useRef } from 'react';
-import { detectImg } from '../../../libs/apiCalls';
+import { useSetAtom } from 'jotai';
+import { useRef } from 'react';
 import {
-	accImgAtom,
 	camModeAtom,
-	detDataAtom,
-	detImgAtom,
-	gamesAtom,
-	webCamAtom,
+	detectDataAtom,
+	imgAccStateAtom,
+	screenShotAtom,
+	webCamModalAtom,
 } from '../../../libs/atoms';
+import FetchImgDetection from '../../../scripts/FetchImgDetection';
 import TitlePage from '../../smallComponents/TitlePage';
 import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
-import { addGameRound, getAllGame } from '../../../libs/firebase/FirebaseDB';
-import useGetUser from '../../../hooks/useGetUser';
 
 const WebCamModal = () => {
-	const [cam, setCam] = useAtom(webCamAtom);
-	const setImg = useSetAtom(detImgAtom);
+	// Modal
+	const setCamModal = useSetAtom(webCamModalAtom);
+
+	// Camera
+	const setScreenShot = useSetAtom(screenShotAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
-	const [detData, setDetData] = useAtom(detDataAtom);
-	const [games, setGameData] = useAtom(gamesAtom);
-	const setAccImg = useSetAtom(accImgAtom);
-	const userData = useGetUser();
+
+	// Detection
+	const setDetection = useSetAtom(detectDataAtom);
+
+	// Game State
+	const setImgAccState = useSetAtom(imgAccStateAtom);
+
 	const webCamRef = useRef(null);
 
-	const { mutate, isLoading, isError, isSuccess } = useMutation({
-		mutationFn: detectImg,
+	const {
+		mutate: detectThisImg,
+		isLoading,
+		isError,
+		isSuccess,
+	} = useMutation({
+		mutationFn: FetchImgDetection,
 		onSuccess: (data) => {
-			setDetData(data);
+			setDetection(data);
 		},
 	});
 
-	// Feature Functions
-	const captureDetectImg = useCallback(() => {
-		const imageSrc = webCamRef.current.getScreenshot();
-		mutate(imageSrc);
-		setImg(imageSrc);
-	}, [webCamRef, setImg, mutate]);
-
-	const switchCamera = useCallback(() => {
-		setFaceMode((prevState) => (prevState === 'user' ? 'environment' : 'user'));
-	}, [setFaceMode]);
-
 	// Handle Functions for Button
 	const handleBack = () => {
-		setCam(!cam);
-		setImg(null);
-		setDetData(null);
+		setCamModal(false);
+
+		setScreenShot(null);
+		setDetection(null);
 	};
 
 	const handleDetect = () => {
-		captureDetectImg();
+		const imgScreenShot = webCamRef.current.getScreenshot();
+		detectThisImg(imgScreenShot);
+
+		setScreenShot(imgScreenShot);
 	};
 
 	const handleChangeCam = () => {
-		switchCamera();
+		setFaceMode((prevState) => (prevState === 'user' ? 'environment' : 'user'));
 	};
 
 	const handleRetry = () => {
-		setImg(null);
-		setDetData(null);
+		setScreenShot(null);
+		setDetection(null);
 	};
 
 	const handleAccept = async () => {
-		await addGameRound(userData, detData, games);
-		setGameData(await getAllGame());
-		setCam(!cam);
-		setImg(null);
-		setDetData(null);
-		setAccImg(true);
+		setCamModal(false);
+
+		setScreenShot(null);
+
+		setImgAccState(true);
 	};
 
 	return (
 		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
-			<TitlePage titleText="Hompimpah" />
+			<TitlePage titleText="Rock Paper Scissors" />
 
 			<div className=" row-span-4 w-full">
 				<div className=" mx-auto aspect-square w-3/4 rounded-sm bg-slate-500 p-3 shadow-lg">

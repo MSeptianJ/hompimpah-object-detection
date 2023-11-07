@@ -4,16 +4,22 @@ import btnSoundC from '../assets/sound/button_click_bright_3.mp3';
 import cmrSoundA from '../assets/sound/camera_shutter_1.mp3';
 import cmrSoundB from '../assets/sound/camera_shutter_2.mp3';
 import cmrSoundC from '../assets/sound/camera_shutter_3.mp3';
-import winSound from '../assets/sound/winSound.mp3';
-import loseSound from '../assets/sound/loseSound.mp3';
-import tieSound from '../assets/sound/tieSound.mp3';
+import loseGameSound from '../assets/sound/lose-game.mp3';
+import loseRoundSound from '../assets/sound/lose-round.mp3';
+import tieRoundSound from '../assets/sound/tie-round.mp3';
+import winGameSound from '../assets/sound/win-game.mp3';
+import winRoundSound from '../assets/sound/win-round.mp3';
 import randomizer from './randomizer';
 
 const btnSoundObject = [btnSoundA, btnSoundB, btnSoundC];
 const cmrSoundObject = [cmrSoundA, cmrSoundB, cmrSoundC];
 
+const playSFX = (sfx) => {
+	return new Audio(sfx).play();
+};
+
 const playRandomSound = (arr, limit) => {
-	new Audio(arr[[randomizer(limit)]]).play();
+	playSFX(arr[[randomizer(limit)]]);
 };
 
 export const playButtonSound = () => {
@@ -24,14 +30,22 @@ export const playCameraSound = () => {
 	playRandomSound(cmrSoundObject, 2);
 };
 
-export const playWinSound = () => {
-	new Audio(winSound).play();
+export const playWinRoundSound = () => {
+	playSFX(winRoundSound);
 };
 
-export const playLoseSound = () => {
-	new Audio(loseSound).play();
+export const playLoseRoundSound = () => {
+	playSFX(loseRoundSound);
 };
 
-export const playTieSound = () => {
-	new Audio(tieSound).play();
+export const playTieRoundSound = () => {
+	playSFX(tieRoundSound);
+};
+
+export const playWinGameSound = () => {
+	playSFX(winGameSound);
+};
+
+export const playLoseGameSound = () => {
+	playSFX(loseGameSound);
 };

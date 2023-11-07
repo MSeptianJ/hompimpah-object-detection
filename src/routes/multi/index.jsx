@@ -1,5 +1,9 @@
 import { useAtom } from 'jotai';
-import { backConfirmAtom, tutorGameAtom, webCamAtom } from '../../libs/atoms';
+import {
+	backModalAtom,
+	tutorModalAtom,
+	webCamModalAtom,
+} from '../../libs/atoms';
 import BackModal from '../../components/modalComponents/BackModal';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
@@ -8,9 +12,9 @@ import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 
 const Multi = () => {
-	const [back] = useAtom(backConfirmAtom);
-	const [tutor] = useAtom(tutorGameAtom);
-	const [cam] = useAtom(webCamAtom);
+	const [backModal] = useAtom(backModalAtom);
+	const [tutorModal] = useAtom(tutorModalAtom);
+	const [camModal] = useAtom(webCamModalAtom);
 
 	const P1Choise = 2;
 	const P2Choise = 1;
@@ -34,9 +38,9 @@ const Multi = () => {
 
 			<GameMenu />
 
-			{back && <BackModal />}
-			{tutor && <TutorialModal />}
-			{cam && <WebCamModal />}
+			{backModal && <BackModal />}
+			{tutorModal && <TutorialModal />}
+			{camModal && <WebCamModal />}
 		</div>
 	);
 };

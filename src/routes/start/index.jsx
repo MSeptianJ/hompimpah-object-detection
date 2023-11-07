@@ -1,16 +1,23 @@
-import useGetUser from '../../hooks/useGetUser';
-import SignIn from '../../scripts/auth';
+import { useAtom, useSetAtom } from 'jotai';
+import { plsAddGameStateAtom, userUIDAtom } from '../../libs/atoms';
+import { AuthSignIn } from '../../libs/firebase/FirebaseAuth';
 import BtnList from './components/BtnList';
 
 const Start = () => {
-	const userData = useGetUser();
+	const [userUID, setUserUID] = useAtom(userUIDAtom);
+	const setPlsAddGameState = useSetAtom(plsAddGameStateAtom);
 
 	const textMenus = [
 		{
 			url: '/single',
-			text: 'Single Player',
-			func: () => {
-				SignIn(userData);
+			text: 'Rock Paper Scissors (Single)',
+			func: async () => {
+				if (!userUID) {
+					const currentUID = await AuthSignIn();
+					setUserUID(currentUID);
+
+					setPlsAddGameState(true);
+				}
 			},
 		},
 		{

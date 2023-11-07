@@ -1,11 +1,11 @@
 import { useAtom } from 'jotai';
 import PropTypes from 'prop-types';
-import { detDataAtom } from '../../libs/atoms';
+import { detectDataAtom } from '../../libs/atoms';
 import { useEffect, useRef } from 'react';
 import randomizer from '../../scripts/randomizer';
 
 const CanvasRect = ({ isSuccess }) => {
-	const [detection] = useAtom(detDataAtom);
+	const [detection] = useAtom(detectDataAtom);
 	const canvasRef = useRef(null);
 
 	const randomColor = () => {

@@ -1,18 +1,19 @@
+import { useAtom } from 'jotai';
 import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
+import { roundEndModalAtom } from '../../libs/atoms';
 import wait from '../../scripts/wait';
-import { useAtom } from 'jotai';
-import { resultAtom } from '../../libs/atoms';
 
-const ResultModal = ({ result }) => {
-	const [resultState, setResult] = useAtom(resultAtom);
+const RoundResultModal = ({ result }) => {
+	const [roundEndModal, setRoundEndModal] = useAtom(roundEndModalAtom);
 
 	const resultDisplay = useCallback(async () => {
-		if (resultState) {
+		if (roundEndModal) {
 			await wait(2000);
-			setResult(false);
+
+			setRoundEndModal(false);
 		}
-	}, [resultState]); // eslint-disable-line
+	}, [roundEndModal]); // eslint-disable-line
 
 	useEffect(() => {
 		resultDisplay();
@@ -29,8 +30,8 @@ const ResultModal = ({ result }) => {
 	);
 };
 
-ResultModal.propTypes = {
+RoundResultModal.propTypes = {
 	result: PropTypes.string,
 };
 
-export default ResultModal;
+export default RoundResultModal;

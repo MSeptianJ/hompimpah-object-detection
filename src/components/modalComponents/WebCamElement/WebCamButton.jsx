@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import BtnPrimary from '../../smallComponents/BtnPrimary';
 import { playCameraSound } from '../../../scripts/sound';
 import { useAtom } from 'jotai';
-import { detDataAtom, detImgAtom } from '../../../libs/atoms';
+import { detectDataAtom, screenShotAtom } from '../../../libs/atoms';
 
 const WebCamButton = ({
 	backBtn,
@@ -12,8 +12,8 @@ const WebCamButton = ({
 	accBtn,
 	isLoading,
 }) => {
-	const [img] = useAtom(detImgAtom);
-	const [detData] = useAtom(detDataAtom);
+	const [screenShot] = useAtom(screenShotAtom);
+	const [detection] = useAtom(detectDataAtom);
 
 	return (
 		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
@@ -23,7 +23,7 @@ const WebCamButton = ({
 				btnStyles={'bg-slate-500 hover:bg-gray-700'}
 			/>
 
-			{img ? (
+			{screenShot ? (
 				<>
 					<BtnPrimary
 						btnDisabled={isLoading ? true : false}
@@ -36,11 +36,11 @@ const WebCamButton = ({
 						}
 					/>
 					<BtnPrimary
-						btnDisabled={detData?.predictions.length ? false : true}
+						btnDisabled={detection?.predictions.length ? false : true}
 						text="Accept"
 						btnFunction={accBtn}
 						btnStyles={
-							detData?.predictions.length
+							detection?.predictions.length
 								? 'bg-green-400 hover:bg-green-600'
 								: 'bg-slate-400 hover:bg-slate-600'
 						}
