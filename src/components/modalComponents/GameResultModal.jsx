@@ -1,32 +1,49 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { RESET } from 'jotai/utils';
 import PropTypes from 'prop-types';
+import LOSE from '../../assets/img/lose-ilust.svg';
+import WIN from '../../assets/img/win-ilust.svg';
 import {
-	gameResultAtom,
-	gameStateAtom,
+	gameEndModalAtom,
 	gamesAtom,
+	plsAddGameStateAtom,
+	roundResultAtom,
 	userUIDAtom,
 } from '../../libs/atoms';
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
 import BtnPrimary from '../smallComponents/BtnPrimary';
-import WIN from '../../assets/img/win-ilust.svg';
-import LOSE from '../../assets/img/lose-ilust.svg';
 
 const GameResultModal = ({ result }) => {
-	const [userUID, setUserUID] = useAtom(userUIDAtom);
-	const setGameState = useSetAtom(gameStateAtom);
-	const setGames = useSetAtom(gamesAtom);
-	const setGameResult = useSetAtom(gameResultAtom);
+	// Game State
+	const setGameEndModalState = useSetAtom(gameEndModalAtom);
+	const setPlsAddGameState = useSetAtom(plsAddGameStateAtom);
 
-	const handleGoBack = async () => {
+	// Something Inside
+	const [userUID, setUserUID] = useAtom(userUIDAtom);
+	const setGames = useSetAtom(gamesAtom);
+	const setRoundResult = useSetAtom(roundResultAtom);
+
+	const handlePlayAgain = async () => {
+		setGameEndModalState(false);
+
+		setRoundResult(null);
+		setGames(RESET);
+
+		setPlsAddGameState(true);
+	};
+
+	const handleBackToMenu = async () => {
 		await delGameRound(userUID);
 		await AuthSignOut();
-		history.back();
-		setGameState(false);
-		setGameResult(null);
+
+		setGameEndModalState(false);
+
+		setRoundResult(null);
 		setGames(RESET);
 		setUserUID(RESET);
+
+		history.back();
 	};
 
 	return (
@@ -62,11 +79,16 @@ const GameResultModal = ({ result }) => {
 					)}
 				</div>
 
-				<div className=" mx-auto w-1/2 max-w-md text-center">
+				<div className=" mx-auto grid w-full max-w-md grid-cols-2 gap-4 px-3 text-center">
 					<BtnPrimary
 						text="Menu"
-						btnFunction={handleGoBack}
+						btnFunction={handleBackToMenu}
 						btnStyles="bg-slate-600 hover:bg-gray-700"
+					/>
+					<BtnPrimary
+						text="Play Again"
+						btnFunction={handlePlayAgain}
+						btnStyles="bg-blue-500 hover:bg-gray-700"
 					/>
 				</div>
 			</div>

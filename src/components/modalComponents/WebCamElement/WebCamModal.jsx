@@ -1,14 +1,14 @@
 import { useMutation } from '@tanstack/react-query';
 import { useSetAtom } from 'jotai';
-import { useCallback, useRef } from 'react';
-import FetchImgDetection from '../../../scripts/FetchImgDetection';
+import { useRef } from 'react';
 import {
 	camModeAtom,
 	detectDataAtom,
-	screenShotAtom,
 	imgAccStateAtom,
+	screenShotAtom,
 	webCamModalAtom,
 } from '../../../libs/atoms';
+import FetchImgDetection from '../../../scripts/FetchImgDetection';
 import TitlePage from '../../smallComponents/TitlePage';
 import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
@@ -41,30 +41,23 @@ const WebCamModal = () => {
 		},
 	});
 
-	// Feature Functions
-	const captureDetectImg = useCallback(() => {
-		const imgScreenShot = webCamRef.current.getScreenshot();
-		detectThisImg(imgScreenShot);
-		setScreenShot(imgScreenShot);
-	}, [webCamRef, setScreenShot, detectThisImg]);
-
-	const switchCamera = useCallback(() => {
-		setFaceMode((prevState) => (prevState === 'user' ? 'environment' : 'user'));
-	}, [setFaceMode]);
-
 	// Handle Functions for Button
 	const handleBack = () => {
 		setCamModal(false);
+
 		setScreenShot(null);
 		setDetection(null);
 	};
 
 	const handleDetect = () => {
-		captureDetectImg();
+		const imgScreenShot = webCamRef.current.getScreenshot();
+		detectThisImg(imgScreenShot);
+
+		setScreenShot(imgScreenShot);
 	};
 
 	const handleChangeCam = () => {
-		switchCamera();
+		setFaceMode((prevState) => (prevState === 'user' ? 'environment' : 'user'));
 	};
 
 	const handleRetry = () => {
@@ -74,13 +67,15 @@ const WebCamModal = () => {
 
 	const handleAccept = async () => {
 		setCamModal(false);
+
 		setScreenShot(null);
+
 		setImgAccState(true);
 	};
 
 	return (
 		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
-			<TitlePage titleText="Hompimpah" />
+			<TitlePage titleText="Rock Paper Scissors" />
 
 			<div className=" row-span-4 w-full">
 				<div className=" mx-auto aspect-square w-3/4 rounded-sm bg-slate-500 p-3 shadow-lg">

@@ -5,18 +5,20 @@ import GameResultModal from '../../components/modalComponents/GameResultModal';
 import RoundResultModal from '../../components/modalComponents/RoundResultModal';
 import TutorialModal from '../../components/modalComponents/TutorialModal';
 import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
+import BackMenuBtn from '../../components/smallComponents/BackMenuBtn';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
-import LOADING from '../../assets/img/loading.svg';
+import NoUserPlacement from '../../components/smallComponents/noUserPlacement';
 import {
 	backModalAtom,
 	detectDataAtom,
-	gameResultAtom,
-	gameStateAtom,
+	gameEndModalAtom,
 	gamesAtom,
 	imgAccStateAtom,
+	plsAddGameStateAtom,
 	plyMovedStateAtom,
-	roundStateAtom,
+	roundEndModalAtom,
+	roundResultAtom,
 	sysMovedStateAtom,
 	tutorModalAtom,
 	userUIDAtom,
@@ -24,22 +26,23 @@ import {
 } from '../../libs/atoms';
 import {
 	addGameRound,
-	addSystemChoise,
+	addPlayerMove,
+	addSystemMove,
 	getAllGame,
 } from '../../libs/firebase/FirebaseDB';
 import ScoringRPS from '../../scripts/ScoringRPS';
 import SingleContent from './components/SingleContent';
-import BackMenuBtn from '../../components/smallComponents/BackMenuBtn';
 
 const Single = () => {
 	// Modals
 	const [backModal] = useAtom(backModalAtom);
 	const [tutorModal] = useAtom(tutorModalAtom);
 	const [camModal] = useAtom(webCamModalAtom);
-	const [resultState, setResultState] = useAtom(roundStateAtom);
-	const [gameState, setGameState] = useAtom(gameStateAtom);
+	const [roundEndModal, setRoundEndModal] = useAtom(roundEndModalAtom);
+	const [gameEndModal, setGameEndModal] = useAtom(gameEndModalAtom);
 
-	// State
+	// Game State
+	const [plsAddGameState, setPlsAddGameState] = useAtom(plsAddGameStateAtom);
 	const [imgAccState, setImgAccState] = useAtom(imgAccStateAtom);
 	const [plyMovedState, setPlyMovedState] = useAtom(plyMovedStateAtom);
 	const [sysMovedState, setSysMovedState] = useAtom(sysMovedStateAtom);
@@ -48,7 +51,7 @@ const Single = () => {
 	const [userUID] = useAtom(userUIDAtom);
 	const [detection, setDetection] = useAtom(detectDataAtom);
 	const [games, setGameData] = useAtom(gamesAtom);
-	const [gameResult, setGameResult] = useAtom(gameResultAtom);
+	const [roundResult, setRoundResult] = useAtom(roundResultAtom);
 
 	// RoundState
 	const gameRound = games.find((game) => game?.id === userUID);
@@ -57,9 +60,18 @@ const Single = () => {
 	const P1Score = gameRound?.scorePA;
 	const P2Score = gameRound?.scorePB;
 
+	const AddGame = useCallback(async () => {
+		if (plsAddGameState && !gameRound) {
+			await addGameRound(userUID);
+			setGameData(await getAllGame());
+
+			setPlsAddGameState(false);
+		}
+	}, [plsAddGameState, gameRound]); // eslint-disable-line
+
 	const PlayerMove = useCallback(async () => {
 		if (imgAccState) {
-			await addGameRound(userUID, detection, games);
+			await addPlayerMove(gameRound, detection, userUID);
 			setGameData(await getAllGame());
 			setDetection(null);
 
@@ -70,7 +82,7 @@ const Single = () => {
 
 	const SystemMove = useCallback(async () => {
 		if (plyMovedState) {
-			await addSystemChoise(gameRound, userUID);
+			await addSystemMove(gameRound, userUID);
 			setGameData(await getAllGame());
 
 			setPlyMovedState(false);
@@ -82,26 +94,29 @@ const Single = () => {
 		if (sysMovedState) {
 			const result = await ScoringRPS(P1Choise, P2Choise, gameRound, userUID);
 			setGameData(await getAllGame());
-			setGameResult(result);
+			setRoundResult(result);
 
 			setSysMovedState(false);
-			setResultState(true);
+
+			setRoundEndModal(true);
 		}
 	}, [sysMovedState]); // eslint-disable-line
 
 	const EndGame = useCallback(async () => {
 		if (P1Score === 3 || P2Score === 3) {
-			setResultState(false);
-			setGameState(true);
+			setRoundEndModal(false);
+
+			setGameEndModal(true);
 		}
 	}, [P1Score, P2Score]); // eslint-disable-line
 
 	useEffect(() => {
+		AddGame();
 		PlayerMove();
 		SystemMove();
 		Scoring();
 		EndGame();
-	}, [PlayerMove, SystemMove, Scoring, EndGame]);
+	}, [AddGame, PlayerMove, SystemMove, Scoring, EndGame]);
 
 	return (
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
@@ -117,22 +132,15 @@ const Single = () => {
 							P2Score={P2Score}
 						/>
 					) : (
-						<>
-							<p className=" w-full font-semibold">
-								Wait a Second or Please go to menu again
-							</p>
-							<div className=" w-full">
-								<img className=" w-full" src={LOADING} alt="Loading Icon" />
-							</div>
-						</>
+						<NoUserPlacement />
 					)}
 				</div>
 			</div>
 
 			{userUID ? <GameMenu /> : <BackMenuBtn />}
 
-			{gameState && <GameResultModal result={gameResult} />}
-			{resultState && <RoundResultModal result={gameResult} />}
+			{gameEndModal && <GameResultModal result={roundResult} />}
+			{roundEndModal && <RoundResultModal result={roundResult} />}
 			{backModal && <BackModal />}
 			{tutorModal && <TutorialModal />}
 			{camModal && <WebCamModal />}

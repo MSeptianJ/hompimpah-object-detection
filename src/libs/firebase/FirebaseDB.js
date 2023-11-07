@@ -9,12 +9,14 @@ import {
 import choiseSelector from '../../scripts/choiseSelector';
 import { db } from '../config/firebase';
 
+const COLNAME = 'game';
+
 const gameColRef = () => {
-	return collection(db, 'game');
+	return collection(db, COLNAME);
 };
 
 const gameDocRef = (uid) => {
-	return doc(db, 'game', uid);
+	return doc(db, COLNAME, uid);
 };
 
 export const getAllGame = async () => {
@@ -34,42 +36,46 @@ export const getAllGame = async () => {
 	}
 };
 
-export const addGameRound = async (uid, detection, games) => {
+export const addGameRound = async (uid) => {
 	try {
 		const docRef = gameDocRef(uid);
 		const timeStamp = serverTimestamp();
 
-		const choisePA = detection?.predictions.map((data) => {
-			return data.class;
-		});
+		const newGame = {
+			choisePA: '',
+			choisePB: '',
+			scorePA: 0,
+			scorePB: 0,
+			timeStamp,
+		};
 
-		const gameRound = games.find((game) => game?.id === uid);
-
-		if (!gameRound) {
-			const newGame = {
-				choisePA: String(choisePA),
-				choisePB: '',
-				scorePA: 0,
-				scorePB: 0,
-				timeStamp,
-			};
-
-			await setDoc(docRef, newGame);
-		} else if (gameRound) {
-			const newGame = {
-				...gameRound,
-				choisePA: String(choisePA),
-			};
-
-			await setDoc(docRef, newGame);
-		}
+		await setDoc(docRef, newGame);
 	} catch (error) {
 		console.error(error);
 		return error;
 	}
 };
 
-export const addSystemChoise = async (gameRound, uid) => {
+export const addPlayerMove = async (gameRound, detection, uid) => {
+	try {
+		const docRef = gameDocRef(uid);
+		const playerChoise = detection?.predictions.map((data) => {
+			return data.class;
+		});
+
+		const newGameData = {
+			...gameRound,
+			choisePA: String(playerChoise),
+		};
+
+		await setDoc(docRef, newGameData);
+	} catch (error) {
+		console.error(error);
+		return error;
+	}
+};
+
+export const addSystemMove = async (gameRound, uid) => {
 	try {
 		const docRef = gameDocRef(uid);
 		const sysChoise = choiseSelector();
