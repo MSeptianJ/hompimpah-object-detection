@@ -59,9 +59,7 @@ export const addGameRound = async (uid) => {
 export const addPlayerMove = async (gameRound, detection, uid) => {
 	try {
 		const docRef = gameDocRef(uid);
-		const playerChoise = detection?.predictions.map((data) => {
-			return data.class;
-		});
+		const playerChoise = detection?.predictions[0].class;
 
 		const newGameData = {
 			...gameRound,
