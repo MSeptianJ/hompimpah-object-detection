@@ -1,11 +1,18 @@
 import { useAtom, useSetAtom } from 'jotai';
-import { plsAddGameStateAtom, userUIDAtom } from '../../libs/atoms';
+import { Link } from 'react-router-dom';
+import BtnPrimary from '../../components/smallComponents/BtnPrimary';
+import {
+	gamePlayedStateAtom,
+	plsAddGameStateAtom,
+	userUIDAtom,
+} from '../../libs/atoms';
 import { AuthSignIn } from '../../libs/firebase/FirebaseAuth';
 import BtnList from './components/BtnList';
 
 const Start = () => {
 	const [userUID, setUserUID] = useAtom(userUIDAtom);
 	const setPlsAddGameState = useSetAtom(plsAddGameStateAtom);
+	const [gamePlayedState] = useAtom(gamePlayedStateAtom);
 
 	const textMenus = [
 		{
@@ -47,6 +54,18 @@ const Start = () => {
 								func={textMenu.func}
 							/>
 						))}
+						<Link to="/survey">
+							<BtnPrimary
+								btnText="App Survey"
+								btnStyles={
+									gamePlayedState
+										? 'bg-slate-300 text-slate-600 cursor-pointer hover:bg-slate-500'
+										: 'bg-slate-600 text-slate-300 cursor-pointer hover:bg-slate-500'
+								}
+								btnDisabled={gamePlayedState ? false : true}
+							/>
+						</Link>
+						<div className=" cursor-pointer"></div>
 					</ul>
 				</div>
 			</div>
