@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { playButtonSound } from '../../scripts/sound';
 
 const BtnPrimary = ({
-	text,
+	btnText,
 	btnFunction,
 	btnStyles,
 	btnSound,
@@ -26,13 +26,13 @@ const BtnPrimary = ({
 			className={` w-full rounded-sm p-4 text-center text-sm font-bold uppercase shadow-lg transition-all ${btnStyles}`}
 			onClick={handleBtnClick}
 		>
-			{text || 'Click'}
+			{btnText || 'Click'}
 		</button>
 	);
 };
 
 BtnPrimary.propTypes = {
-	text: PropTypes.string,
+	btnText: PropTypes.string,
 	btnFunction: PropTypes.func,
 	btnSound: PropTypes.func,
 	btnStyles: PropTypes.string,

@@ -26,17 +26,17 @@ const GameMenu = () => {
 	return (
 		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 			<BtnPrimary
-				text="Exit"
+				btnText="Exit"
 				btnFunction={handleGoBack}
 				btnStyles="bg-slate-300 hover:bg-opacity-40"
 			/>
 			<BtnPrimary
-				text="Camera"
+				btnText="Camera"
 				btnFunction={handleDisplayCam}
 				btnStyles="bg-slate-300 hover:bg-opacity-40"
 			/>
 			<BtnPrimary
-				text="Tutorial"
+				btnText="Tutorial"
 				btnFunction={handleTutorial}
 				btnStyles="bg-slate-300 hover:bg-opacity-40"
 			/>

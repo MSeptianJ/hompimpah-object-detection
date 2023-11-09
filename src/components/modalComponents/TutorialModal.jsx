@@ -66,7 +66,7 @@ const TutorialModal = () => {
 
 			<div className="mx-auto w-3/4 max-w-md text-center">
 				<BtnPrimary
-					text="Back"
+					btnText="Back"
 					btnFunction={handle}
 					btnStyles="bg-slate-500 hover:bg-gray-700"
 				/>

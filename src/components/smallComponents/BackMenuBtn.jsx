@@ -12,7 +12,7 @@ const BackMenuBtn = () => {
 	return (
 		<div className=" mx-auto w-3/4 max-w-md px-4 text-center">
 			<BtnPrimary
-				text="Back to Menu"
+				btnText="Back to Menu"
 				btnFunction={handleGoBack}
 				btnStyles="bg-slate-300 hover:bg-opacity-40"
 			/>

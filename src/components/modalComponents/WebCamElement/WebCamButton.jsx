@@ -18,7 +18,7 @@ const WebCamButton = ({
 	return (
 		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 			<BtnPrimary
-				text="Back"
+				btnText="Back"
 				btnFunction={backBtn}
 				btnStyles={'bg-slate-500 hover:bg-gray-700'}
 			/>
@@ -27,7 +27,7 @@ const WebCamButton = ({
 				<>
 					<BtnPrimary
 						btnDisabled={isLoading ? true : false}
-						text="Retry"
+						btnText="Retry"
 						btnFunction={retryBtn}
 						btnStyles={
 							isLoading
@@ -37,7 +37,7 @@ const WebCamButton = ({
 					/>
 					<BtnPrimary
 						btnDisabled={detection?.predictions.length ? false : true}
-						text="Accept"
+						btnText="Accept"
 						btnFunction={accBtn}
 						btnStyles={
 							detection?.predictions.length
@@ -49,13 +49,13 @@ const WebCamButton = ({
 			) : (
 				<>
 					<BtnPrimary
-						text="Detect"
+						btnText="Detect"
 						btnFunction={detectBtn}
 						btnSound={playCameraSound}
 						btnStyles={'bg-slate-500 hover:bg-gray-700'}
 					/>
 					<BtnPrimary
-						text="Switch"
+						btnText="Switch"
 						btnFunction={switchCamBtn}
 						btnStyles={'bg-slate-500 hover:bg-gray-700'}
 					/>

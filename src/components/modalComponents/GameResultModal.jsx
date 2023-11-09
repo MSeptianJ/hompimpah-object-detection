@@ -6,6 +6,7 @@ import LOSE from '../../assets/img/lose-ilust.svg';
 import WIN from '../../assets/img/win-ilust.svg';
 import {
 	gameEndModalAtom,
+	gamePlayedStateAtom,
 	gamesAtom,
 	plsAddGameStateAtom,
 	roundResultAtom,
@@ -20,6 +21,7 @@ const GameResultModal = ({ result }) => {
 	// Game State
 	const setGameEndModalState = useSetAtom(gameEndModalAtom);
 	const setPlsAddGameState = useSetAtom(plsAddGameStateAtom);
+	const setGamePlayedState = useSetAtom(gamePlayedStateAtom);
 
 	// Something Inside
 	const [userUID, setUserUID] = useAtom(userUIDAtom);
@@ -44,6 +46,7 @@ const GameResultModal = ({ result }) => {
 		setRoundResult(null);
 		setGames(RESET);
 		setUserUID(RESET);
+		setGamePlayedState(true);
 
 		history.back();
 	};
@@ -92,12 +95,12 @@ const GameResultModal = ({ result }) => {
 
 				<div className=" mx-auto grid w-full max-w-md grid-cols-2 gap-4 px-3 text-center">
 					<BtnPrimary
-						text="Menu"
+						btnText="Menu"
 						btnFunction={handleBackToMenu}
 						btnStyles="bg-slate-600 hover:bg-gray-700"
 					/>
 					<BtnPrimary
-						text="Play Again"
+						btnText="Play Again"
 						btnFunction={handlePlayAgain}
 						btnStyles="bg-blue-500 hover:bg-gray-700"
 					/>

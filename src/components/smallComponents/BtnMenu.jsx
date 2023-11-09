@@ -5,7 +5,10 @@ const BtnMenu = () => {
 	return (
 		<div className=" mx-auto w-1/2 ">
 			<Link to={'/'} className="text-gray-900">
-				<BtnPrimary text="Back" btnStyles="bg-slate-300 hover:bg-opacity-70" />
+				<BtnPrimary
+					btnText="Back"
+					btnStyles="bg-slate-300 hover:bg-opacity-70"
+				/>
 			</Link>
 		</div>
 	);
