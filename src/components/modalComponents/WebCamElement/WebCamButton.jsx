@@ -1,8 +1,15 @@
-import PropTypes from 'prop-types';
-import BtnPrimary from '../../smallComponents/BtnPrimary';
-import { playCameraSound } from '../../../scripts/sound';
 import { useAtom } from 'jotai';
+import PropTypes from 'prop-types';
 import { detectDataAtom, screenShotAtom } from '../../../libs/atoms';
+import {
+	AcceptIcon,
+	CameraIcon,
+	CameraSwitchIcon,
+	GoBackIcon,
+	RedoIcon,
+} from '../../../libs/icons';
+import { playCameraSound } from '../../../scripts/sound';
+import BtnPrimary from '../../smallComponents/BtnPrimary';
 
 const WebCamButton = ({
 	backBtn,
@@ -18,7 +25,8 @@ const WebCamButton = ({
 	return (
 		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 			<BtnPrimary
-				btnText="Back"
+				btnIcon={<GoBackIcon cls=" w-full text-lg scale-150 text-slate-800" />}
+				btnTitle="Go Back"
 				btnFunction={backBtn}
 				btnStyles={'bg-slate-500 hover:bg-gray-700'}
 			/>
@@ -27,35 +35,45 @@ const WebCamButton = ({
 				<>
 					<BtnPrimary
 						btnDisabled={isLoading ? true : false}
-						btnText="Retry"
+						btnIcon={<RedoIcon cls="w-full text-lg scale-125 text-slate-800" />}
+						btnTitle="Redo Detection"
 						btnFunction={retryBtn}
 						btnStyles={
 							isLoading
-								? 'bg-slate-400 hover:bg-slate-600'
+								? 'bg-slate-500 hover:bg-slate-600'
 								: 'bg-blue-400 hover:bg-blue-600'
 						}
 					/>
 					<BtnPrimary
 						btnDisabled={detection?.predictions.length ? false : true}
-						btnText="Accept"
+						btnIcon={
+							<AcceptIcon cls="w-full text-lg scale-150 text-slate-800" />
+						}
+						btnTitle="Accept Detection"
 						btnFunction={accBtn}
 						btnStyles={
 							detection?.predictions.length
-								? 'bg-green-400 hover:bg-green-600'
-								: 'bg-slate-400 hover:bg-slate-600'
+								? 'bg-green-500 hover:bg-green-600'
+								: 'bg-slate-500 hover:bg-slate-600'
 						}
 					/>
 				</>
 			) : (
 				<>
 					<BtnPrimary
-						btnText="Detect"
+						btnIcon={
+							<CameraIcon cls=" w-full text-lg scale-150 text-slate-800" />
+						}
+						btnTitle="Start Detection"
 						btnFunction={detectBtn}
 						btnSound={playCameraSound}
 						btnStyles={'bg-slate-500 hover:bg-gray-700'}
 					/>
 					<BtnPrimary
-						btnText="Switch"
+						btnIcon={
+							<CameraSwitchIcon cls=" w-full text-lg scale-150 text-slate-800" />
+						}
+						btnTitle="Switch Camera"
 						btnFunction={switchCamBtn}
 						btnStyles={'bg-slate-500 hover:bg-gray-700'}
 					/>

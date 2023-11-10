@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { GoBackIcon } from '../../libs/icons';
 import BtnPrimary from './BtnPrimary';
 
 const BtnMenu = () => {
@@ -6,8 +7,8 @@ const BtnMenu = () => {
 		<div className=" mx-auto w-1/2 ">
 			<Link to={'/'} className="text-gray-900">
 				<BtnPrimary
-					btnText="Back"
-					btnStyles="bg-slate-300 hover:bg-opacity-70"
+					btnIcon={<GoBackIcon cls="w-full text-lg scale-150" />}
+					btnStyles="bg-slate-300 hover:bg-opacity-70 text-slate-600"
 				/>
 			</Link>
 		</div>

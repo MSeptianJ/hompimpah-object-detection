@@ -1,6 +1,7 @@
 import { useSetAtom } from 'jotai';
 import Ilust from '../../assets/img/KGB.svg';
 import { tutorModalAtom } from '../../libs/atoms';
+import { GoBackIcon } from '../../libs/icons';
 import BtnPrimary from '../smallComponents/BtnPrimary';
 import TitlePage from '../smallComponents/TitlePage';
 
@@ -13,7 +14,7 @@ const TutorialModal = () => {
 
 	return (
 		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
-			<TitlePage titleText="Hompimpah" />
+			<TitlePage titleText="Tutorial" />
 
 			<div className=" row-span-4 h-full w-full">
 				<div className=" mx-auto flex h-full w-3/4 flex-col gap-4 overflow-y-auto rounded-sm bg-slate-500 p-6 shadow-lg">
@@ -66,9 +67,9 @@ const TutorialModal = () => {
 
 			<div className="mx-auto w-3/4 max-w-md text-center">
 				<BtnPrimary
-					btnText="Back"
+					btnIcon={<GoBackIcon cls="w-full text-lg scale-150" />}
 					btnFunction={handle}
-					btnStyles="bg-slate-500 hover:bg-gray-700"
+					btnStyles="bg-slate-500 hover:bg-gray-700 text-slate-600"
 				/>
 			</div>
 		</div>
