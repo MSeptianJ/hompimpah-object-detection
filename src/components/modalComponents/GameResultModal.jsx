@@ -33,6 +33,7 @@ const GameResultModal = ({ result }) => {
 
 		setRoundResult(null);
 		setGames(RESET);
+		setGamePlayedState(true);
 
 		setPlsAddGameState(true);
 	};

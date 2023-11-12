@@ -34,12 +34,12 @@ const GameMenu = () => {
 			<BtnPrimary
 				btnIcon={<CameraIcon cls=" w-full text-lg scale-150" />}
 				btnFunction={handleDisplayCam}
-				btnStyles="bg-slate-300 hover:bg-opacity-40"
+				btnStyles="bg-green-400 hover:bg-green-500"
 			/>
 			<BtnPrimary
 				btnIcon={<TutorialIcon cls=" w-full text-lg scale-150" />}
 				btnFunction={handleTutorial}
-				btnStyles="bg-slate-300 hover:bg-opacity-40"
+				btnStyles="bg-blue-400 hover:bg-blue-500 animate-bounce"
 			/>
 		</div>
 	);

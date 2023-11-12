@@ -41,7 +41,7 @@ const WebCamButton = ({
 						btnStyles={
 							isLoading
 								? 'bg-slate-500 hover:bg-slate-600'
-								: 'bg-blue-400 hover:bg-blue-600'
+								: 'bg-blue-400 hover:bg-blue-500'
 						}
 					/>
 					<BtnPrimary
@@ -53,7 +53,7 @@ const WebCamButton = ({
 						btnFunction={accBtn}
 						btnStyles={
 							detection?.predictions.length
-								? 'bg-green-500 hover:bg-green-600'
+								? 'bg-green-400 hover:bg-green-500'
 								: 'bg-slate-500 hover:bg-slate-600'
 						}
 					/>
@@ -67,7 +67,7 @@ const WebCamButton = ({
 						btnTitle="Start Detection"
 						btnFunction={detectBtn}
 						btnSound={playCameraSound}
-						btnStyles={'bg-slate-500 hover:bg-gray-700'}
+						btnStyles={'bg-green-400 hover:bg-green-500'}
 					/>
 					<BtnPrimary
 						btnIcon={
@@ -75,7 +75,7 @@ const WebCamButton = ({
 						}
 						btnTitle="Switch Camera"
 						btnFunction={switchCamBtn}
-						btnStyles={'bg-slate-500 hover:bg-gray-700'}
+						btnStyles={'bg-blue-400 hover:bg-blue-500'}
 					/>
 				</>
 			)}
