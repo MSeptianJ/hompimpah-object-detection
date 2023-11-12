@@ -54,17 +54,25 @@ const Start = () => {
 								func={textMenu.func}
 							/>
 						))}
-						<Link to="/survey">
-							<BtnPrimary
-								btnText="App Survey"
-								btnStyles={
-									gamePlayedState
-										? 'bg-slate-300 text-slate-600 cursor-pointer hover:bg-slate-500'
-										: 'bg-slate-600 text-slate-300 cursor-pointer hover:bg-slate-500'
-								}
-								btnDisabled={gamePlayedState ? false : true}
-							/>
-						</Link>
+						<div className=" relative">
+							<Link to="/survey">
+								<BtnPrimary
+									btnText="App Survey"
+									btnStyles={
+										gamePlayedState
+											? 'bg-slate-300 text-slate-700 cursor-pointer hover:bg-blue-500'
+											: 'bg-slate-600 text-slate-300 cursor-pointer hover:bg-slate-500'
+									}
+									btnDisabled={gamePlayedState ? false : true}
+								/>
+							</Link>
+							{gamePlayedState && (
+								<span className="absolute -right-2 -top-2 flex aspect-square w-5">
+									<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+									<span className="relative m-auto inline-flex aspect-square w-4 rounded-full bg-blue-500"></span>
+								</span>
+							)}
+						</div>
 						<div className=" cursor-pointer"></div>
 					</ul>
 				</div>
