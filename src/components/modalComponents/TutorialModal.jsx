@@ -1,4 +1,5 @@
 import { useSetAtom } from 'jotai';
+import Ilust from '../../assets/img/KGB.svg';
 import { tutorModalAtom } from '../../libs/atoms';
 import { GoBackIcon } from '../../libs/icons';
 import BtnPrimary from '../smallComponents/BtnPrimary';
@@ -17,6 +18,29 @@ const TutorialModal = () => {
 
 			<div className=" row-span-4 h-full w-full">
 				<div className=" mx-auto flex h-full w-3/4 flex-col gap-4 overflow-y-auto rounded-sm bg-slate-500 p-6 shadow-lg">
+					<h5 className=" w-full rounded-sm bg-blue-400 p-2 text-sm font-bold">
+						Diharapkan membaca Tutorial, sebelum bermain.
+					</h5>
+
+					<section className=" w-full text-sm">
+						<h4 className=" mb-3 w-full text-left text-xl font-bold">
+							Description
+						</h4>
+						<p className=" mb-3 px-3 text-left">
+							Game Hompimpah ini menggunakan permainan Kertas Gunting Batu untuk
+							menentukan pemenang. Perbedaan dari yang lain, pada aplikasi
+							permainan hompimpah ini, diterapkan teknologi Object Detection
+							sehingga pemain akan menampilkan tangannya untuk dideteksi.
+						</p>
+						<div className=" w-full rounded-md ">
+							<img
+								className=" mx-auto rounded-sm bg-slate-600 object-contain px-5 py-4"
+								src={Ilust}
+								alt="Ilustrasi Kertas Gunting Batu"
+							/>
+						</div>
+					</section>
+
 					<section className=" w-full text-sm">
 						<h4 className=" mb-3 w-full text-left text-xl font-bold">
 							How to Play
@@ -57,6 +81,29 @@ const TutorialModal = () => {
 								harus memulai ulang deteksi. Hal ini terjadi jika gambar kurang
 								jelas, atau terlalu banyak warna pada gambar, sehingga
 								disarankan anda menggunakan background yang satu warna.
+							</li>
+							<li className="">
+								<b>Jika terdapat dua atau lebih class yang terdeteksi</b>, maka
+								hanya salah satu yang dipilih oleh sistem sebagai pilihan anda.
+								Oleh karena itu, sebaiknya hanya menampilkan satu pilihan saja.
+							</li>
+						</ul>
+					</section>
+					<section className=" w-full text-sm">
+						<h4 className=" mb-3 w-full text-left text-xl font-bold">
+							Found Problem
+						</h4>
+						<ul className=" w-full list-disc px-4 text-left">
+							<li className=" mb-2">
+								<b>Bounding box tidak sesuai</b>. Untuk sekarang bounding box
+								masih tidak akurat sehingga tidak tepat membentuk kotak diantara
+								bentuk tangan yang dipilih pemain.
+							</li>
+							<li className="">
+								<b>Kemungkinan tidak mendeteksi apapun</b>, meskipun sudah
+								menampilkan bentuk tangan. Solusi jika hal ini selalu terjadi
+								adalah menggunakan background yang bersih, mengurangi warna yang
+								ada pada kamera sehingga tangan terlihat lebih jelas.
 							</li>
 						</ul>
 					</section>
