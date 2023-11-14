@@ -46,12 +46,12 @@ const BackModal = () => {
 
 			<div className=" mx-auto grid w-full max-w-md grid-cols-2 gap-4 px-4 text-center">
 				<BtnPrimary
-					text="Yes"
+					btnText="Yes"
 					btnFunction={handleGoBack}
 					btnStyles="bg-slate-500 hover:bg-gray-700"
 				/>
 				<BtnPrimary
-					text="Cancel"
+					btnText="Cancel"
 					btnFunction={handleCancel}
 					btnStyles="bg-slate-500 hover:bg-gray-700"
 				/>

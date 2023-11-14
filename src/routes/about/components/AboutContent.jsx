@@ -22,7 +22,7 @@ const AboutContent = () => {
 				<p className=" mb-1 px-3 text-left">
 					Sound Effects from{' '}
 					<a
-						href="https://www.zapsplat.com/sound-effect-category/button-clicks/"
+						href="https://www.zapsplat.com"
 						className=" font-bold text-black"
 						target="blank"
 					>
@@ -30,13 +30,23 @@ const AboutContent = () => {
 					</a>
 				</p>
 				<p className=" mb-1 px-3 text-left">
-					Ilustration from{' '}
+					Rock Paper Ilustration from{' '}
 					<a
 						href="https://www.vecteezy.com/vector-art/690792-rock-paper-scissors-hand-icons"
 						className=" font-bold text-black"
 						target="blank"
 					>
 						Vecteezy
+					</a>
+				</p>
+				<p className=" mb-1 px-3 text-left">
+					Win and Lose Ilustration from{' '}
+					<a
+						href="https://www.freepik.com/free-vector/anxiety-concept-illustration_20908543.htm#query=lose&position=2&from_view=search&track=sph"
+						className=" font-bold text-black"
+						target="blank"
+					>
+						Freepik
 					</a>
 				</p>
 			</section>

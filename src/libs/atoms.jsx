@@ -25,3 +25,4 @@ export const plsAddGameStateAtom = atom(false);
 export const imgAccStateAtom = atom(false);
 export const plyMovedStateAtom = atom(false);
 export const sysMovedStateAtom = atom(false);
+export const gamePlayedStateAtom = atom(false);

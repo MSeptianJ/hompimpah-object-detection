@@ -4,6 +4,7 @@ import {
 	tutorModalAtom,
 	webCamModalAtom,
 } from '../../libs/atoms';
+import { CameraIcon, GoBackIcon, TutorialIcon } from '../../libs/icons';
 import BtnPrimary from './BtnPrimary';
 
 const GameMenu = () => {
@@ -26,19 +27,19 @@ const GameMenu = () => {
 	return (
 		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 			<BtnPrimary
-				text="Exit"
+				btnIcon={<GoBackIcon cls=" w-full text-lg scale-150" />}
 				btnFunction={handleGoBack}
 				btnStyles="bg-slate-300 hover:bg-opacity-40"
 			/>
 			<BtnPrimary
-				text="Camera"
+				btnIcon={<CameraIcon cls=" w-full text-lg scale-150" />}
 				btnFunction={handleDisplayCam}
-				btnStyles="bg-slate-300 hover:bg-opacity-40"
+				btnStyles="bg-green-400 hover:bg-green-500"
 			/>
 			<BtnPrimary
-				text="Tutorial"
+				btnIcon={<TutorialIcon cls=" w-full text-lg scale-150" />}
 				btnFunction={handleTutorial}
-				btnStyles="bg-slate-300 hover:bg-opacity-40"
+				btnStyles="bg-blue-400 hover:bg-blue-500 animate-bounce"
 			/>
 		</div>
 	);

@@ -3,18 +3,19 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-	createBrowserRouter,
-	createRoutesFromElements,
 	Route,
 	RouterProvider,
+	createBrowserRouter,
+	createRoutesFromElements,
 } from 'react-router-dom';
 import './assets/style/index.css';
-import About from './routes/about';
 import ErrorPage from './routes/ErrorPage';
-import Multi from './routes/multi';
 import Root from './routes/Root';
+import About from './routes/about';
+import Multi from './routes/multi';
 import Single from './routes/single';
 import Start from './routes/start';
+import Survey from './routes/survey';
 import Tutorial from './routes/tutorial';
 
 const client = new QueryClient();
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
 			<Route path="about" element={<About />} />
 			<Route path="single" element={<Single />} />
 			<Route path="multi" element={<Multi />} />
+			<Route path="survey" element={<Survey />} />
 		</Route>
 	)
 );

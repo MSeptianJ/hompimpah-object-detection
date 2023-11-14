@@ -2,11 +2,13 @@ import PropTypes from 'prop-types';
 import { playButtonSound } from '../../scripts/sound';
 
 const BtnPrimary = ({
-	text,
+	btnText,
+	btnIcon,
 	btnFunction,
 	btnStyles,
 	btnSound,
 	btnDisabled,
+	btnTitle,
 }) => {
 	const handleBtnClick = () => {
 		if (btnSound) {
@@ -25,18 +27,21 @@ const BtnPrimary = ({
 			disabled={btnDisabled}
 			className={` w-full rounded-sm p-4 text-center text-sm font-bold uppercase shadow-lg transition-all ${btnStyles}`}
 			onClick={handleBtnClick}
+			title={btnTitle}
 		>
-			{text || 'Click'}
+			{btnText || btnIcon || 'Click'}
 		</button>
 	);
 };
 
 BtnPrimary.propTypes = {
-	text: PropTypes.string,
+	btnText: PropTypes.string,
+	btnIcon: PropTypes.object,
 	btnFunction: PropTypes.func,
 	btnSound: PropTypes.func,
 	btnStyles: PropTypes.string,
 	btnDisabled: PropTypes.bool,
+	btnTitle: PropTypes.string,
 };
 
 export default BtnPrimary;
