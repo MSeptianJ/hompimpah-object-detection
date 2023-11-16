@@ -1,5 +1,6 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { Link } from 'react-router-dom';
+import LOGOILUST from '../../assets/img/logo-Ilust.svg';
 import BtnPrimary from '../../components/smallComponents/BtnPrimary';
 import {
 	gamePlayedStateAtom,
@@ -39,8 +40,12 @@ const Start = () => {
 
 	return (
 		<div className="m-auto flex min-h-screen w-full flex-col justify-center text-center">
-			<div className=" w-full p-4 text-center text-red-400">
-				<h1 className=" text-4xl font-bold uppercase">HOMPIMPAH</h1>
+			<div className=" w-full p-4">
+				<img
+					className=" m-auto w-3/4 max-w-xs"
+					src={LOGOILUST}
+					alt="Logo Hompimpah"
+				/>
 			</div>
 
 			<div className=" w-full p-4">
