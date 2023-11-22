@@ -12,6 +12,7 @@ export const gameEndModalAtom = atom(false);
 export const camModeAtom = atom('user');
 export const screenShotAtom = atom(null);
 export const detectDataAtom = atom(null);
+export const isCamActiveAtom = atom(false);
 
 // Auth
 export const userUIDAtom = atomWithStorage('User', null);
