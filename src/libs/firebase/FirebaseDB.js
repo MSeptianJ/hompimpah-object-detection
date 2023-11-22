@@ -9,7 +9,7 @@ import {
 import choiseSelector from '../../scripts/choiseSelector';
 import { db } from '../config/firebase';
 
-const COLNAME = 'game';
+const COLNAME = 'Beta-games';
 
 const gameColRef = () => {
 	return collection(db, COLNAME);
@@ -59,7 +59,12 @@ export const addGameRound = async (uid) => {
 export const addPlayerMove = async (gameRound, detection, uid) => {
 	try {
 		const docRef = gameDocRef(uid);
-		const playerChoise = detection?.predictions[0].class;
+		const preds = detection?.predictions;
+		const maxConf = preds.reduce((prev, current) =>
+			prev && prev.confidence > current.confidence ? prev : current
+		);
+
+		const playerChoise = maxConf.class;
 
 		const newGameData = {
 			...gameRound,

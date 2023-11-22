@@ -21,7 +21,6 @@ const CanvasRect = ({ isSuccess }) => {
 			const confNum = Math.floor(pred.confidence * 100);
 			const canvasEl = canvasRef.current;
 			const ctx = canvasEl.getContext('2d');
-			ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
 			const color = randomColor();
 
 			ctx.font = '14px sans-serif';

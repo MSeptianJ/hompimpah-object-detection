@@ -85,7 +85,8 @@ const TutorialModal = () => {
 							<li className="">
 								<b>Jika terdapat dua atau lebih class yang terdeteksi</b>, maka
 								hanya salah satu yang dipilih oleh sistem sebagai pilihan anda.
-								Oleh karena itu, sebaiknya hanya menampilkan satu pilihan saja.
+								Pilihan yang dipilih adalah pilihan yang memiliki nilai
+								keakuratan paling tinggi.
 							</li>
 						</ul>
 					</section>
