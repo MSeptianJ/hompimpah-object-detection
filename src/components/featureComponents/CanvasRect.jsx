@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import PropTypes from 'prop-types';
-import { detectDataAtom } from '../../libs/atoms';
 import { useEffect, useRef } from 'react';
+import { detectDataAtom } from '../../libs/atoms';
 import randomizer from '../../scripts/randomizer';
 
 const CanvasRect = ({ isSuccess }) => {
@@ -9,11 +9,20 @@ const CanvasRect = ({ isSuccess }) => {
 	const canvasRef = useRef(null);
 
 	const randomColor = () => {
-		const r = randomizer(256);
-		const g = randomizer(256);
-		const b = randomizer(256);
+		const r = randomizer(220);
+		const g = randomizer(220);
+		const b = randomizer(220);
 
 		return `rgba(${r}, ${g}, ${b}, 0.5)`;
+	};
+
+	const boxConverter = (predData) => {
+		let obj = {};
+		obj.x1 = predData.x - predData.width / 2;
+		obj.y1 = predData.y - predData.height / 2;
+		obj.x2 = predData.x + predData.width / 2;
+		obj.y2 = predData.y + predData.height / 2;
+		return obj;
 	};
 
 	const drawBox = () => {
@@ -21,22 +30,27 @@ const CanvasRect = ({ isSuccess }) => {
 			const confNum = Math.floor(pred.confidence * 100);
 			const canvasEl = canvasRef.current;
 			const ctx = canvasEl.getContext('2d');
+
 			const color = randomColor();
+
+			const { x1, x2, y1, y2 } = boxConverter(pred);
+			const boxWidth = x2 - x1;
+			const boxHeight = y2 - y1;
 
 			ctx.font = '14px sans-serif';
 
 			// bounding box
 			ctx.lineWidth = 2;
 			ctx.strokeStyle = color;
-			ctx.strokeRect(pred.x, pred.y, pred.width, pred.height);
+			ctx.strokeRect(x1, y1, boxWidth, boxHeight);
 
 			// Label bg
 			ctx.fillStyle = color;
-			ctx.fillRect(pred.x - 1, pred.y - 14, pred.width + 2, 14);
+			ctx.fillRect(x1 - 1, y1 - 14, boxWidth + 2, 14);
 
 			// Label
 			ctx.fillStyle = 'black';
-			ctx.fillText(`${pred.class} ${confNum}%`, pred.x - 1, pred.y - 3);
+			ctx.fillText(`${pred.class} ${confNum}%`, x1 - 1, y1 - 3);
 		});
 	};
 

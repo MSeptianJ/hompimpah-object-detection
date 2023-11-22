@@ -62,8 +62,9 @@ const TutorialContent = () => {
 					</li>
 					<li className="">
 						<b>Jika terdapat dua atau lebih class yang terdeteksi</b>, maka
-						hanya salah satu yang dipilih oleh sistem sebagai pilihan anda. Oleh
-						karena itu, sebaiknya hanya menampilkan satu pilihan saja.
+						hanya salah satu yang dipilih oleh sistem sebagai pilihan anda.
+						Pilihan yang dipilih adalah pilihan yang memiliki nilai keakuratan
+						paling tinggi.
 					</li>
 				</ul>
 			</section>
@@ -72,11 +73,6 @@ const TutorialContent = () => {
 					Found Problem
 				</h4>
 				<ul className=" w-full list-disc px-4 text-left">
-					<li className=" mb-2">
-						<b>Bounding box tidak sesuai</b>. Untuk sekarang bounding box masih
-						tidak akurat sehingga tidak tepat membentuk kotak diantara bentuk
-						tangan yang dipilih pemain.
-					</li>
 					<li className="">
 						<b>Kemungkinan tidak mendeteksi apapun</b>, meskipun sudah
 						menampilkan bentuk tangan. Solusi jika hal ini selalu terjadi adalah

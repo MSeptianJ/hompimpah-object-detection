@@ -95,11 +95,6 @@ const TutorialModal = () => {
 							Found Problem
 						</h4>
 						<ul className=" w-full list-disc px-4 text-left">
-							<li className=" mb-2">
-								<b>Bounding box tidak sesuai</b>. Untuk sekarang bounding box
-								masih tidak akurat sehingga tidak tepat membentuk kotak diantara
-								bentuk tangan yang dipilih pemain.
-							</li>
 							<li className="">
 								<b>Kemungkinan tidak mendeteksi apapun</b>, meskipun sudah
 								menampilkan bentuk tangan. Solusi jika hal ini selalu terjadi
