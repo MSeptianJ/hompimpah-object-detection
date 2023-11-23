@@ -4,14 +4,15 @@ const AboutContent = () => {
 			<section className=" w-full text-sm">
 				<h4 className=" mb-3 w-full text-left text-xl font-bold">The Goal</h4>
 				<p className=" mb-3 px-3 text-left">
-					Melestarikan permainan permainan kecil dengan menerapkan teknologi
+					Melestarikan permainan-permainan kecil dengan menerapkan teknologi
 					Object detection pada proses Hompimpah.
 				</p>
 				<p className=" px-3 text-left">
 					Proses Hompimpah adalah penentuan siapa dulu yang bermain atau dapat
 					disebut juga dengan pengundian pada awal permainan. Oleh karena itu,
 					game Hompimpah adalah kumpulan permainan kecil seperti Kertas Gunting
-					Batu.
+					Batu, Suten, atau <i>Hompimpah</i>. Untuk sekarang, aplikasi ini hanya
+					menerapkan permainan Kertas Gunting Batu saja.
 				</p>
 			</section>
 

@@ -98,8 +98,8 @@ const TutorialModal = () => {
 							<li className="">
 								<b>Kemungkinan tidak mendeteksi apapun</b>, meskipun sudah
 								menampilkan bentuk tangan. Solusi jika hal ini selalu terjadi
-								adalah menggunakan background yang bersih, mengurangi warna yang
-								ada pada kamera sehingga tangan terlihat lebih jelas.
+								adalah menggunakan background yang bersih atau mengurangi warna
+								yang terlihat pada kamera sehingga tangan terlihat lebih jelas.
 							</li>
 						</ul>
 					</section>
