@@ -74,10 +74,11 @@ const TutorialContent = () => {
 				</h4>
 				<ul className=" w-full list-disc px-4 text-left">
 					<li className="">
-						<b>Kemungkinan tidak mendeteksi apapun</b>, meskipun sudah
+						<b>Kemungkinan tidak mendeteksi apapun</b>, meskipun anda sudah
 						menampilkan bentuk tangan. Solusi jika hal ini selalu terjadi adalah
-						menggunakan background yang bersih atau mengurangi warna yang
-						terlihat pada kamera sehingga tangan terlihat lebih jelas.
+						menggunakan background yang bersih, mencari tempat yang terang atau
+						mengurangi warna yang terlihat pada kamera sehingga tangan terlihat
+						lebih jelas.
 					</li>
 				</ul>
 			</section>
