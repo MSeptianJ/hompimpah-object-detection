@@ -9,9 +9,9 @@ const CanvasRect = ({ isSuccess }) => {
 	const canvasRef = useRef(null);
 
 	const randomColor = () => {
-		const r = randomizer(220);
-		const g = randomizer(220);
-		const b = randomizer(220);
+		const r = randomizer(128);
+		const g = randomizer(128);
+		const b = randomizer(128);
 
 		return `rgba(${r}, ${g}, ${b}, 0.5)`;
 	};
