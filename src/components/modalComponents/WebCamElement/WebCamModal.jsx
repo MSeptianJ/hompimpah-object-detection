@@ -5,6 +5,7 @@ import {
 	camModeAtom,
 	detectDataAtom,
 	imgAccStateAtom,
+	isCamActiveAtom,
 	screenShotAtom,
 	webCamModalAtom,
 } from '../../../libs/atoms';
@@ -20,6 +21,7 @@ const WebCamModal = () => {
 	// Camera
 	const setScreenShot = useSetAtom(screenShotAtom);
 	const setFaceMode = useSetAtom(camModeAtom);
+	const setIsCamActive = useSetAtom(isCamActiveAtom);
 
 	// Detection
 	const setDetection = useSetAtom(detectDataAtom);
@@ -47,6 +49,7 @@ const WebCamModal = () => {
 
 		setScreenShot(null);
 		setDetection(null);
+		setIsCamActive(false);
 	};
 
 	const handleDetect = () => {
@@ -54,6 +57,7 @@ const WebCamModal = () => {
 		detectThisImg(imgScreenShot);
 
 		setScreenShot(imgScreenShot);
+		setIsCamActive(false);
 	};
 
 	const handleChangeCam = () => {

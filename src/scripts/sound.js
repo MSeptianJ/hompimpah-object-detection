@@ -1,6 +1,5 @@
 import btnSoundA from '../assets/sound/button_click_bright_1.mp3';
 import btnSoundB from '../assets/sound/button_click_bright_2.mp3';
-import btnSoundC from '../assets/sound/button_click_bright_3.mp3';
 import cmrSoundA from '../assets/sound/camera_shutter_1.mp3';
 import cmrSoundB from '../assets/sound/camera_shutter_2.mp3';
 import cmrSoundC from '../assets/sound/camera_shutter_3.mp3';
@@ -11,7 +10,7 @@ import winGameSound from '../assets/sound/win-game.mp3';
 import winRoundSound from '../assets/sound/win-round.mp3';
 import randomizer from './randomizer';
 
-const btnSoundObject = [btnSoundA, btnSoundB, btnSoundC];
+const btnSoundObject = [btnSoundA, btnSoundB];
 const cmrSoundObject = [cmrSoundA, cmrSoundB, cmrSoundC];
 
 const playSFX = (sfx) => {
@@ -27,7 +26,7 @@ export const playButtonSound = () => {
 };
 
 export const playCameraSound = () => {
-	playRandomSound(cmrSoundObject, 2);
+	playRandomSound(cmrSoundObject, 3);
 };
 
 export const playWinRoundSound = () => {

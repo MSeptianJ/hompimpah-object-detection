@@ -1,6 +1,10 @@
 import { useAtom } from 'jotai';
 import PropTypes from 'prop-types';
-import { detectDataAtom, screenShotAtom } from '../../../libs/atoms';
+import {
+	detectDataAtom,
+	isCamActiveAtom,
+	screenShotAtom,
+} from '../../../libs/atoms';
 import {
 	AcceptIcon,
 	CameraIcon,
@@ -21,6 +25,7 @@ const WebCamButton = ({
 }) => {
 	const [screenShot] = useAtom(screenShotAtom);
 	const [detection] = useAtom(detectDataAtom);
+	const [isCamActive] = useAtom(isCamActiveAtom);
 
 	return (
 		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
@@ -67,7 +72,12 @@ const WebCamButton = ({
 						btnTitle="Start Detection"
 						btnFunction={detectBtn}
 						btnSound={playCameraSound}
-						btnStyles={'bg-green-400 hover:bg-green-500'}
+						btnStyles={
+							isCamActive
+								? 'bg-green-400 hover:bg-green-500'
+								: 'bg-slate-500 hover:bg-slate-600'
+						}
+						btnDisabled={isCamActive ? false : true}
 					/>
 					<BtnPrimary
 						btnIcon={

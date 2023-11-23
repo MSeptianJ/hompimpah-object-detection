@@ -1,13 +1,14 @@
-import { useAtom } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
 import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
+import LoadIcon from '../../../assets/img/loading.svg';
 import {
 	camModeAtom,
 	detectDataAtom,
+	isCamActiveAtom,
 	screenShotAtom,
 } from '../../../libs/atoms';
 import CanvasRect from '../../featureComponents/CanvasRect';
-import LoadIcon from '../../../assets/img/loading.svg';
 
 const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 	const videoConstraints = {
@@ -17,6 +18,11 @@ const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 	const [screenShot] = useAtom(screenShotAtom);
 	const [detection] = useAtom(detectDataAtom);
 	const [facingMode] = useAtom(camModeAtom);
+	const setIsCamActive = useSetAtom(isCamActiveAtom);
+
+	const checkCamActive = (camData) => {
+		camData ? setIsCamActive(true) : setIsCamActive(false);
+	};
 
 	return (
 		<>
@@ -59,6 +65,7 @@ const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 						...videoConstraints,
 						facingMode,
 					}}
+					onUserMedia={checkCamActive}
 					className=" h-full w-full rounded-sm bg-slate-700"
 				/>
 			)}

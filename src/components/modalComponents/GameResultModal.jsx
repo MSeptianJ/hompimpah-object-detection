@@ -16,6 +16,7 @@ import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
 import { playLoseGameSound, playWinGameSound } from '../../scripts/sound';
 import BtnPrimary from '../smallComponents/BtnPrimary';
+import { Link } from 'react-router-dom';
 
 const GameResultModal = ({ result }) => {
 	// Game State
@@ -38,7 +39,7 @@ const GameResultModal = ({ result }) => {
 		setPlsAddGameState(true);
 	};
 
-	const handleBackToMenu = async () => {
+	const handleEndGame = async () => {
 		await delGameRound(userUID);
 		await AuthSignOut();
 
@@ -48,6 +49,10 @@ const GameResultModal = ({ result }) => {
 		setGames(RESET);
 		setUserUID(RESET);
 		setGamePlayedState(true);
+	};
+
+	const handleBackToMenu = async () => {
+		handleEndGame();
 
 		history.back();
 	};
@@ -78,7 +83,7 @@ const GameResultModal = ({ result }) => {
 					)}
 				</div>
 
-				<div className=" row-span-2 h-full w-full p-2">
+				<div className=" row-span-2 h-full w-full p-4">
 					{result === 'Win' ? (
 						<img
 							className=" h-full w-full object-contain"
@@ -94,12 +99,21 @@ const GameResultModal = ({ result }) => {
 					)}
 				</div>
 
-				<div className=" mx-auto grid w-full max-w-md grid-cols-2 gap-4 px-3 text-center">
+				<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 					<BtnPrimary
 						btnText="Menu"
 						btnFunction={handleBackToMenu}
 						btnStyles="bg-slate-600 hover:bg-gray-700"
 					/>
+
+					<Link to={'/survey'}>
+						<BtnPrimary
+							btnText="App Survey"
+							btnFunction={handleEndGame}
+							btnStyles="bg-blue-500 hover:bg-gray-700"
+						/>
+					</Link>
+
 					<BtnPrimary
 						btnText="Play Again"
 						btnFunction={handlePlayAgain}
