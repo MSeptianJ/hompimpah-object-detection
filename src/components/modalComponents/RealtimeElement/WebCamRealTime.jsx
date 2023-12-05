@@ -1,5 +1,4 @@
 import { useAtom, useSetAtom } from 'jotai';
-import PropTypes from 'prop-types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import LOADICON from '../../../assets/img/loading.svg';
@@ -8,7 +7,7 @@ import {
 	imgAccStateAtom,
 	webCamModalAtom,
 } from '../../../libs/atoms';
-import { drawBoundingBox } from '../../../scripts/drawBoundingBox';
+import drawBoundingBox from '../../../scripts/drawBoundingBox';
 import wait from '../../../scripts/wait';
 import TitlePage from '../../smallComponents/TitlePage';
 
@@ -107,7 +106,7 @@ const WebCamRealTime = () => {
 			model.then(async (model) => {
 				const detectingInterval = setInterval(() => {
 					doDetection(model);
-				}, 10);
+				}, 100);
 
 				await wait(TIMEMS);
 
@@ -166,7 +165,7 @@ const WebCamRealTime = () => {
 						<canvas
 							className=" absolute top-0 m-auto h-full w-full"
 							ref={canvasRef}
-						></canvas>
+						/>
 
 						<Webcam
 							ref={webCamRef}
@@ -191,8 +190,6 @@ const WebCamRealTime = () => {
 	);
 };
 
-WebCamRealTime.propTypes = {
-	camRef: PropTypes.object,
-};
+WebCamRealTime.propTypes = {};
 
 export default WebCamRealTime;

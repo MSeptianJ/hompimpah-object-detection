@@ -19,6 +19,18 @@ const gameDocRef = (uid) => {
 	return doc(db, COLNAME, uid);
 };
 
+const checkDetection = (detection) => {
+	if (!detection) {
+		return choiseSelector();
+	}
+
+	const maxConfidence = detection.reduce((prev, current) =>
+		prev && prev.confidence > current.confidence ? prev : current
+	);
+	const data = maxConfidence.class;
+	return data;
+};
+
 export const getAllGame = async () => {
 	try {
 		const colRef = gameColRef();
@@ -59,11 +71,7 @@ export const addGameRound = async (uid) => {
 export const addPlayerMove = async (gameRound, detection, uid) => {
 	try {
 		const docRef = gameDocRef(uid);
-		const maxConf = detection.reduce((prev, current) =>
-			prev && prev.confidence > current.confidence ? prev : current
-		);
-
-		const playerChoise = maxConf.class;
+		const playerChoise = checkDetection(detection);
 
 		const newGameData = {
 			...gameRound,

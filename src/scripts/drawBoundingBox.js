@@ -7,7 +7,7 @@ const boxConverter = (predData) => {
 	return obj;
 };
 
-export const drawBoundingBox = (detection, canvasRef) => {
+const drawBoundingBox = (detection, canvasRef) => {
 	detection.map((pred) => {
 		const confNum = Math.floor(pred.confidence * 100);
 		const canvasEl = canvasRef.current;
@@ -35,3 +35,5 @@ export const drawBoundingBox = (detection, canvasRef) => {
 		ctx.fillText(`${pred.class} ${confNum}%`, x1 - 1, y1 - 3);
 	});
 };
+
+export default drawBoundingBox;
