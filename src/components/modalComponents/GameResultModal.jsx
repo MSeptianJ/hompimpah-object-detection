@@ -70,7 +70,7 @@ const GameResultModal = ({ result }) => {
 		<div className=" absolute grid h-full w-full grid-rows-5 items-center shadow-lg backdrop-blur-sm">
 			<div></div>
 
-			<div className=" row-span-3 mx-auto grid h-full w-3/4 grid-rows-4 items-center rounded-sm bg-slate-500">
+			<div className=" row-span-3 mx-auto grid h-full w-3/4 grid-rows-5 items-center rounded-sm bg-slate-500">
 				<div className=" mx-auto w-full p-3">
 					{result === 'Win' ? (
 						<h4 className=" bg-green-500 text-lg font-bold uppercase">
@@ -99,25 +99,25 @@ const GameResultModal = ({ result }) => {
 					)}
 				</div>
 
-				<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
+				<div className=" row-span-2 mx-auto grid w-full max-w-md grid-cols-2 grid-rows-2 gap-4 px-4 text-center">
+					<div className=" col-span-2">
+						<Link to={'/survey'}>
+							<BtnPrimary
+								btnText="App Survey"
+								btnFunction={handleEndGame}
+								btnStyles="bg-blue-500 hover:bg-gray-700"
+							/>
+						</Link>
+					</div>
 					<BtnPrimary
 						btnText="Menu"
 						btnFunction={handleBackToMenu}
 						btnStyles="bg-slate-600 hover:bg-gray-700"
 					/>
-
-					<Link to={'/survey'}>
-						<BtnPrimary
-							btnText="App Survey"
-							btnFunction={handleEndGame}
-							btnStyles="bg-blue-500 hover:bg-gray-700"
-						/>
-					</Link>
-
 					<BtnPrimary
 						btnText="Play Again"
 						btnFunction={handlePlayAgain}
-						btnStyles="bg-blue-500 hover:bg-gray-700"
+						btnStyles="bg-slate-600 hover:bg-gray-700"
 					/>
 				</div>
 			</div>
