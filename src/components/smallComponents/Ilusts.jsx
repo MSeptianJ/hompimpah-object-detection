@@ -6,8 +6,8 @@ export const RockIlust = () => {
 	return (
 		<img
 			src={ROCK}
-			alt="Rock Iluratration"
-			className=" mx-auto w-24 max-w-[200px] p-4"
+			alt="Rock Illustration"
+			className=" mx-auto w-28 max-w-[200px] p-4"
 		/>
 	);
 };
@@ -16,8 +16,8 @@ export const PaperIlust = () => {
 	return (
 		<img
 			src={PAPER}
-			alt="Paper Iluratration"
-			className=" mx-auto w-24 max-w-[200px] p-4"
+			alt="Paper Illustration"
+			className=" mx-auto w-28 max-w-[200px] p-4"
 		/>
 	);
 };
@@ -25,8 +25,8 @@ export const ScissorIlust = () => {
 	return (
 		<img
 			src={SCISSOR}
-			alt="Scissor Iluratration"
-			className=" mx-auto w-24 max-w-[200px] p-4"
+			alt="Scissor Illustration"
+			className=" mx-auto w-28 max-w-[200px] p-4"
 		/>
 	);
 };

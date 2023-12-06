@@ -1,6 +1,7 @@
 import { useSetAtom } from 'jotai';
 import {
 	backModalAtom,
+	detectDataAtom,
 	tutorModalAtom,
 	webCamModalAtom,
 } from '../../libs/atoms';
@@ -11,6 +12,7 @@ const GameMenu = () => {
 	const setBackModal = useSetAtom(backModalAtom);
 	const setTutorModal = useSetAtom(tutorModalAtom);
 	const setCamModal = useSetAtom(webCamModalAtom);
+	const setDetection = useSetAtom(detectDataAtom);
 
 	const handleGoBack = () => {
 		setBackModal(true);
@@ -18,6 +20,7 @@ const GameMenu = () => {
 
 	const handleDisplayCam = () => {
 		setCamModal(true);
+		setDetection(null);
 	};
 
 	const handleTutorial = () => {

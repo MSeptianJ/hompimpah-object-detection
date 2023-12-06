@@ -2,15 +2,16 @@ import { useAtom } from 'jotai';
 import { useCallback, useEffect } from 'react';
 import BackModal from '../../components/modalComponents/BackModal';
 import GameResultModal from '../../components/modalComponents/GameResultModal';
+import WebCamRealTime from '../../components/modalComponents/RealtimeElement/WebCamRealTime';
 import RoundResultModal from '../../components/modalComponents/RoundResultModal';
 import TutorialModal from '../../components/modalComponents/TutorialModal';
-import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
 import BackMenuBtn from '../../components/smallComponents/BackMenuBtn';
 import GameMenu from '../../components/smallComponents/GameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import NoUserPlacement from '../../components/smallComponents/noUserPlacement';
 import {
 	backModalAtom,
+	checkingModelAtom,
 	detectDataAtom,
 	gameEndModalAtom,
 	gamesAtom,
@@ -37,9 +38,10 @@ const Single = () => {
 	// Modals
 	const [backModal] = useAtom(backModalAtom);
 	const [tutorModal] = useAtom(tutorModalAtom);
-	const [camModal] = useAtom(webCamModalAtom);
+	const [camModal, setCamModal] = useAtom(webCamModalAtom);
 	const [roundEndModal, setRoundEndModal] = useAtom(roundEndModalAtom);
 	const [gameEndModal, setGameEndModal] = useAtom(gameEndModalAtom);
+	const [checkingModel] = useAtom(checkingModelAtom);
 
 	// Game State
 	const [plsAddGameState, setPlsAddGameState] = useAtom(plsAddGameStateAtom);
@@ -66,6 +68,9 @@ const Single = () => {
 			setGameData(await getAllGame());
 
 			setPlsAddGameState(false);
+			if (checkingModel) {
+				setCamModal(true);
+			}
 		}
 	}, [plsAddGameState, gameRound]); // eslint-disable-line
 
@@ -143,7 +148,7 @@ const Single = () => {
 			{roundEndModal && <RoundResultModal result={roundResult} />}
 			{backModal && <BackModal />}
 			{tutorModal && <TutorialModal />}
-			{camModal && <WebCamModal />}
+			{camModal && <WebCamRealTime />}
 		</div>
 	);
 };

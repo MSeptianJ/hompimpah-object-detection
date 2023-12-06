@@ -2,9 +2,11 @@ import { useAtom, useSetAtom } from 'jotai';
 import { RESET } from 'jotai/utils';
 import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import LOSE from '../../assets/img/lose-ilust.svg';
 import WIN from '../../assets/img/win-ilust.svg';
 import {
+	checkingModelAtom,
 	gameEndModalAtom,
 	gamePlayedStateAtom,
 	gamesAtom,
@@ -16,26 +18,28 @@ import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
 import { playLoseGameSound, playWinGameSound } from '../../scripts/sound';
 import BtnPrimary from '../smallComponents/BtnPrimary';
-import { Link } from 'react-router-dom';
 
 const GameResultModal = ({ result }) => {
 	// Game State
 	const setGameEndModalState = useSetAtom(gameEndModalAtom);
 	const setPlsAddGameState = useSetAtom(plsAddGameStateAtom);
 	const setGamePlayedState = useSetAtom(gamePlayedStateAtom);
+	const setCheckingModel = useSetAtom(checkingModelAtom);
 
 	// Something Inside
 	const [userUID, setUserUID] = useAtom(userUIDAtom);
 	const setGames = useSetAtom(gamesAtom);
 	const setRoundResult = useSetAtom(roundResultAtom);
 
-	const handlePlayAgain = async () => {
+	const resetGame = () => {
 		setGameEndModalState(false);
-
 		setRoundResult(null);
 		setGames(RESET);
 		setGamePlayedState(true);
+	};
 
+	const handlePlayAgain = async () => {
+		resetGame();
 		setPlsAddGameState(true);
 	};
 
@@ -43,17 +47,13 @@ const GameResultModal = ({ result }) => {
 		await delGameRound(userUID);
 		await AuthSignOut();
 
-		setGameEndModalState(false);
-
-		setRoundResult(null);
-		setGames(RESET);
+		resetGame();
 		setUserUID(RESET);
-		setGamePlayedState(true);
+		setCheckingModel(RESET);
 	};
 
 	const handleBackToMenu = async () => {
 		handleEndGame();
-
 		history.back();
 	};
 
