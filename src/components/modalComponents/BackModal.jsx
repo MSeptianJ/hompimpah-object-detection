@@ -2,6 +2,7 @@ import { useAtom, useSetAtom } from 'jotai';
 import { RESET } from 'jotai/utils';
 import {
 	backModalAtom,
+	checkingModelAtom,
 	gamesAtom,
 	roundResultAtom,
 	userUIDAtom,
@@ -16,6 +17,7 @@ const BackModal = () => {
 	const [userUID, setUserUID] = useAtom(userUIDAtom);
 	const setGames = useSetAtom(gamesAtom);
 	const setRoundResult = useSetAtom(roundResultAtom);
+	const setCheckingModel = useSetAtom(checkingModelAtom);
 
 	const handleCancel = () => {
 		setBackModal(false);
@@ -30,6 +32,7 @@ const BackModal = () => {
 		setRoundResult(null);
 		setGames(RESET);
 		setUserUID(RESET);
+		setCheckingModel(RESET);
 
 		history.back();
 	};

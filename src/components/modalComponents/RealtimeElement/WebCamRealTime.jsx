@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import LOADICON from '../../../assets/img/loading.svg';
 import {
+	checkingModelAtom,
 	detectDataAtom,
 	imgAccStateAtom,
 	webCamModalAtom,
@@ -23,6 +24,7 @@ const WebCamRealTime = () => {
 	// Atom State
 	const setImgAccState = useSetAtom(imgAccStateAtom);
 	const [detection, setDetection] = useAtom(detectDataAtom);
+	const [checkingModel, setCheckingModel] = useAtom(checkingModelAtom);
 
 	// Modal
 	const setCamModal = useSetAtom(webCamModalAtom);
@@ -127,9 +129,14 @@ const WebCamRealTime = () => {
 			setIsCamDetecting(false);
 			setIsCamReady(false);
 			setCamModal(false);
-			setImgAccState(true);
 
 			clearInterval(timerInterval);
+
+			if (!checkingModel) {
+				setImgAccState(true);
+			} else {
+				setCheckingModel(false);
+			}
 		}
 	}, [isCamDetecting]); // eslint-disable-line
 
@@ -145,7 +152,7 @@ const WebCamRealTime = () => {
 			<div className=" row-span-4 w-full px-5">
 				<div className="  mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg">
 					<div className="relative aspect-square h-full w-full">
-						{!isCamReady && (
+						{!isCamReady && !checkingModel && (
 							<div className=" absolute top-0 w-full bg-yellow-600 bg-opacity-50">
 								<p>Loading</p>
 								<img
@@ -156,9 +163,21 @@ const WebCamRealTime = () => {
 							</div>
 						)}
 
-						{isCamDetecting && (
+						{isCamDetecting && !checkingModel && (
 							<div className=" absolute top-0 w-full bg-red-600 bg-opacity-50">
 								<p>Show Your Hands</p>
+							</div>
+						)}
+
+						{checkingModel && (
+							<div className=" absolute top-0 h-full w-full bg-slate-600 bg-opacity-50 text-white">
+								<p className=" text-lg">Starting Detection Model</p>
+								<img
+									src={LOADICON}
+									alt="Loading Icon"
+									className=" m-auto w-32"
+								/>
+								<p className=" text-lg">{timer}</p>
 							</div>
 						)}
 
@@ -181,10 +200,16 @@ const WebCamRealTime = () => {
 			</div>
 
 			<div>
-				<p className=" text-center text-lg text-white">
-					Detected : {lastDetected(detection)}
-				</p>
-				<p className=" text-center text-lg text-white">{timer}</p>
+				{checkingModel ? (
+					''
+				) : (
+					<>
+						<p className=" text-center text-lg text-white">
+							Detected : {lastDetected(detection)}
+						</p>
+						<p className=" text-center text-lg text-white">{timer}</p>
+					</>
+				)}
 			</div>
 		</div>
 	);

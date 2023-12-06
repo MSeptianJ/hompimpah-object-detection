@@ -37,7 +37,7 @@ const Single = () => {
 	// Modals
 	const [backModal] = useAtom(backModalAtom);
 	const [tutorModal] = useAtom(tutorModalAtom);
-	const [camModal] = useAtom(webCamModalAtom);
+	const [camModal, setCamModal] = useAtom(webCamModalAtom);
 	const [roundEndModal, setRoundEndModal] = useAtom(roundEndModalAtom);
 	const [gameEndModal, setGameEndModal] = useAtom(gameEndModalAtom);
 
@@ -66,6 +66,7 @@ const Single = () => {
 			setGameData(await getAllGame());
 
 			setPlsAddGameState(false);
+			setCamModal(true);
 		}
 	}, [plsAddGameState, gameRound]); // eslint-disable-line
 
