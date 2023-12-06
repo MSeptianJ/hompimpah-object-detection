@@ -10,6 +10,7 @@ import {
 } from '../../../libs/atoms';
 import drawBoundingBox from '../../../scripts/drawBoundingBox';
 import wait from '../../../scripts/wait';
+import Choices from '../../featureComponents/Choices';
 import TitlePage from '../../smallComponents/TitlePage';
 
 const WebCamRealTime = () => {
@@ -149,7 +150,7 @@ const WebCamRealTime = () => {
 		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
 			<TitlePage titleText="Rock Paper Scissors" />
 
-			<div className=" row-span-4 w-full px-5">
+			<div className=" row-span-3 w-full px-5">
 				<div className="  mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg">
 					<div className="relative aspect-square h-full w-full">
 						{!isCamReady && !checkingModel && (
@@ -158,13 +159,13 @@ const WebCamRealTime = () => {
 								<img
 									src={LOADICON}
 									alt="Loading Icon"
-									className=" mx-auto w-32"
+									className=" mx-auto w-20"
 								/>
 							</div>
 						)}
 
 						{isCamDetecting && !checkingModel && (
-							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg text-white">
+							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg">
 								<p>Show Your Hands</p>
 								<p>{timer}</p>
 							</div>
@@ -200,14 +201,12 @@ const WebCamRealTime = () => {
 				</div>
 			</div>
 
-			<div className=" relative w-full">
+			<div className=" relative row-span-2 grid w-full justify-items-center text-white">
 				{checkingModel ? (
 					''
 				) : (
 					<>
-						<p className=" text-center text-lg text-white">
-							Detected : {lastDetected(detection)}
-						</p>
+						<Choices choice={lastDetected(detection)} isDetecting />
 					</>
 				)}
 			</div>

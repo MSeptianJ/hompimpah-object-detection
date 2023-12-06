@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { ArrowDownIcon, ArrowUpIcon } from '../../libs/icons';
 import { PaperIlust, RockIlust, ScissorIlust } from '../smallComponents/Ilusts';
 
-const Choices = ({ choice }) => {
+const Choices = ({ choice, isDetecting }) => {
 	const show = [
 		{
 			name: 'Rock',
@@ -44,11 +45,20 @@ const Choices = ({ choice }) => {
 		);
 	}
 
-	return <p className=" text-lg font-bold">Press Camera</p>;
+	return (
+		<>
+			{isDetecting && <ArrowUpIcon />}
+			<p className=" my-3 text-lg font-bold">
+				{isDetecting ? 'Show Your Hand' : 'Press Camera'}
+			</p>
+			{!isDetecting && <ArrowDownIcon />}
+		</>
+	);
 };
 
 Choices.propTypes = {
 	choice: PropTypes.string,
+	isDetecting: PropTypes.bool,
 };
 
 export default Choices;
