@@ -11,6 +11,7 @@ import TitlePage from '../../components/smallComponents/TitlePage';
 import NoUserPlacement from '../../components/smallComponents/noUserPlacement';
 import {
 	backModalAtom,
+	checkingModelAtom,
 	detectDataAtom,
 	gameEndModalAtom,
 	gamesAtom,
@@ -40,6 +41,7 @@ const Single = () => {
 	const [camModal, setCamModal] = useAtom(webCamModalAtom);
 	const [roundEndModal, setRoundEndModal] = useAtom(roundEndModalAtom);
 	const [gameEndModal, setGameEndModal] = useAtom(gameEndModalAtom);
+	const [checkingModel] = useAtom(checkingModelAtom);
 
 	// Game State
 	const [plsAddGameState, setPlsAddGameState] = useAtom(plsAddGameStateAtom);
@@ -66,7 +68,9 @@ const Single = () => {
 			setGameData(await getAllGame());
 
 			setPlsAddGameState(false);
-			setCamModal(true);
+			if (checkingModel) {
+				setCamModal(true);
+			}
 		}
 	}, [plsAddGameState, gameRound]); // eslint-disable-line
 

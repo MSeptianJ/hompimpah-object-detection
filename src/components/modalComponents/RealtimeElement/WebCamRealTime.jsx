@@ -153,19 +153,20 @@ const WebCamRealTime = () => {
 				<div className="  mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg">
 					<div className="relative aspect-square h-full w-full">
 						{!isCamReady && !checkingModel && (
-							<div className=" absolute top-0 w-full bg-yellow-600 bg-opacity-50">
+							<div className=" absolute top-0 w-full bg-yellow-600 bg-opacity-50 text-lg text-white">
 								<p>Loading</p>
 								<img
 									src={LOADICON}
 									alt="Loading Icon"
-									className=" mx-auto w-10"
+									className=" mx-auto w-32"
 								/>
 							</div>
 						)}
 
 						{isCamDetecting && !checkingModel && (
-							<div className=" absolute top-0 w-full bg-red-600 bg-opacity-50">
+							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg text-white">
 								<p>Show Your Hands</p>
+								<p>{timer}</p>
 							</div>
 						)}
 
@@ -199,7 +200,7 @@ const WebCamRealTime = () => {
 				</div>
 			</div>
 
-			<div>
+			<div className=" relative w-full">
 				{checkingModel ? (
 					''
 				) : (
@@ -207,7 +208,6 @@ const WebCamRealTime = () => {
 						<p className=" text-center text-lg text-white">
 							Detected : {lastDetected(detection)}
 						</p>
-						<p className=" text-center text-lg text-white">{timer}</p>
 					</>
 				)}
 			</div>
