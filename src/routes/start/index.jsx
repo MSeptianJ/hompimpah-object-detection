@@ -65,7 +65,7 @@ const Start = () => {
 									btnText="App Survey"
 									btnStyles={
 										gamePlayedState
-											? 'bg-slate-300 text-slate-700 cursor-pointer hover:bg-blue-500'
+											? 'bg-slate-300 text-slate-700 cursor-pointer hover:bg-opacity-80'
 											: 'bg-slate-600 text-slate-300 cursor-pointer hover:bg-slate-500'
 									}
 									btnDisabled={gamePlayedState ? false : true}

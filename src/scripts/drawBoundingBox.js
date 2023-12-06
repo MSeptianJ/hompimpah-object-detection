@@ -1,3 +1,13 @@
+const classColor = (pred) => {
+	if (pred === 'Rock') {
+		return '#FE2BF1';
+	} else if (pred === 'Paper') {
+		return '#00DFBA';
+	} else if (pred === 'Scissors') {
+		return '#0C7CEB';
+	}
+};
+
 const boxConverter = (predData) => {
 	let obj = {};
 	obj.x1 = predData.x - predData.width / 2;
@@ -13,7 +23,7 @@ const drawBoundingBox = (detection, canvasRef) => {
 		const canvasEl = canvasRef.current;
 		const ctx = canvasEl.getContext('2d');
 
-		const color = pred.color;
+		const color = classColor(pred.class);
 
 		const { x1, x2, y1, y2 } = boxConverter(pred.bbox);
 		const boxWidth = x2 - x1;
