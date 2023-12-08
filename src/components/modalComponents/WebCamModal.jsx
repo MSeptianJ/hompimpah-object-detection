@@ -151,8 +151,8 @@ const WebCamModal = () => {
 			<TitlePage titleText="Rock Paper Scissors" />
 
 			<div className=" row-span-3 w-full px-5">
-				<div className="  mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg">
-					<div className="relative aspect-square h-full w-full">
+				<div className=" mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg lg:w-3/5">
+					<div className="relative mx-auto aspect-square h-full w-full">
 						{!isCamReady && !checkingModel && (
 							<div className=" absolute top-0 w-full bg-yellow-600 bg-opacity-50 text-lg text-white">
 								<p>Loading</p>
@@ -165,7 +165,7 @@ const WebCamModal = () => {
 						)}
 
 						{isCamDetecting && !checkingModel && (
-							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg">
+							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg text-white">
 								<p>Show Your Hands</p>
 								<p>{timer}</p>
 							</div>
