@@ -12,9 +12,6 @@
 		"deploy-pro": "npm run build && firebase deploy --only hosting:pro"
 	},
 	"dependencies": {
-		"@tanstack/react-query": "^4.36.1",
-		"@tanstack/react-query-devtools": "^4.36.1",
-		"axios": "^1.5.1",
 		"firebase": "^9.23.0",
 		"jotai": "^2.4.3",
 		"react": "^18.2.0",
