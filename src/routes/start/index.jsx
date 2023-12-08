@@ -1,7 +1,7 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { Link } from 'react-router-dom';
 import LOGOILUST from '../../assets/img/logo-Ilust.svg';
-import BtnPrimary from '../../components/smallComponents/BtnPrimary';
+import BtnPrimary from '../../components/btnComponents/BtnPrimary';
 import {
 	gamePlayedStateAtom,
 	plsAddGameStateAtom,

@@ -8,9 +8,9 @@ import {
 	isCamActiveAtom,
 	screenShotAtom,
 	webCamModalAtom,
-} from '../../../libs/atoms';
-import FetchImgDetection from '../../../scripts/FetchImgDetection';
-import TitlePage from '../../smallComponents/TitlePage';
+} from '../../libs/atoms';
+import FetchImgDetection from '../FetchImgDetection';
+import TitlePage from '../../components/smallComponents/TitlePage';
 import WebCamButton from './WebCamButton';
 import WebCamDetect from './WebCamDetect';
 

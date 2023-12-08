@@ -1,19 +1,19 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
-import LOADICON from '../../../assets/img/loading.svg';
+import LOADICON from '../../assets/img/loading.svg';
 import {
 	checkingModelAtom,
 	detectDataAtom,
 	imgAccStateAtom,
 	webCamModalAtom,
-} from '../../../libs/atoms';
-import drawBoundingBox from '../../../scripts/drawBoundingBox';
-import wait from '../../../scripts/wait';
-import Choices from '../../featureComponents/Choices';
-import TitlePage from '../../smallComponents/TitlePage';
+} from '../../libs/atoms';
+import drawBoundingBox from '../../scripts/drawBoundingBox';
+import wait from '../../scripts/wait';
+import Choices from '../featureComponents/Choices';
+import TitlePage from '../smallComponents/TitlePage';
 
-const WebCamRealTime = () => {
+const WebCamModal = () => {
 	// Local State
 	const vites = import.meta.env;
 	const TIME = 5;
@@ -214,6 +214,6 @@ const WebCamRealTime = () => {
 	);
 };
 
-WebCamRealTime.propTypes = {};
+WebCamModal.propTypes = {};
 
-export default WebCamRealTime;
+export default WebCamModal;

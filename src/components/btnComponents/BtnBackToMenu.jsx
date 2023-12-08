@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { GoBackIcon } from '../../libs/icons';
 import BtnPrimary from './BtnPrimary';
 
-const BtnMenu = () => {
+const BtnBackToMenu = () => {
 	return (
 		<div className=" mx-auto w-1/2 ">
 			<Link to={'/'} className="text-gray-900">
@@ -15,4 +15,4 @@ const BtnMenu = () => {
 	);
 };
 
-export default BtnMenu;
+export default BtnBackToMenu;

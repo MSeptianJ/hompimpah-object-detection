@@ -1,14 +1,14 @@
 import { useAtom } from 'jotai';
 import { useCallback, useEffect } from 'react';
+import BtnGameMenu from '../../components/btnComponents/BtnGameMenu';
 import BackModal from '../../components/modalComponents/BackModal';
 import GameResultModal from '../../components/modalComponents/GameResultModal';
-import WebCamRealTime from '../../components/modalComponents/RealtimeElement/WebCamRealTime';
 import RoundResultModal from '../../components/modalComponents/RoundResultModal';
 import TutorialModal from '../../components/modalComponents/TutorialModal';
-import BackMenuBtn from '../../components/smallComponents/BackMenuBtn';
-import GameMenu from '../../components/smallComponents/GameMenu';
+import WebCamModal from '../../components/modalComponents/WebCamModal';
+import NoUserBackBtn from '../../components/noUserComponents/NoUserBackBtn';
+import NoUserPlacement from '../../components/noUserComponents/NoUserPlacement';
 import TitlePage from '../../components/smallComponents/TitlePage';
-import NoUserPlacement from '../../components/smallComponents/noUserPlacement';
 import {
 	backModalAtom,
 	checkingModelAtom,
@@ -142,13 +142,13 @@ const Single = () => {
 				</div>
 			</div>
 
-			{userUID ? <GameMenu /> : <BackMenuBtn />}
+			{userUID ? <BtnGameMenu /> : <NoUserBackBtn />}
 
 			{gameEndModal && <GameResultModal result={roundResult} />}
 			{roundEndModal && <RoundResultModal result={roundResult} />}
 			{backModal && <BackModal />}
 			{tutorModal && <TutorialModal />}
-			{camModal && <WebCamRealTime />}
+			{camModal && <WebCamModal />}
 		</div>
 	);
 };

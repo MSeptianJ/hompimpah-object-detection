@@ -5,11 +5,11 @@ import {
 	webCamModalAtom,
 } from '../../libs/atoms';
 import BackModal from '../../components/modalComponents/BackModal';
-import GameMenu from '../../components/smallComponents/GameMenu';
+import BtnGameMenu from '../../components/btnComponents/BtnGameMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import MultiContent from './components/MultiContent';
 import TutorialModal from '../../components/modalComponents/TutorialModal';
-import WebCamModal from '../../components/modalComponents/WebCamElement/WebCamModal';
+import WebCamModal from '../WebCamElement/WebCamModal';
 
 const Multi = () => {
 	const [backModal] = useAtom(backModalAtom);
@@ -36,7 +36,7 @@ const Multi = () => {
 				</div>
 			</div>
 
-			<GameMenu />
+			<BtnGameMenu />
 
 			{backModal && <BackModal />}
 			{tutorModal && <TutorialModal />}

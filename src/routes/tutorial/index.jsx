@@ -1,4 +1,4 @@
-import BtnMenu from '../../components/smallComponents/BtnMenu';
+import BtnBackToMenu from '../../components/btnComponents/BtnBackToMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import TutorialContent from './components/TutorialContent';
 
@@ -13,7 +13,7 @@ const Tutorial = () => {
 				</div>
 			</div>
 
-			<BtnMenu />
+			<BtnBackToMenu />
 		</div>
 	);
 };

@@ -4,16 +4,16 @@ import {
 	detectDataAtom,
 	isCamActiveAtom,
 	screenShotAtom,
-} from '../../../libs/atoms';
+} from '../../libs/atoms';
 import {
 	AcceptIcon,
 	CameraIcon,
 	CameraSwitchIcon,
 	GoBackIcon,
 	RedoIcon,
-} from '../../../libs/icons';
-import { playCameraSound } from '../../../scripts/sound';
-import BtnPrimary from '../../smallComponents/BtnPrimary';
+} from '../../libs/icons';
+import { playCameraSound } from '../../scripts/sound';
+import BtnPrimary from '../../components/btnComponents/BtnPrimary';
 
 const WebCamButton = ({
 	backBtn,

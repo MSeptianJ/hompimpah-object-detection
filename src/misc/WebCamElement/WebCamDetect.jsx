@@ -7,8 +7,8 @@ import {
 	detectDataAtom,
 	isCamActiveAtom,
 	screenShotAtom,
-} from '../../../libs/atoms';
-import CanvasRect from '../../featureComponents/CanvasRect';
+} from '../../libs/atoms';
+import CanvasRect from '../CanvasRect';
 
 const WebCamDetect = ({ camRef, isLoading, isError, isSuccess }) => {
 	const videoConstraints = {

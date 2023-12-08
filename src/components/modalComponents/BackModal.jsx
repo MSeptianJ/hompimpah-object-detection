@@ -9,7 +9,7 @@ import {
 } from '../../libs/atoms';
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
-import BtnPrimary from '../smallComponents/BtnPrimary';
+import BtnPrimary from '../btnComponents/BtnPrimary';
 import TitlePage from '../smallComponents/TitlePage';
 
 const BackModal = () => {

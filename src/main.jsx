@@ -9,9 +9,9 @@ import {
 	createRoutesFromElements,
 } from 'react-router-dom';
 import './assets/style/index.css';
-import ErrorPage from './routes/ErrorPage';
 import Root from './routes/Root';
 import About from './routes/about';
+import ErrorPage from './routes/error';
 import Single from './routes/single';
 import Start from './routes/start';
 import Survey from './routes/survey';

@@ -17,7 +17,7 @@ import {
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
 import { playLoseGameSound, playWinGameSound } from '../../scripts/sound';
-import BtnPrimary from '../smallComponents/BtnPrimary';
+import BtnPrimary from '../btnComponents/BtnPrimary';
 
 const GameResultModal = ({ result }) => {
 	// Game State

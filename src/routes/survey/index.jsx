@@ -1,4 +1,4 @@
-import BtnMenu from '../../components/smallComponents/BtnMenu';
+import BtnBackToMenu from '../../components/btnComponents/BtnBackToMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import SurveyContent from './components/SurveyContent';
 
@@ -11,7 +11,7 @@ const Survey = () => {
 				<SurveyContent />
 			</div>
 
-			<BtnMenu />
+			<BtnBackToMenu />
 		</div>
 	);
 };

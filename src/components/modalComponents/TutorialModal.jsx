@@ -2,7 +2,7 @@ import { useSetAtom } from 'jotai';
 import Ilust from '../../assets/img/KGB.svg';
 import { tutorModalAtom } from '../../libs/atoms';
 import { GoBackIcon } from '../../libs/icons';
-import BtnPrimary from '../smallComponents/BtnPrimary';
+import BtnPrimary from '../btnComponents/BtnPrimary';
 import TitlePage from '../smallComponents/TitlePage';
 
 const TutorialModal = () => {
