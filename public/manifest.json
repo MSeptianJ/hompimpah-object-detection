@@ -1,6 +1,8 @@
 {
+	"id": "/",
 	"name": "Hompimpah Object Detection",
 	"short_name": "Hompimpah",
+	"description": "This is a web game to play Hompimpah with the help of Object Detection",
 	"theme_color": "#fff",
 	"background_color": "#fff",
 	"display": "fullscreen",
