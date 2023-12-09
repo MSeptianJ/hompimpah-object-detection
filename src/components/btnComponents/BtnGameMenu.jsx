@@ -8,7 +8,7 @@ import {
 import { CameraIcon, GoBackIcon, TutorialIcon } from '../../libs/icons';
 import BtnPrimary from './BtnPrimary';
 
-const GameMenu = () => {
+const BtnGameMenu = () => {
 	const setBackModal = useSetAtom(backModalAtom);
 	const setTutorModal = useSetAtom(tutorModalAtom);
 	const setCamModal = useSetAtom(webCamModalAtom);
@@ -48,6 +48,6 @@ const GameMenu = () => {
 	);
 };
 
-GameMenu.propTypes = {};
+BtnGameMenu.propTypes = {};
 
-export default GameMenu;
+export default BtnGameMenu;

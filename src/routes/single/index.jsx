@@ -1,14 +1,14 @@
 import { useAtom } from 'jotai';
 import { useCallback, useEffect } from 'react';
+import BtnGameMenu from '../../components/btnComponents/BtnGameMenu';
 import BackModal from '../../components/modalComponents/BackModal';
 import GameResultModal from '../../components/modalComponents/GameResultModal';
-import WebCamRealTime from '../../components/modalComponents/RealtimeElement/WebCamRealTime';
 import RoundResultModal from '../../components/modalComponents/RoundResultModal';
 import TutorialModal from '../../components/modalComponents/TutorialModal';
-import BackMenuBtn from '../../components/smallComponents/BackMenuBtn';
-import GameMenu from '../../components/smallComponents/GameMenu';
+import WebCamModal from '../../components/modalComponents/WebCamModal';
+import NoUserBackBtn from '../../components/noUserComponents/NoUserBackBtn';
+import NoUserPlacement from '../../components/noUserComponents/NoUserPlacement';
 import TitlePage from '../../components/smallComponents/TitlePage';
-import NoUserPlacement from '../../components/smallComponents/noUserPlacement';
 import {
 	backModalAtom,
 	checkingModelAtom,
@@ -127,8 +127,8 @@ const Single = () => {
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
 			<TitlePage titleText="Single Player" />
 
-			<div className=" row-span-4 h-full w-full">
-				<div className=" mx-auto grid h-full w-2/3 grid-rows-2 items-center gap-3 overflow-y-auto rounded-sm bg-slate-300 p-6 shadow-lg">
+			<div className=" row-span-4 flex h-full w-full items-center justify-center">
+				<div className=" mx-auto grid h-full w-2/3 grid-rows-2 items-center gap-3 overflow-y-auto rounded-sm bg-slate-300 p-3 shadow-lg lg:h-auto lg:w-full lg:grid-cols-2 lg:grid-rows-1">
 					{userUID ? (
 						<SingleContent
 							P1Choise={P1Choise}
@@ -142,13 +142,13 @@ const Single = () => {
 				</div>
 			</div>
 
-			{userUID ? <GameMenu /> : <BackMenuBtn />}
+			{userUID ? <BtnGameMenu /> : <NoUserBackBtn />}
 
 			{gameEndModal && <GameResultModal result={roundResult} />}
 			{roundEndModal && <RoundResultModal result={roundResult} />}
 			{backModal && <BackModal />}
 			{tutorModal && <TutorialModal />}
-			{camModal && <WebCamRealTime />}
+			{camModal && <WebCamModal />}
 		</div>
 	);
 };

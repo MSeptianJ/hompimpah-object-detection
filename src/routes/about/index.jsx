@@ -1,4 +1,4 @@
-import BtnMenu from '../../components/smallComponents/BtnMenu';
+import BtnBackToMenu from '../../components/btnComponents/BtnBackToMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
 import AboutContent from './components/AboutContent';
 
@@ -13,7 +13,7 @@ const About = () => {
 				</div>
 			</div>
 
-			<BtnMenu />
+			<BtnBackToMenu />
 		</div>
 	);
 };

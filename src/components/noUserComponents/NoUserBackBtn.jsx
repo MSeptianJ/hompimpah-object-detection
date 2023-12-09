@@ -1,8 +1,8 @@
 import { useSetAtom } from 'jotai';
 import { backModalAtom } from '../../libs/atoms';
-import BtnPrimary from './BtnPrimary';
+import BtnPrimary from '../btnComponents/BtnPrimary';
 
-const BackMenuBtn = () => {
+const NoUserBackBtn = () => {
 	const setBackModal = useSetAtom(backModalAtom);
 
 	const handleGoBack = () => {
@@ -20,4 +20,4 @@ const BackMenuBtn = () => {
 	);
 };
 
-export default BackMenuBtn;
+export default NoUserBackBtn;

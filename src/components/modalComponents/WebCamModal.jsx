@@ -1,19 +1,19 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
-import LOADICON from '../../../assets/img/loading.svg';
+import LOADICON from '../../assets/img/loading.svg';
 import {
 	checkingModelAtom,
 	detectDataAtom,
 	imgAccStateAtom,
 	webCamModalAtom,
-} from '../../../libs/atoms';
-import drawBoundingBox from '../../../scripts/drawBoundingBox';
-import wait from '../../../scripts/wait';
-import Choices from '../../featureComponents/Choices';
-import TitlePage from '../../smallComponents/TitlePage';
+} from '../../libs/atoms';
+import drawBoundingBox from '../../scripts/drawBoundingBox';
+import wait from '../../scripts/wait';
+import Choices from '../featureComponents/Choices';
+import TitlePage from '../smallComponents/TitlePage';
 
-const WebCamRealTime = () => {
+const WebCamModal = () => {
 	// Local State
 	const vites = import.meta.env;
 	const TIME = 5;
@@ -151,8 +151,8 @@ const WebCamRealTime = () => {
 			<TitlePage titleText="Rock Paper Scissors" />
 
 			<div className=" row-span-3 w-full px-5">
-				<div className="  mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg">
-					<div className="relative aspect-square h-full w-full">
+				<div className=" mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg lg:w-3/5">
+					<div className="relative mx-auto aspect-square h-full w-full">
 						{!isCamReady && !checkingModel && (
 							<div className=" absolute top-0 w-full bg-yellow-600 bg-opacity-50 text-lg text-white">
 								<p>Loading</p>
@@ -165,7 +165,7 @@ const WebCamRealTime = () => {
 						)}
 
 						{isCamDetecting && !checkingModel && (
-							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg">
+							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg text-white">
 								<p>Show Your Hands</p>
 								<p>{timer}</p>
 							</div>
@@ -214,6 +214,6 @@ const WebCamRealTime = () => {
 	);
 };
 
-WebCamRealTime.propTypes = {};
+WebCamModal.propTypes = {};
 
-export default WebCamRealTime;
+export default WebCamModal;

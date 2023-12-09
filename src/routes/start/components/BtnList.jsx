@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import BtnPrimary from '../../../components/smallComponents/BtnPrimary';
+import { Link } from 'react-router-dom';
+import BtnPrimary from '../../../components/btnComponents/BtnPrimary';
 
 const BtnList = ({ url, text, func }) => {
 	return (

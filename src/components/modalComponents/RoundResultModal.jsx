@@ -9,7 +9,7 @@ const RoundResultModal = ({ result }) => {
 
 	const resultDisplay = useCallback(async () => {
 		if (roundEndModal) {
-			await wait(2000);
+			await wait(1000);
 
 			setRoundEndModal(false);
 		}
