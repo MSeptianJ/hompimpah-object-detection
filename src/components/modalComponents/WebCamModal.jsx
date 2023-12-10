@@ -12,6 +12,7 @@ import drawBoundingBox from '../../scripts/drawBoundingBox';
 import wait from '../../scripts/wait';
 import Choices from '../featureComponents/Choices';
 import TitlePage from '../smallComponents/TitlePage';
+import { playCameraSound } from '../../scripts/sound';
 
 const WebCamModal = () => {
 	// Local State
@@ -114,7 +115,7 @@ const WebCamModal = () => {
 				await wait(TIMEMS);
 
 				clearInterval(detectingInterval);
-				model.teardown();
+				// model.teardown();
 			});
 		}
 	}, [isCamReady]); // eslint-disable-line
@@ -134,6 +135,7 @@ const WebCamModal = () => {
 			clearInterval(timerInterval);
 
 			if (!checkingModel) {
+				playCameraSound();
 				setImgAccState(true);
 			} else {
 				setCheckingModel(false);
@@ -154,32 +156,30 @@ const WebCamModal = () => {
 				<div className=" mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg lg:w-3/5">
 					<div className="relative mx-auto aspect-square h-full w-full">
 						{!isCamReady && !checkingModel && (
-							<div className=" absolute top-0 w-full bg-yellow-600 bg-opacity-50 text-lg text-white">
-								<p>Loading</p>
+							<div className=" absolute top-0 grid aspect-square h-full w-full justify-items-center bg-yellow-600 bg-opacity-50 text-white">
+								<p className=" text-lg">Loading</p>
 								<img
 									src={LOADICON}
 									alt="Loading Icon"
-									className=" mx-auto w-20"
+									className=" m-auto w-32"
 								/>
 							</div>
 						)}
 
 						{isCamDetecting && !checkingModel && (
 							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg text-white">
-								<p>Show Your Hands</p>
 								<p>{timer}</p>
 							</div>
 						)}
 
 						{checkingModel && (
-							<div className=" absolute top-0 h-full w-full bg-slate-600 bg-opacity-50 text-white">
-								<p className=" text-lg">Starting Detection Model</p>
+							<div className=" absolute top-0 grid aspect-square h-full w-full justify-items-center bg-slate-600 bg-opacity-50 text-white">
+								<p className=" text-lg">Preparation</p>
 								<img
 									src={LOADICON}
 									alt="Loading Icon"
 									className=" m-auto w-32"
 								/>
-								<p className=" text-lg">{timer}</p>
 							</div>
 						)}
 

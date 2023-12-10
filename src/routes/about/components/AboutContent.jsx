@@ -9,17 +9,27 @@ const AboutContent = () => {
 				</p>
 				<p className=" px-3 text-left">
 					Proses Hompimpah adalah penentuan siapa dulu yang bermain atau dapat
-					disebut juga dengan pengundian pada awal permainan. Oleh karena itu,
-					game Hompimpah adalah kumpulan permainan kecil seperti Kertas Gunting
-					Batu, Suten, atau <i>Hompimpah</i>. Untuk sekarang, aplikasi ini hanya
-					menerapkan permainan Kertas Gunting Batu saja.
+					disebut juga dengan pengundian pada awal permainan tradisional. Oleh
+					karena itu, game Hompimpah adalah kumpulan permainan kecil seperti
+					Kertas Gunting Batu, Suten, atau <i>Hompimpah</i>. Untuk sekarang,
+					aplikasi ini hanya menerapkan permainan Kertas Gunting Batu saja.
 				</p>
 			</section>
 
 			<section className=" w-full text-sm">
 				<h4 className=" mb-3 w-full text-left text-xl font-bold">Assets</h4>
 				<p className=" mb-1 px-3 text-left">
-					Sound Effects from{' '}
+					Object Detection :{' '}
+					<a
+						href="https://universe.roboflow.com/hompimpahgame/rockpaperscissors-t0zfu"
+						className=" font-bold text-black"
+						target="blank"
+					>
+						Roboflow
+					</a>
+				</p>
+				<p className=" mb-1 px-3 text-left">
+					Sound Effects :{' '}
 					<a
 						href="https://www.zapsplat.com"
 						className=" font-bold text-black"
@@ -29,7 +39,7 @@ const AboutContent = () => {
 					</a>
 				</p>
 				<p className=" mb-1 px-3 text-left">
-					Rock Paper Ilustration from{' '}
+					Rock Paper Ilustration :{' '}
 					<a
 						href="https://www.vecteezy.com/vector-art/690792-rock-paper-scissors-hand-icons"
 						className=" font-bold text-black"
@@ -39,7 +49,7 @@ const AboutContent = () => {
 					</a>
 				</p>
 				<p className=" mb-1 px-3 text-left">
-					Win and Lose Ilustration from{' '}
+					Win and Lose Ilustration :{' '}
 					<a
 						href="https://www.freepik.com/free-vector/anxiety-concept-illustration_20908543.htm#query=lose&position=2&from_view=search&track=sph"
 						className=" font-bold text-black"
@@ -55,7 +65,14 @@ const AboutContent = () => {
 					Development
 				</h4>
 				<p className=" mb-3 px-3 text-left">
-					Pengembangan permainan ini dilakukan oleh @mseptianj
+					Pengembangan permainan ini dilakukan oleh{' '}
+					<a
+						href="https://www.instagram.com/jaelani.dev/"
+						className=" font-bold text-black"
+						target="blank"
+					>
+						@jaelani.dev
+					</a>
 				</p>
 			</section>
 		</>
