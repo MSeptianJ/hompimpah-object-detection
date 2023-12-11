@@ -78,10 +78,17 @@ const Single = () => {
 		if (imgAccState) {
 			await addPlayerMove(gameRound, detection, userUID);
 			setGameData(await getAllGame());
-			setDetection(null);
 
 			setImgAccState(false);
-			setPlyMovedState(true);
+
+			if (detection) {
+				setDetection(null);
+
+				setPlyMovedState(true);
+			} else if (!detection) {
+				setRoundResult('Nothing Detected');
+				setRoundEndModal(true);
+			}
 		}
 	}, [imgAccState]); // eslint-disable-line
 

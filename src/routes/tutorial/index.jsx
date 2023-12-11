@@ -1,6 +1,6 @@
 import BtnBackToMenu from '../../components/btnComponents/BtnBackToMenu';
 import TitlePage from '../../components/smallComponents/TitlePage';
-import TutorialContent from './components/TutorialContent';
+import TutorialText from '../../components/smallComponents/TutorialText';
 
 const Tutorial = () => {
 	return (
@@ -9,7 +9,7 @@ const Tutorial = () => {
 
 			<div className=" row-span-4 h-full w-full ">
 				<div className=" mx-auto flex h-full w-3/4 flex-col gap-4 overflow-y-auto rounded-sm bg-slate-300 p-6 shadow-lg">
-					<TutorialContent />
+					<TutorialText />
 				</div>
 			</div>
 
