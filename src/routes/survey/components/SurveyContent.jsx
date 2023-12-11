@@ -1,7 +1,9 @@
+import ILUST from '../../../assets/img/thank-you.svg';
+
 const SurveyContent = () => {
 	return (
 		<>
-			<section className="row-span-4 w-full items-start text-left font-semibold">
+			<section className=" row-span-3 w-full items-start text-left text-sm font-semibold">
 				<p className=" mb-2">
 					Terima kasih sudah memainkan aplikasi ini. Jika boleh, saya meminta
 					sedikit waktu anda untuk mengisi survey dengan menekan link dibawah.
@@ -12,6 +14,14 @@ const SurveyContent = () => {
 					digunakan untuk pengembangan aplikasi kedepannya.
 				</p>
 			</section>
+
+			<div className=" row-span-2 h-full w-full">
+				<img
+					src={ILUST}
+					alt="Thank you Ilustration"
+					className=" h-full w-full"
+				/>
+			</div>
 
 			<div className=" w-full">
 				<a
