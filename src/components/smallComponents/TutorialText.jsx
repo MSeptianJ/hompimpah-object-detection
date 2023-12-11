@@ -3,10 +3,6 @@ import ILUST from '../../assets/img/KGB.svg';
 const TutorialText = () => {
 	return (
 		<>
-			<h5 className=" w-full rounded-sm bg-blue-400 p-2 text-sm font-bold">
-				Diharapkan membaca Tutorial, sebelum bermain.
-			</h5>
-
 			<section className=" w-full text-sm">
 				<h4 className=" mb-3 w-full text-left text-xl font-bold">
 					Description
@@ -63,27 +59,23 @@ const TutorialText = () => {
 					<li className=" mb-2">
 						Jika anda menampilkan kedua tangan,{' '}
 						<b>sistem dapat mendeteksi kedua tangan tersebut</b>, tetapi yang
-						akan dipilih adalah hasil deteksi dengan nilai keakuratan yang
-						paling tinggi.
+						akan dipilih adalah hasil deteksi dengan nilai confidence(nilai
+						persentase) yang paling tinggi.
 					</li>
 					<li className=" mb-2">
-						Kemungkinan sistem <b>tidak mendeteksi apapun</b>, selama 5 detik
-						proses pendeteksi dimulai. Jika hal ini terjadi,{' '}
-						<b>pilihan anda akan dipilih secara acak</b>. Disarankan, anda
-						berpindah ke tempat yang terang dan memastikan bahwa tampilan web
-						cam sudah jelas dan terang.
+						<b>Jika sistem tidak mendeteksi apapun</b> selama proses deteksi
+						berlangsung. Pilihan anda menjadi kosong, tetapi tidak akan
+						mengakibatkan anda kalah pada ronde tersebut.
 					</li>
 					<li className=" mb-2">
-						Jika pada{' '}
 						<b>
-							proses pendeteksian terjadi <i>lag</i> atau membuat device anda
-							melambat
+							Jika pada proses pendeteksian terjadi <i>lag</i> atau membuat
+							device anda melambat
 						</b>
-						. Hapus aplikasi lain yang berjalan. Pastikan tidak ada aplikasi
-						yang berjalan, dan hanya web app ini yang anda mainkan. Saya
-						sarankan untuk menggunakan device dengan <b>minimal RAM 4GB</b>.
-						Jika hal ini terjadi, saya minta anda untuk mengisi kolom kritik
-						pada link survey dengan spesifikasi device anda.
+						. Pastikan tidak ada aplikasi yang berjalan, dan hanya web app ini
+						yang anda mainkan. Disarankan untuk menggunakan device dengan RAM
+						dan Storage yang besar. Jika hal ini terjadi, tolong untuk mengisi
+						kolom kritik pada link survey dengan spesifikasi device anda.
 					</li>
 				</ul>
 			</section>

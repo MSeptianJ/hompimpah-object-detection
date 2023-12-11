@@ -4,15 +4,16 @@ const AboutContent = () => {
 			<section className=" w-full text-sm">
 				<h4 className=" mb-3 w-full text-left text-xl font-bold">The Goal</h4>
 				<p className=" mb-3 px-3 text-left">
-					Melestarikan permainan-permainan kecil dengan menerapkan teknologi
-					Object detection pada proses Hompimpah.
+					Melestarikan permainan-permainan tradisional dengan menerapkan
+					teknologi Object detection pada proses Hompimpah.
 				</p>
 				<p className=" px-3 text-left">
 					Proses Hompimpah adalah penentuan siapa dulu yang bermain atau dapat
 					disebut juga dengan pengundian pada awal permainan tradisional. Oleh
-					karena itu, game Hompimpah adalah kumpulan permainan kecil seperti
-					Kertas Gunting Batu, Suten, atau <i>Hompimpah</i>. Untuk sekarang,
-					aplikasi ini hanya menerapkan permainan Kertas Gunting Batu saja.
+					karena itu, game Hompimpah adalah kumpulan permainan kecil seperti{' '}
+					<i>Kertas Gunting Batu</i>, <i>Suten</i>, atau <i>Hompimpah</i>. Untuk
+					sekarang, aplikasi ini hanya menerapkan permainan{' '}
+					<i>Kertas Gunting Batu saja</i>.
 				</p>
 			</section>
 
@@ -39,7 +40,7 @@ const AboutContent = () => {
 					</a>
 				</p>
 				<p className=" mb-1 px-3 text-left">
-					Rock Paper Ilustration :{' '}
+					Rock Paper Scissors Ilustration :{' '}
 					<a
 						href="https://www.vecteezy.com/vector-art/690792-rock-paper-scissors-hand-icons"
 						className=" font-bold text-black"
