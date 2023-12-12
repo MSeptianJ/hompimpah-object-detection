@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import { AiFillCheckSquare } from 'react-icons/ai';
 import { BiSolidBookAlt } from 'react-icons/bi';
-import { FaArrowDown, FaArrowUp, FaRedoAlt } from 'react-icons/fa';
+import {
+	FaAngleRight,
+	FaArrowDown,
+	FaArrowUp,
+	FaRedoAlt,
+} from 'react-icons/fa';
 import { GoStar, GoStarFill } from 'react-icons/go';
 import { PiCameraFill, PiCameraRotateFill } from 'react-icons/pi';
 import { TiArrowBack } from 'react-icons/ti';
@@ -74,4 +79,11 @@ export const CameraSwitchIcon = ({ cls }) => {
 };
 CameraSwitchIcon.propTypes = {
 	cls: PropTypes.string,
+};
+
+export const AngleRightIcon = ({ className }) => {
+	return <FaAngleRight className={className} />;
+};
+AngleRightIcon.propTypes = {
+	className: PropTypes.string,
 };

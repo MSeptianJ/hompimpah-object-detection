@@ -25,11 +25,12 @@ const BtnPrimary = ({
 	return (
 		<button
 			disabled={btnDisabled}
-			className={` w-full rounded-sm p-4 text-center text-sm font-bold uppercase shadow-lg transition-all ${btnStyles}`}
+			className={` block cursor-pointer font-bold transition-all ${btnStyles}`}
 			onClick={handleBtnClick}
 			title={btnTitle}
 		>
-			{btnText || btnIcon || 'Click'}
+			{btnIcon}
+			{btnText || ''}
 		</button>
 	);
 };
