@@ -126,7 +126,7 @@ const WebCamModal = () => {
 				await wait(TIMEMS);
 
 				clearInterval(detectingInterval);
-				// model.teardown();
+				model.teardown();
 			});
 		}
 	}, [isCamReady]); // eslint-disable-line

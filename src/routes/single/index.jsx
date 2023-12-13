@@ -19,6 +19,7 @@ import {
 	plsAddGameStateAtom,
 	plyMovedStateAtom,
 	roundEndModalAtom,
+	roundNumberAtom,
 	roundResultAtom,
 	sysMovedStateAtom,
 	tutorModalAtom,
@@ -48,6 +49,7 @@ const Single = () => {
 	const [imgAccState, setImgAccState] = useAtom(imgAccStateAtom);
 	const [plyMovedState, setPlyMovedState] = useAtom(plyMovedStateAtom);
 	const [sysMovedState, setSysMovedState] = useAtom(sysMovedStateAtom);
+	const [roundNumber, setRoundNumber] = useAtom(roundNumberAtom);
 
 	// Something inside
 	const [userUID] = useAtom(userUIDAtom);
@@ -108,6 +110,7 @@ const Single = () => {
 			setGameData(await getAllGame());
 			setRoundResult(result);
 
+			setRoundNumber(roundNumber + 1);
 			setSysMovedState(false);
 
 			setRoundEndModal(true);
@@ -132,7 +135,7 @@ const Single = () => {
 
 	return (
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
-			<TitlePage titleText="Round" accentText="1" />
+			<TitlePage titleText="Round" accentText={String(roundNumber)} />
 
 			<div
 				className={`${

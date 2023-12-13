@@ -4,6 +4,7 @@ import {
 	backModalAtom,
 	checkingModelAtom,
 	gamesAtom,
+	roundNumberAtom,
 	roundResultAtom,
 	userUIDAtom,
 } from '../../libs/atoms';
@@ -14,11 +15,15 @@ import TitlePage from '../smallComponents/TitlePage';
 import Boxes from '../smallComponents/Boxes';
 
 const BackModal = () => {
+	// Modal
 	const setBackModal = useSetAtom(backModalAtom);
-	const [userUID, setUserUID] = useAtom(userUIDAtom);
+
+	// State
+	const setCheckingModel = useSetAtom(checkingModelAtom);
 	const setGames = useSetAtom(gamesAtom);
 	const setRoundResult = useSetAtom(roundResultAtom);
-	const setCheckingModel = useSetAtom(checkingModelAtom);
+	const setRoundNumber = useSetAtom(roundNumberAtom);
+	const [userUID, setUserUID] = useAtom(userUIDAtom);
 
 	const handleCancel = () => {
 		setBackModal(false);
@@ -32,6 +37,7 @@ const BackModal = () => {
 
 		setRoundResult(null);
 		setGames(RESET);
+		setRoundNumber(RESET);
 		setUserUID(RESET);
 		setCheckingModel(RESET);
 

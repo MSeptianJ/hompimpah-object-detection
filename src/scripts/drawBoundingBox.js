@@ -28,8 +28,9 @@ const drawBoundingBox = (detection, canvasRef) => {
 		const { x1, x2, y1, y2 } = boxConverter(pred.bbox);
 		const boxWidth = x2 - x1;
 		const boxHeight = y2 - y1;
+		const fontSize = 24;
 
-		ctx.font = '16px sans-serif';
+		ctx.font = `${fontSize}px Inter Var`;
 
 		// bounding box
 		ctx.lineWidth = 2;
@@ -38,7 +39,7 @@ const drawBoundingBox = (detection, canvasRef) => {
 
 		// Label bg
 		ctx.fillStyle = color;
-		ctx.fillRect(x1 - 1, y1 - 16, boxWidth + 2, 16);
+		ctx.fillRect(x1 - 1, y1 - fontSize, boxWidth + 3, fontSize);
 
 		// Label
 		ctx.fillStyle = 'black';

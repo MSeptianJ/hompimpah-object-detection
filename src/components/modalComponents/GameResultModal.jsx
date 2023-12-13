@@ -11,6 +11,7 @@ import {
 	gamePlayedStateAtom,
 	gamesAtom,
 	plsAddGameStateAtom,
+	roundNumberAtom,
 	roundResultAtom,
 	userUIDAtom,
 } from '../../libs/atoms';
@@ -26,6 +27,7 @@ const GameResultModal = ({ result }) => {
 	const setPlsAddGameState = useSetAtom(plsAddGameStateAtom);
 	const setGamePlayedState = useSetAtom(gamePlayedStateAtom);
 	const setCheckingModel = useSetAtom(checkingModelAtom);
+	const setRoundNumber = useSetAtom(roundNumberAtom);
 
 	// Something Inside
 	const [userUID, setUserUID] = useAtom(userUIDAtom);
@@ -36,6 +38,7 @@ const GameResultModal = ({ result }) => {
 		setGameEndModalState(false);
 		setRoundResult(null);
 		setGames(RESET);
+		setRoundNumber(RESET);
 		setGamePlayedState(true);
 	};
 
