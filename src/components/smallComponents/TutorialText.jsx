@@ -15,7 +15,7 @@ const TutorialText = () => {
 				</p>
 				<div className=" w-full rounded-md ">
 					<img
-						className=" mx-auto rounded-sm bg-slate-600 object-contain px-5 py-4"
+						className=" mx-auto rounded-sm object-contain px-5 py-4"
 						src={ILUST}
 						alt="Ilustrasi Kertas Gunting Batu"
 					/>

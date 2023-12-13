@@ -132,21 +132,19 @@ const Single = () => {
 
 	return (
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
-			<TitlePage titleText="Single Player" />
+			<TitlePage titleText="Round" accentText="1" />
 
-			<div className=" row-span-4 flex h-full w-full items-center justify-center">
-				<div className=" mx-auto grid h-full w-2/3 grid-rows-2 items-center gap-3 overflow-y-auto rounded-sm bg-slate-300 p-3 shadow-lg lg:h-auto lg:w-full lg:grid-cols-2 lg:grid-rows-1">
-					{userUID ? (
-						<SingleContent
-							P1Choise={P1Choise}
-							P1Score={P1Score}
-							P2Choise={P2Choise}
-							P2Score={P2Score}
-						/>
-					) : (
-						<NoUserPlacement />
-					)}
-				</div>
+			<div className="z-0 row-span-4 mx-auto grid h-full w-2/3 grid-rows-2 items-center gap-5 overflow-y-auto rounded-[4px] text-backColor transition-all lg:h-auto lg:w-full lg:grid-cols-2 lg:grid-rows-1 ">
+				{userUID ? (
+					<SingleContent
+						P1Choise={P1Choise}
+						P1Score={P1Score}
+						P2Choise={P2Choise}
+						P2Score={P2Score}
+					/>
+				) : (
+					<NoUserPlacement />
+				)}
 			</div>
 
 			{userUID ? <BtnGameMenu /> : <NoUserBackBtn />}
