@@ -35,7 +35,7 @@ const Box = ({ isTop, isLeft, size }) => {
 
 	return (
 		<div
-			className={` absolute border-2 border-primaryColor shadow-xl ${padding} ${vertical} ${horizontal}`}
+			className={` absolute border-2 border-primaryColor shadow-xl transition-all duration-100 ease-in-out ${padding} ${vertical} ${horizontal}`}
 		></div>
 	);
 };

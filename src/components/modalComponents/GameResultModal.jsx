@@ -75,11 +75,11 @@ const GameResultModal = ({ result }) => {
 			<div className=" z-0 row-span-3 mx-auto grid h-full w-3/4 grid-rows-5 items-center rounded-[4px] bg-primaryColor text-backColor shadow-lg shadow-[rbga(0,0,0,0.3)]">
 				<div className=" mx-auto w-full">
 					{result === 'Win' ? (
-						<h4 className=" bg-green-600 text-lg font-bold uppercase">
+						<h4 className=" bg-green-600 text-lg font-bold uppercase shadow-lg shadow-[rbga(0,0,0,0.3)]">
 							You {result}
 						</h4>
 					) : (
-						<h4 className=" bg-red-600 text-lg font-bold uppercase">
+						<h4 className=" bg-red-600 text-lg font-bold uppercase shadow-lg shadow-[rbga(0,0,0,0.3)]">
 							You {result}
 						</h4>
 					)}
@@ -102,12 +102,12 @@ const GameResultModal = ({ result }) => {
 				</div>
 
 				<div className=" row-span-2 mx-auto grid w-full max-w-md grid-cols-2 grid-rows-2 gap-4 px-4 text-center">
-					<div className=" group col-span-2 m-auto w-full rounded-[4px] bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-opacity-70 ">
+					<div className=" group col-span-2 m-auto w-full rounded-[4px] bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:border hover:border-accentColor hover:bg-primaryColor ">
 						<Link to={'/survey'}>
 							<BtnPrimary
 								btnText="App Survey"
 								btnFunction={handleEndGame}
-								btnStyles="w-full p-3 transition-colors duration-300"
+								btnStyles="w-full p-3 transition-colors duration-300 group-hover:text-accentColor"
 							/>
 						</Link>
 					</div>

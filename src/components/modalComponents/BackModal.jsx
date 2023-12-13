@@ -55,7 +55,7 @@ const BackModal = () => {
 						btnStyles=" w-full p-3 flex items-center justify-center"
 					/>
 				</div>
-				<div className=" group relative m-auto w-3/4 rounded-[4px] bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:text-primaryColor ">
+				<div className=" group relative m-auto w-3/4 rounded-[4px] bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:border hover:border-accentColor hover:bg-primaryColor hover:text-accentColor ">
 					<BtnPrimary
 						btnText="Cancel"
 						btnFunction={handleCancel}
