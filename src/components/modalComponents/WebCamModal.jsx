@@ -9,10 +9,11 @@ import {
 	webCamModalAtom,
 } from '../../libs/atoms';
 import drawBoundingBox from '../../scripts/drawBoundingBox';
+import { playCameraSound } from '../../scripts/sound';
 import wait from '../../scripts/wait';
 import Choices from '../featureComponents/Choices';
+import Boxes from '../smallComponents/Boxes';
 import TitlePage from '../smallComponents/TitlePage';
-import { playCameraSound } from '../../scripts/sound';
 
 const WebCamModal = () => {
 	// Local State
@@ -55,6 +56,16 @@ const WebCamModal = () => {
 
 		const playerChoise = maxConf.class;
 		return playerChoise;
+	};
+
+	const textCondition = () => {
+		if (!isCamReady && !checkingModel) {
+			return 'Loading';
+		} else if (isCamReady && !checkingModel) {
+			return 'Show Your Hands';
+		} else if (checkingModel) {
+			return 'Preparation';
+		}
 	};
 
 	const getModel = async () => {
@@ -149,67 +160,46 @@ const WebCamModal = () => {
 	}, [TimerDetection, StartDetection]);
 
 	return (
-		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
-			<TitlePage titleText="Rock Paper Scissors" />
+		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-backColor">
+			<Boxes />
+			<TitlePage titleText={textCondition()} accentText={String(timer)} isCol />
 
-			<div className=" row-span-3 w-full px-5">
-				<div className=" mx-auto h-full w-full rounded-sm bg-slate-500 p-3 shadow-lg lg:w-3/5">
-					<div className="relative mx-auto aspect-square h-full w-full">
-						{!isCamReady && !checkingModel && (
-							<div className=" absolute top-0 grid aspect-square h-full w-full justify-items-center bg-yellow-600 bg-opacity-50 text-white">
-								<p className=" text-lg">Loading</p>
-								<img
-									src={LOADICON}
-									alt="Loading Icon"
-									className=" m-auto w-32"
-								/>
-							</div>
-						)}
+			<div className=" z-0 row-span-3 mx-auto grid w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-6 px-5 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)]">
+				<div className="relative mx-auto aspect-square h-full w-full">
+					{!isCamReady && !checkingModel && (
+						<div className=" absolute top-0 grid aspect-square h-full w-full justify-items-center text-white">
+							<img src={LOADICON} alt="Loading Icon" className=" m-auto w-32" />
+						</div>
+					)}
 
-						{isCamDetecting && !checkingModel && (
-							<div className=" absolute top-0 w-full bg-green-600 bg-opacity-70 text-center text-lg text-white">
-								<p>{timer}</p>
-							</div>
-						)}
+					{checkingModel && (
+						<div className=" absolute top-0 grid aspect-square h-full w-full justify-items-center bg-secondaryColor bg-opacity-30 text-white">
+							<img src={LOADICON} alt="Loading Icon" className=" m-auto w-32" />
+						</div>
+					)}
 
-						{checkingModel && (
-							<div className=" absolute top-0 grid aspect-square h-full w-full justify-items-center bg-slate-600 bg-opacity-50 text-white">
-								<p className=" text-lg">Preparation</p>
-								<img
-									src={LOADICON}
-									alt="Loading Icon"
-									className=" m-auto w-32"
-								/>
-							</div>
-						)}
+					<canvas
+						className=" absolute top-0 m-auto h-full w-full"
+						ref={canvasRef}
+					/>
 
-						<canvas
-							className=" absolute top-0 m-auto h-full w-full"
-							ref={canvasRef}
-						/>
-
-						<Webcam
-							ref={webCamRef}
-							audio={false}
-							screenshotFormat="image/jpeg"
-							videoConstraints={videoConstraints}
-							onUserMedia={checkCamActive}
-							className=" h-full w-full rounded-sm bg-slate-700"
-							muted
-						/>
-					</div>
+					<Webcam
+						ref={webCamRef}
+						audio={false}
+						screenshotFormat="image/jpeg"
+						videoConstraints={videoConstraints}
+						onUserMedia={checkCamActive}
+						className=" h-full w-full rounded-sm"
+						muted
+					/>
 				</div>
 			</div>
 
-			<div className=" relative row-span-2 grid w-full justify-items-center text-white">
-				{checkingModel ? (
-					''
-				) : (
-					<>
-						<Choices choice={lastDetected(detection)} isDetecting />
-					</>
-				)}
-			</div>
+			{!checkingModel && (
+				<div className="z-0 row-span-2 m-auto flex w-2/5 flex-col items-center justify-center rounded-[4px] bg-primaryColor px-3 py-5 text-center text-white shadow-lg shadow-[rbga(0,0,0,0.3)]">
+					<Choices choice={lastDetected(detection)} isDetecting />
+				</div>
+			)}
 		</div>
 	);
 };
