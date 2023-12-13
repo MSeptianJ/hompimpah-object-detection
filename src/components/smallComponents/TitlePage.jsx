@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const TitlePage = ({ titleText, accentText, isCol }) => {
 	return (
-		<div className=" w-full text-center">
+		<div className="z-0 w-full text-center">
 			<h2
 				className={` flex items-center justify-center gap-3 text-3xl font-bold uppercase text-primaryColor ${
 					isCol ? 'flex-col' : ''
