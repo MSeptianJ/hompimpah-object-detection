@@ -64,7 +64,7 @@ const Start = () => {
 						))}
 
 						<div
-							className={`group relative w-full rounded-md shadow-lg transition-colors ${
+							className={`group relative w-full rounded-md shadow-lg transition-colors duration-300 ${
 								gamePlayedState
 									? 'bg-primaryColor text-backColor hover:bg-accentColor '
 									: 'bg-backColor'
@@ -88,12 +88,12 @@ const Start = () => {
 							</Link>
 							{gamePlayedState && (
 								<span className="absolute -right-2 -top-2 flex aspect-square w-5">
-									<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accentColor opacity-75 transition-all group-hover:bg-primaryColor"></span>
-									<span className="relative m-auto inline-flex aspect-square w-4 rounded-full bg-orange-400 transition-all group-hover:bg-primaryColor"></span>
+									<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accentColor opacity-75 transition-colors duration-300 group-hover:bg-primaryColor"></span>
+									<span className="relative m-auto inline-flex aspect-square w-4 rounded-full bg-orange-400 transition-colors duration-300 group-hover:bg-primaryColor"></span>
 								</span>
 							)}
 						</div>
-						<div className=" cursor-pointer"></div>
+						<div></div>
 					</ul>
 				</div>
 			</div>
