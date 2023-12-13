@@ -4,11 +4,14 @@ import BtnPrimary from './BtnPrimary';
 
 const BtnBackToMenu = () => {
 	return (
-		<div className=" mx-auto w-1/2 ">
-			<Link to={'/'} className="text-gray-900">
+		<div className=" group relative mx-auto rounded-md bg-primaryColor text-backColor shadow-lg transition-colors duration-300 hover:bg-accentColor ">
+			<Link to={'/'}>
 				<BtnPrimary
-					btnIcon={<GoBackIcon cls="w-full text-lg scale-150" />}
-					btnStyles="bg-slate-300 hover:bg-opacity-70 text-slate-600"
+					btnText="Menu"
+					btnStyles=" w-full p-3 flex items-center"
+					btnIcon={
+						<GoBackIcon className=" mr-3 h-6 w-6 text-accentColor group-hover:text-primaryColor" />
+					}
 				/>
 			</Link>
 		</div>

@@ -24,7 +24,7 @@ const TutorialModal = () => {
 
 			<div className="mx-auto w-1/2 max-w-md text-center">
 				<BtnPrimary
-					btnIcon={<GoBackIcon cls="w-full text-lg scale-150" />}
+					btnIcon={<GoBackIcon className="w-full scale-150 text-lg" />}
 					btnFunction={handle}
 					btnStyles="bg-slate-500 hover:bg-gray-700 "
 				/>

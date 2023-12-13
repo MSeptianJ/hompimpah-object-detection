@@ -30,17 +30,17 @@ const BtnGameMenu = () => {
 	return (
 		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 			<BtnPrimary
-				btnIcon={<GoBackIcon cls=" w-full text-lg scale-150" />}
+				btnIcon={<GoBackIcon className=" w-full scale-150 text-lg" />}
 				btnFunction={handleGoBack}
 				btnStyles="bg-slate-300 hover:bg-opacity-40"
 			/>
 			<BtnPrimary
-				btnIcon={<CameraIcon cls=" w-full text-lg scale-150" />}
+				btnIcon={<CameraIcon className=" w-full scale-150 text-lg" />}
 				btnFunction={handleDisplayCam}
 				btnStyles="bg-green-400 hover:bg-green-500"
 			/>
 			<BtnPrimary
-				btnIcon={<TutorialIcon cls=" w-full text-lg scale-150" />}
+				btnIcon={<TutorialIcon className=" w-full scale-150 text-lg" />}
 				btnFunction={handleTutorial}
 				btnStyles="bg-blue-400 hover:bg-blue-500 animate-bounce"
 			/>

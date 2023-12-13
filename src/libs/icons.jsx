@@ -5,85 +5,93 @@ import {
 	FaAngleRight,
 	FaArrowDown,
 	FaArrowUp,
+	FaExternalLinkAlt,
 	FaRedoAlt,
 } from 'react-icons/fa';
 import { GoStar, GoStarFill } from 'react-icons/go';
 import { PiCameraFill, PiCameraRotateFill } from 'react-icons/pi';
 import { TiArrowBack } from 'react-icons/ti';
 
-export const StarOutlineIcon = ({ cls }) => {
-	return <GoStar className={cls} />;
+export const StarOutlineIcon = ({ className }) => {
+	return <GoStar className={className} />;
 };
 StarOutlineIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const StarFillIcon = ({ cls }) => {
-	return <GoStarFill className={cls} />;
+export const StarFillIcon = ({ className }) => {
+	return <GoStarFill className={className} />;
 };
 StarFillIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const GoBackIcon = ({ cls }) => {
-	return <TiArrowBack className={cls} />;
+export const GoBackIcon = ({ className }) => {
+	return <TiArrowBack className={className} />;
 };
 GoBackIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const RedoIcon = ({ cls }) => {
-	return <FaRedoAlt className={cls} />;
+export const RedoIcon = ({ className }) => {
+	return <FaRedoAlt className={className} />;
 };
 RedoIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const ArrowDownIcon = ({ cls }) => {
-	return <FaArrowDown className={cls} />;
+export const ArrowDownIcon = ({ className }) => {
+	return <FaArrowDown className={className} />;
 };
 ArrowDownIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const ArrowUpIcon = ({ cls }) => {
-	return <FaArrowUp className={cls} />;
+export const ArrowUpIcon = ({ className }) => {
+	return <FaArrowUp className={className} />;
 };
 ArrowUpIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const TutorialIcon = ({ cls }) => {
-	return <BiSolidBookAlt className={cls} />;
+export const TutorialIcon = ({ className }) => {
+	return <BiSolidBookAlt className={className} />;
 };
 TutorialIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const AcceptIcon = ({ cls }) => {
-	return <AiFillCheckSquare className={cls} />;
+export const AcceptIcon = ({ className }) => {
+	return <AiFillCheckSquare className={className} />;
 };
 AcceptIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const CameraIcon = ({ cls }) => {
-	return <PiCameraFill className={cls} />;
+export const CameraIcon = ({ className }) => {
+	return <PiCameraFill className={className} />;
 };
 CameraIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
-export const CameraSwitchIcon = ({ cls }) => {
-	return <PiCameraRotateFill className={cls} />;
+export const CameraSwitchIcon = ({ className }) => {
+	return <PiCameraRotateFill className={className} />;
 };
 CameraSwitchIcon.propTypes = {
-	cls: PropTypes.string,
+	className: PropTypes.string,
 };
 
 export const AngleRightIcon = ({ className }) => {
 	return <FaAngleRight className={className} />;
 };
 AngleRightIcon.propTypes = {
+	className: PropTypes.string,
+};
+
+export const LinkIcon = ({ className }) => {
+	return <FaExternalLinkAlt className={className} />;
+};
+LinkIcon.propTypes = {
 	className: PropTypes.string,
 };

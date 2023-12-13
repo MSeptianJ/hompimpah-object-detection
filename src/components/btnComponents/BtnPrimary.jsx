@@ -25,7 +25,7 @@ const BtnPrimary = ({
 	return (
 		<button
 			disabled={btnDisabled}
-			className={` block cursor-pointer font-bold transition-all ${btnStyles}`}
+			className={` block cursor-pointer font-bold ${btnStyles}`}
 			onClick={handleBtnClick}
 			title={btnTitle}
 		>

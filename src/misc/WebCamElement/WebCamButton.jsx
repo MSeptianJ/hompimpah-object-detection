@@ -30,7 +30,9 @@ const WebCamButton = ({
 	return (
 		<div className=" mx-auto grid w-full max-w-md grid-cols-3 gap-4 px-4 text-center">
 			<BtnPrimary
-				btnIcon={<GoBackIcon cls=" w-full text-lg scale-150 text-slate-800" />}
+				btnIcon={
+					<GoBackIcon className=" w-full scale-150 text-lg text-slate-800" />
+				}
 				btnTitle="Go Back"
 				btnFunction={backBtn}
 				btnStyles={'bg-slate-500 hover:bg-gray-700'}
@@ -40,7 +42,9 @@ const WebCamButton = ({
 				<>
 					<BtnPrimary
 						btnDisabled={isLoading ? true : false}
-						btnIcon={<RedoIcon cls="w-full text-lg scale-125 text-slate-800" />}
+						btnIcon={
+							<RedoIcon className="w-full scale-125 text-lg text-slate-800" />
+						}
 						btnTitle="Redo Detection"
 						btnFunction={retryBtn}
 						btnStyles={
@@ -52,7 +56,7 @@ const WebCamButton = ({
 					<BtnPrimary
 						btnDisabled={detection?.predictions.length ? false : true}
 						btnIcon={
-							<AcceptIcon cls="w-full text-lg scale-150 text-slate-800" />
+							<AcceptIcon className="w-full scale-150 text-lg text-slate-800" />
 						}
 						btnTitle="Accept Detection"
 						btnFunction={accBtn}
@@ -67,7 +71,7 @@ const WebCamButton = ({
 				<>
 					<BtnPrimary
 						btnIcon={
-							<CameraIcon cls=" w-full text-lg scale-150 text-slate-800" />
+							<CameraIcon className=" w-full scale-150 text-lg text-slate-800" />
 						}
 						btnTitle="Start Detection"
 						btnFunction={detectBtn}
@@ -81,7 +85,7 @@ const WebCamButton = ({
 					/>
 					<BtnPrimary
 						btnIcon={
-							<CameraSwitchIcon cls=" w-full text-lg scale-150 text-slate-800" />
+							<CameraSwitchIcon className=" w-full scale-150 text-lg text-slate-800" />
 						}
 						btnTitle="Switch Camera"
 						btnFunction={switchCamBtn}

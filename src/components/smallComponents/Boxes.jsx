@@ -48,7 +48,7 @@ Box.propTypes = {
 
 const Boxes = () => {
 	return (
-		<div className=" absolute top-0 grid h-screen w-full grid-cols-2 grid-rows-2 gap-5">
+		<div className=" absolute top-0 grid h-screen w-full grid-cols-2 grid-rows-2 gap-5 overflow-hidden lg:overflow-visible">
 			<div className=" relative">
 				<Box size={2} isTop isLeft />
 				<Box size={1} isTop isLeft />
