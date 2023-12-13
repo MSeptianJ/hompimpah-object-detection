@@ -4,7 +4,7 @@ import BtnPrimary from './BtnPrimary';
 
 const BtnBackToMenu = () => {
 	return (
-		<div className=" group relative mx-auto rounded-md bg-primaryColor text-backColor shadow-lg transition-colors duration-300 hover:bg-accentColor ">
+		<div className=" group relative mx-auto rounded-md bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
 			<Link to={'/'}>
 				<BtnPrimary
 					btnText="Menu"

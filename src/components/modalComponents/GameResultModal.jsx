@@ -68,7 +68,7 @@ const GameResultModal = ({ result }) => {
 	}, [playSound]);
 
 	return (
-		<div className=" absolute grid h-full w-full grid-rows-5 items-center shadow-lg backdrop-blur-sm">
+		<div className=" absolute grid h-full w-full grid-rows-5 items-center backdrop-blur-sm ">
 			<Boxes />
 			<div></div>
 

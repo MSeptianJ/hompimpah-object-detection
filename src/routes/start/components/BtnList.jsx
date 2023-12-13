@@ -5,7 +5,7 @@ import { AngleRightIcon } from '../../../libs/icons';
 
 const BtnList = ({ url, text, func }) => {
 	return (
-		<li className=" group relative my-4 w-full rounded-md bg-primaryColor text-backColor shadow-lg transition-colors duration-300 hover:bg-accentColor">
+		<li className=" group relative mb-5 w-full rounded-md bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor">
 			<Link to={url}>
 				<BtnPrimary
 					btnText={text}

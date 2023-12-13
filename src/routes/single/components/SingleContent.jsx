@@ -5,7 +5,7 @@ import Choices from '../../../components/featureComponents/Choices';
 const SingleContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
 	return (
 		<>
-			<div className=" mx-auto flex h-full w-full flex-col items-center justify-around gap-3 rounded-[4px] bg-primaryColor p-6 shadow-lg">
+			<div className=" mx-auto flex h-full w-full flex-col items-center justify-around gap-3 rounded-[4px] bg-primaryColor p-6">
 				<div className=" flex w-full items-center justify-between">
 					<p className=" text-sm font-bold">You</p>
 					<div className=" flex items-center gap-2 text-lg">
@@ -17,7 +17,7 @@ const SingleContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
 				</div>
 			</div>
 
-			<div className=" mx-auto flex h-full w-full flex-col items-center justify-around gap-3 rounded-[4px] bg-primaryColor p-6 shadow-lg">
+			<div className=" mx-auto flex h-full w-full flex-col items-center justify-around gap-3 rounded-[4px] bg-primaryColor p-6">
 				<div className=" flex w-full items-center justify-between">
 					<p className=" text-sm font-bold">Computer</p>
 					<div className=" flex items-center gap-2 text-lg">
