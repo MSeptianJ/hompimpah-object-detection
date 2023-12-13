@@ -23,7 +23,7 @@ const AboutContent = () => {
 					Object Detection :{' '}
 					<a
 						href="https://universe.roboflow.com/hompimpahgame/rockpaperscissors-t0zfu"
-						className=" font-bold text-black"
+						className=" font-bold"
 						target="blank"
 					>
 						Roboflow
@@ -33,7 +33,7 @@ const AboutContent = () => {
 					Sound Effects :{' '}
 					<a
 						href="https://www.zapsplat.com"
-						className=" font-bold text-black"
+						className=" font-bold"
 						target="blank"
 					>
 						ZapSplat
@@ -43,7 +43,7 @@ const AboutContent = () => {
 					Rock Paper Scissors Ilustration :{' '}
 					<a
 						href="https://www.vecteezy.com/vector-art/690792-rock-paper-scissors-hand-icons"
-						className=" font-bold text-black"
+						className=" font-bold"
 						target="blank"
 					>
 						Vecteezy
@@ -53,7 +53,7 @@ const AboutContent = () => {
 					Win and Lose Ilustration :{' '}
 					<a
 						href="https://www.freepik.com/free-vector/anxiety-concept-illustration_20908543.htm#query=lose&position=2&from_view=search&track=sph"
-						className=" font-bold text-black"
+						className=" font-bold"
 						target="blank"
 					>
 						Freepik
@@ -69,7 +69,7 @@ const AboutContent = () => {
 					Pengembangan permainan ini dilakukan oleh{' '}
 					<a
 						href="https://www.instagram.com/jaelani.dev/"
-						className=" font-bold text-black"
+						className=" font-bold"
 						target="blank"
 					>
 						@jaelani.dev

@@ -7,10 +7,8 @@ const About = () => {
 		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
 			<TitlePage titleText="About" />
 
-			<div className=" row-span-4 h-full w-full">
-				<div className=" mx-auto flex h-full w-3/4 flex-col gap-4 overflow-y-auto rounded-sm bg-slate-300 p-6 shadow-lg">
-					<AboutContent />
-				</div>
+			<div className="z-0 row-span-4 mx-auto grid h-full w-3/4 gap-4 overflow-y-auto rounded-sm bg-primaryColor p-6 text-backColor shadow-lg">
+				<AboutContent />
 			</div>
 
 			<BtnBackToMenu />
