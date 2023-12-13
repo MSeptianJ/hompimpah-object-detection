@@ -18,6 +18,7 @@ import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
 import { playLoseGameSound, playWinGameSound } from '../../scripts/sound';
 import BtnPrimary from '../btnComponents/BtnPrimary';
+import Boxes from '../smallComponents/Boxes';
 
 const GameResultModal = ({ result }) => {
 	// Game State
@@ -68,16 +69,17 @@ const GameResultModal = ({ result }) => {
 
 	return (
 		<div className=" absolute grid h-full w-full grid-rows-5 items-center shadow-lg backdrop-blur-sm">
+			<Boxes />
 			<div></div>
 
-			<div className=" row-span-3 mx-auto grid h-full w-3/4 grid-rows-5 items-center rounded-sm bg-slate-500">
-				<div className=" mx-auto w-full p-3">
+			<div className=" z-0 row-span-3 mx-auto grid h-full w-3/4 grid-rows-5 items-center rounded-[4px] bg-primaryColor text-backColor shadow-lg shadow-[rbga(0,0,0,0.3)]">
+				<div className=" mx-auto w-full">
 					{result === 'Win' ? (
-						<h4 className=" bg-green-500 text-lg font-bold uppercase">
+						<h4 className=" bg-green-600 text-lg font-bold uppercase">
 							You {result}
 						</h4>
 					) : (
-						<h4 className=" bg-red-500 text-lg font-bold uppercase">
+						<h4 className=" bg-red-600 text-lg font-bold uppercase">
 							You {result}
 						</h4>
 					)}
@@ -100,25 +102,31 @@ const GameResultModal = ({ result }) => {
 				</div>
 
 				<div className=" row-span-2 mx-auto grid w-full max-w-md grid-cols-2 grid-rows-2 gap-4 px-4 text-center">
-					<div className=" col-span-2">
+					<div className=" group col-span-2 m-auto w-full rounded-sm bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-opacity-70 ">
 						<Link to={'/survey'}>
 							<BtnPrimary
 								btnText="App Survey"
 								btnFunction={handleEndGame}
-								btnStyles="bg-blue-500 hover:bg-gray-700"
+								btnStyles="w-full p-3 transition-colors duration-300"
 							/>
 						</Link>
 					</div>
-					<BtnPrimary
-						btnText="Menu"
-						btnFunction={handleBackToMenu}
-						btnStyles="bg-slate-600 hover:bg-gray-700"
-					/>
-					<BtnPrimary
-						btnText="Play Again"
-						btnFunction={handlePlayAgain}
-						btnStyles="bg-slate-600 hover:bg-gray-700"
-					/>
+
+					<div className=" group m-auto w-full rounded-sm bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
+						<BtnPrimary
+							btnText="Menu"
+							btnFunction={handleBackToMenu}
+							btnStyles="w-full p-3"
+						/>
+					</div>
+
+					<div className=" group m-auto w-full rounded-sm bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
+						<BtnPrimary
+							btnText="PLay Again"
+							btnFunction={handlePlayAgain}
+							btnStyles="w-full p-3"
+						/>
+					</div>
 				</div>
 			</div>
 
