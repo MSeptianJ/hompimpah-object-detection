@@ -1,5 +1,6 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { RESET } from 'jotai/utils';
+import { useNavigate } from 'react-router-dom';
 import {
 	backModalAtom,
 	checkingModelAtom,
@@ -11,10 +12,12 @@ import {
 import { AuthSignOut } from '../../libs/firebase/FirebaseAuth';
 import { delGameRound } from '../../libs/firebase/FirebaseDB';
 import BtnPrimary from '../btnComponents/BtnPrimary';
-import TitlePage from '../smallComponents/TitlePage';
 import Boxes from '../smallComponents/Boxes';
+import TitlePage from '../smallComponents/TitlePage';
 
 const BackModal = () => {
+	// Navigation
+	const navigate = useNavigate();
 	// Modal
 	const setBackModal = useSetAtom(backModalAtom);
 
@@ -41,7 +44,7 @@ const BackModal = () => {
 		setUserUID(RESET);
 		setCheckingModel(RESET);
 
-		history.back();
+		navigate('/');
 	};
 
 	return (

@@ -2,7 +2,7 @@ import { useAtom, useSetAtom } from 'jotai';
 import { RESET } from 'jotai/utils';
 import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LOSE from '../../assets/img/lose-ilust.svg';
 import WIN from '../../assets/img/win-ilust.svg';
 import {
@@ -22,6 +22,8 @@ import BtnPrimary from '../btnComponents/BtnPrimary';
 import Boxes from '../smallComponents/Boxes';
 
 const GameResultModal = ({ result }) => {
+	// Navigation
+	const navigate = useNavigate();
 	// Game State
 	const setGameEndModalState = useSetAtom(gameEndModalAtom);
 	const setPlsAddGameState = useSetAtom(plsAddGameStateAtom);
@@ -58,7 +60,7 @@ const GameResultModal = ({ result }) => {
 
 	const handleBackToMenu = async () => {
 		handleEndGame();
-		history.back();
+		navigate('/');
 	};
 
 	const playSound = useCallback(() => {
