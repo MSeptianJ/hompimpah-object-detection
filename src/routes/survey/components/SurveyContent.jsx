@@ -24,7 +24,7 @@ const SurveyContent = () => {
 				/>
 			</div>
 
-			<div className="group mx-auto rounded-sm bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:border hover:border-accentColor hover:bg-primaryColor">
+			<div className="group mx-auto rounded-[4px] bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:border hover:border-accentColor hover:bg-primaryColor">
 				<a
 					className="  m-auto flex items-center px-5 py-2 font-bold"
 					href="https://forms.gle/qwubutqV8S4oj6MR8"

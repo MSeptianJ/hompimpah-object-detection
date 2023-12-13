@@ -189,7 +189,7 @@ const WebCamModal = () => {
 						screenshotFormat="image/jpeg"
 						videoConstraints={videoConstraints}
 						onUserMedia={checkCamActive}
-						className=" h-full w-full rounded-sm"
+						className=" h-full w-full rounded-[4px]"
 						muted
 					/>
 				</div>

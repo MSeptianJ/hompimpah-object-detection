@@ -64,7 +64,7 @@ const Start = () => {
 						))}
 
 						<div
-							className={`group relative w-full rounded-md shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 ${
+							className={`group relative w-full rounded-[4px] shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 ${
 								gamePlayedState
 									? 'bg-primaryColor text-backColor hover:bg-accentColor '
 									: 'bg-backColor'

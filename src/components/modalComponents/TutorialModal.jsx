@@ -18,11 +18,11 @@ const TutorialModal = () => {
 			<Boxes />
 			<TitlePage titleText="Tutorial" />
 
-			<div className="z-0 row-span-4 mx-auto grid h-full w-3/4 gap-4 overflow-y-auto rounded-sm bg-primaryColor p-6 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)]">
+			<div className="z-0 row-span-4 mx-auto grid h-full w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-6 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)]">
 				<TutorialText />
 			</div>
 
-			<div className=" group relative mx-auto rounded-md bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
+			<div className=" group relative mx-auto rounded-[4px] bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
 				<BtnPrimary
 					btnText="Back"
 					btnFunction={handle}

@@ -12,7 +12,7 @@ const SingleContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
 						<Scores score={P1Score} />
 					</div>
 				</div>
-				<div className=" mx-auto flex aspect-square w-full flex-col items-center justify-center rounded-sm border-2 border-secondaryColor">
+				<div className=" mx-auto flex aspect-square w-full flex-col items-center justify-center rounded-[4px] border-2 border-secondaryColor">
 					<Choices choice={P1Choise} />
 				</div>
 			</div>
@@ -24,7 +24,7 @@ const SingleContent = ({ P1Score, P1Choise, P2Score, P2Choise }) => {
 						<Scores score={P2Score} />
 					</div>
 				</div>
-				<div className=" mx-auto flex aspect-square w-full flex-col items-center justify-center rounded-sm border-2 border-secondaryColor">
+				<div className=" mx-auto flex aspect-square w-full flex-col items-center justify-center rounded-[4px] border-2 border-secondaryColor">
 					<Choices choice={P2Choise} />
 				</div>
 			</div>

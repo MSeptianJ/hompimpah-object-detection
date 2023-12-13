@@ -102,7 +102,7 @@ const GameResultModal = ({ result }) => {
 				</div>
 
 				<div className=" row-span-2 mx-auto grid w-full max-w-md grid-cols-2 grid-rows-2 gap-4 px-4 text-center">
-					<div className=" group col-span-2 m-auto w-full rounded-sm bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-opacity-70 ">
+					<div className=" group col-span-2 m-auto w-full rounded-[4px] bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-opacity-70 ">
 						<Link to={'/survey'}>
 							<BtnPrimary
 								btnText="App Survey"
@@ -112,7 +112,7 @@ const GameResultModal = ({ result }) => {
 						</Link>
 					</div>
 
-					<div className=" group m-auto w-full rounded-sm bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
+					<div className=" group m-auto w-full rounded-[4px] bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
 						<BtnPrimary
 							btnText="Menu"
 							btnFunction={handleBackToMenu}
@@ -120,7 +120,7 @@ const GameResultModal = ({ result }) => {
 						/>
 					</div>
 
-					<div className=" group m-auto w-full rounded-sm bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
+					<div className=" group m-auto w-full rounded-[4px] bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
 						<BtnPrimary
 							btnText="PLay Again"
 							btnFunction={handlePlayAgain}

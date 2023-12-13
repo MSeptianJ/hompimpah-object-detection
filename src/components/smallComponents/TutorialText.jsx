@@ -13,9 +13,9 @@ const TutorialText = () => {
 					menggunakan object detection untuk memilih pilihan. Para pemain akan
 					menampilkan tangannya, dan sistem akan mendeteksi pilihan pemain.
 				</p>
-				<div className=" w-full rounded-md ">
+				<div className=" w-full ">
 					<img
-						className=" mx-auto rounded-sm object-contain px-5 py-4"
+						className=" mx-auto object-contain px-5 py-4"
 						src={ILUST}
 						alt="Ilustrasi Kertas Gunting Batu"
 					/>

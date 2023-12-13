@@ -48,14 +48,14 @@ const BackModal = () => {
 			</div>
 
 			<div className=" mx-auto grid w-full max-w-md grid-cols-2 gap-4 px-4 text-center">
-				<div className=" group relative m-auto w-3/4 rounded-md bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:text-accentColor ">
+				<div className=" group relative m-auto w-3/4 rounded-[4px] bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:text-accentColor ">
 					<BtnPrimary
 						btnText="Yes"
 						btnFunction={handleGoBack}
 						btnStyles=" w-full p-3 flex items-center justify-center"
 					/>
 				</div>
-				<div className=" group relative m-auto w-3/4 rounded-md bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:text-primaryColor ">
+				<div className=" group relative m-auto w-3/4 rounded-[4px] bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:text-primaryColor ">
 					<BtnPrimary
 						btnText="Cancel"
 						btnFunction={handleCancel}
