@@ -164,7 +164,7 @@ const WebCamModal = () => {
 			<Boxes />
 			<TitlePage titleText={textCondition()} accentText={String(timer)} isCol />
 
-			<div className=" z-0 row-span-3 mx-auto grid w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-6 px-5 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)]">
+			<div className=" z-0 row-span-3 mx-auto grid w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-6 px-5 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] lg:w-2/4">
 				<div className="relative mx-auto aspect-square h-full w-full">
 					{!isCamReady && !checkingModel && (
 						<div className=" absolute top-0 grid aspect-square h-full w-full justify-items-center text-white">
