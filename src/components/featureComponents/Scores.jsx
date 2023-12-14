@@ -5,9 +5,9 @@ const Scores = ({ score }) => {
 	if (score === 0) {
 		return (
 			<>
-				<StarOutlineIcon />
-				<StarOutlineIcon />
-				<StarOutlineIcon />
+				<StarOutlineIcon className=" text-accentColor" />
+				<StarOutlineIcon className=" text-accentColor" />
+				<StarOutlineIcon className=" text-accentColor" />
 			</>
 		);
 	}
@@ -15,9 +15,9 @@ const Scores = ({ score }) => {
 	if (score === 1) {
 		return (
 			<>
-				<StarFillIcon />
-				<StarOutlineIcon />
-				<StarOutlineIcon />
+				<StarFillIcon className=" text-accentColor" />
+				<StarOutlineIcon className=" text-accentColor" />
+				<StarOutlineIcon className=" text-accentColor" />
 			</>
 		);
 	}
@@ -25,9 +25,9 @@ const Scores = ({ score }) => {
 	if (score === 2) {
 		return (
 			<>
-				<StarFillIcon />
-				<StarFillIcon />
-				<StarOutlineIcon />
+				<StarFillIcon className=" text-accentColor" />
+				<StarFillIcon className=" text-accentColor" />
+				<StarOutlineIcon className=" text-accentColor" />
 			</>
 		);
 	}
@@ -35,9 +35,9 @@ const Scores = ({ score }) => {
 	if (score === 3) {
 		return (
 			<>
-				<StarFillIcon />
-				<StarFillIcon />
-				<StarFillIcon />
+				<StarFillIcon className=" text-accentColor" />
+				<StarFillIcon className=" text-accentColor" />
+				<StarFillIcon className=" text-accentColor" />
 			</>
 		);
 	}

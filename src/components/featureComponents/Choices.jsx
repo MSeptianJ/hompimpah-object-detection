@@ -47,11 +47,11 @@ const Choices = ({ choice, isDetecting }) => {
 
 	return (
 		<>
-			{isDetecting && <ArrowUpIcon />}
+			{isDetecting && <ArrowUpIcon className=" w-full text-center" />}
 			<p className=" my-3 text-lg font-bold">
 				{isDetecting ? 'Show Your Hand' : 'Press Camera'}
 			</p>
-			{!isDetecting && <ArrowDownIcon />}
+			{!isDetecting && <ArrowDownIcon className=" w-full text-center" />}
 		</>
 	);
 };

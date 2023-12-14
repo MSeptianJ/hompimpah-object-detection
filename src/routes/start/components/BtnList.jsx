@@ -1,12 +1,20 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import BtnPrimary from '../../../components/btnComponents/BtnPrimary';
+import { AngleRightIcon } from '../../../libs/icons';
 
 const BtnList = ({ url, text, func }) => {
 	return (
-		<li className=" my-4 w-full rounded-sm bg-slate-300 font-bold uppercase text-slate-600 hover:bg-opacity-80">
-			<Link className="" to={url}>
-				<BtnPrimary btnText={text} btnStyles="" btnFunction={func} />
+		<li className=" group relative mb-5 w-full rounded-[4px] bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor">
+			<Link to={url}>
+				<BtnPrimary
+					btnText={text}
+					btnFunction={func}
+					btnStyles={'w-full p-4 flex items-center'}
+					btnIcon={
+						<AngleRightIcon className=" mr-4 h-6 w-6 text-accentColor group-hover:text-primaryColor" />
+					}
+				/>
 			</Link>
 		</li>
 	);

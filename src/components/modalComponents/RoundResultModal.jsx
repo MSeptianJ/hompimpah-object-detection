@@ -20,11 +20,9 @@ const RoundResultModal = ({ result }) => {
 	}, [resultDisplay]);
 
 	return (
-		<div className=" absolute grid h-full w-full grid-rows-6 items-center">
-			<div className=" row-span-6 w-full">
-				<div className=" mx-auto h-full w-3/4 gap-4 rounded-sm bg-slate-500 p-2 shadow-lg">
-					<p className=" text-lg font-bold uppercase">{result}</p>
-				</div>
+		<div className=" absolute grid h-full w-full items-center justify-items-center">
+			<div className=" mx-auto w-3/4 rounded-[4px] bg-accentColor p-2 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)]">
+				<p className=" text-lg font-bold uppercase">{result}</p>
 			</div>
 		</div>
 	);

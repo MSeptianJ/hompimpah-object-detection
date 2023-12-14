@@ -1,26 +1,22 @@
 import { useRouteError } from 'react-router-dom';
+import BtnBackToMenu from '../../components/btnComponents/BtnBackToMenu';
+import TitlePage from '../../components/smallComponents/TitlePage';
 
 const ErrorPage = () => {
 	const errorData = useRouteError();
-	const goBack = () => {
-		history.back();
-	};
+
+	console.log(errorData.message);
+
 	return (
-		<div className="grid h-screen w-screen content-center bg-slate-700">
-			<div className="m-auto w-full text-center">
-				<p className="text-xl text-white">
-					Status : {errorData['status'] || '-_-'}
-				</p>
-				<p className="text-xl text-white">{errorData['data'] || '-_-'}</p>
+		<div className="grid max-h-screen min-h-screen w-full grid-rows-6 items-center text-center">
+			<TitlePage titleText="Error" />
+
+			<div className="z-0 row-span-4 mx-auto grid w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-6 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)]">
+				<h4 className=" mb-3 w-full text-xl font-bold text-red-600">Error</h4>
+				<p>{errorData.message}</p>
 			</div>
-			<div className=" border-accent bg-primary_bg m-auto my-10 w-3/4 max-w-md rounded-md border-2 bg-gray-800 text-center transition-all hover:bg-opacity-70">
-				<button
-					onClick={goBack}
-					className=" mx-auto block w-full cursor-pointer p-4 text-lg font-bold uppercase text-white"
-				>
-					GO Back
-				</button>
-			</div>
+
+			<BtnBackToMenu />
 		</div>
 	);
 };

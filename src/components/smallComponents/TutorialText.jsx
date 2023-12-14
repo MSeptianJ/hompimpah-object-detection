@@ -13,9 +13,9 @@ const TutorialText = () => {
 					menggunakan object detection untuk memilih pilihan. Para pemain akan
 					menampilkan tangannya, dan sistem akan mendeteksi pilihan pemain.
 				</p>
-				<div className=" w-full rounded-md ">
+				<div className=" w-full ">
 					<img
-						className=" mx-auto rounded-sm bg-slate-600 object-contain px-5 py-4"
+						className=" mx-auto object-contain px-5 py-4"
 						src={ILUST}
 						alt="Ilustrasi Kertas Gunting Batu"
 					/>
@@ -29,27 +29,34 @@ const TutorialText = () => {
 				<ul className=" w-full list-disc px-4 text-left">
 					<li className=" mb-2">
 						Untuk memainkan permainan ini, anda sebagai pemain akan
-						<b> menggunakan kamera perangkat anda</b>, untuk menampilkan bentuk
-						tangan yang anda pilih.
+						<b className=" text-accentColor">
+							{' '}
+							menggunakan kamera perangkat anda
+						</b>
+						, untuk menampilkan bentuk tangan yang anda pilih.
 					</li>
 					<li className=" mb-2">
-						<b>Sebelum memulai deteksi</b>, pilih tempat yang memiliki cahaya
-						yang terang sehingga gambar yang ditampilkan web cam terlihat dengan
-						jelas.
+						<b className=" text-accentColor">Sebelum memulai deteksi</b>, pilih
+						tempat yang memiliki cahaya yang terang sehingga gambar yang
+						ditampilkan web cam terlihat dengan jelas.
 					</li>
 					<li className=" mb-2">
-						Tekan tombol kamera dan <b>tampilkan tangan anda</b>.
+						Tekan tombol kamera dan{' '}
+						<b className=" text-accentColor">tampilkan tangan anda</b>.
 					</li>
 					<li className=" mb-2">
-						<b>Tunggu sebentar</b>, dan sistem akan menampilkan hasil deteksi
-						dengan adanya <b>bounding box dan class</b>. Bounding box merupakan
-						kotak yang mengelilingi tangan anda, sedangkan class merupakan hasil
-						deteksi sesuai bentuk tangan anda.
+						<b className=" text-accentColor">Tunggu sebentar</b>, dan sistem
+						akan menampilkan hasil deteksi dengan adanya{' '}
+						<b className=" text-accentColor">bounding box dan class</b>.
+						Bounding box merupakan kotak yang mengelilingi tangan anda,
+						sedangkan class merupakan hasil deteksi sesuai bentuk tangan anda.
 					</li>
 					<li className=" mb-2">
-						<b>Proses deteksi hanya berlangsung 5 detik</b>. Pada akhir proses
-						ini, bentuk yang terakhir terdeteksi akan disimpan dan dijadikan
-						pilihan pada ronde tersebut.
+						<b className=" text-accentColor">
+							Proses deteksi hanya berlangsung 5 detik
+						</b>
+						. Pada akhir proses ini, bentuk yang terakhir terdeteksi akan
+						disimpan dan dijadikan pilihan pada ronde tersebut.
 					</li>
 				</ul>
 			</section>
@@ -58,17 +65,21 @@ const TutorialText = () => {
 				<ul className=" w-full list-disc px-4 text-left">
 					<li className=" mb-2">
 						Jika anda menampilkan kedua tangan,{' '}
-						<b>sistem dapat mendeteksi kedua tangan tersebut</b>, tetapi yang
-						akan dipilih adalah hasil deteksi dengan nilai confidence(nilai
-						persentase) yang paling tinggi.
+						<b className=" text-accentColor">
+							sistem dapat mendeteksi kedua tangan tersebut
+						</b>
+						, tetapi yang akan dipilih adalah hasil deteksi dengan nilai
+						confidence(nilai persentase) yang paling tinggi.
 					</li>
 					<li className=" mb-2">
-						<b>Jika sistem tidak mendeteksi apapun</b> selama proses deteksi
-						berlangsung. Pilihan anda menjadi kosong, tetapi tidak akan
-						mengakibatkan anda kalah pada ronde tersebut.
+						<b className=" text-accentColor">
+							Jika sistem tidak mendeteksi apapun
+						</b>{' '}
+						selama proses deteksi berlangsung. Pilihan anda menjadi kosong,
+						tetapi tidak akan mengakibatkan anda kalah pada ronde tersebut.
 					</li>
 					<li className=" mb-2">
-						<b>
+						<b className=" text-accentColor">
 							Jika pada proses pendeteksian terjadi <i>lag</i> atau membuat
 							device anda melambat
 						</b>

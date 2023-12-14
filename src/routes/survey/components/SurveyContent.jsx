@@ -1,9 +1,10 @@
 import ILUST from '../../../assets/img/thank-you.svg';
+import { LinkIcon } from '../../../libs/icons';
 
 const SurveyContent = () => {
 	return (
 		<>
-			<section className=" row-span-3 w-full items-start text-left text-sm font-semibold">
+			<section className=" row-span-3 w-full items-start text-left text-sm text-backColor">
 				<p className=" mb-2">
 					Terima kasih sudah memainkan aplikasi ini. Jika boleh, saya meminta
 					sedikit waktu anda untuk mengisi survey dengan menekan link dibawah.
@@ -23,13 +24,14 @@ const SurveyContent = () => {
 				/>
 			</div>
 
-			<div className=" w-full">
+			<div className="group mx-auto rounded-[4px] bg-accentColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:border hover:border-accentColor hover:bg-primaryColor">
 				<a
-					className=" m-auto w-full rounded-sm bg-slate-400 px-4 py-2 font-semibold	 uppercase"
+					className="  m-auto flex items-center px-5 py-2 font-bold"
 					href="https://forms.gle/qwubutqV8S4oj6MR8"
 					target="blank"
 				>
-					Survey Link
+					Survey
+					<LinkIcon className=" ml-3 h-5 w-5 text-primaryColor group-hover:text-accentColor" />
 				</a>
 			</div>
 		</>

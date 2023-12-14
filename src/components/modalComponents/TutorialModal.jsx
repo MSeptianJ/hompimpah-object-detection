@@ -4,6 +4,7 @@ import { GoBackIcon } from '../../libs/icons';
 import BtnPrimary from '../btnComponents/BtnPrimary';
 import TitlePage from '../smallComponents/TitlePage';
 import TutorialText from '../smallComponents/TutorialText';
+import Boxes from '../smallComponents/Boxes';
 
 const TutorialModal = () => {
 	const setTutorModal = useSetAtom(tutorModalAtom);
@@ -13,20 +14,22 @@ const TutorialModal = () => {
 	};
 
 	return (
-		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-slate-600">
+		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-backColor">
+			<Boxes />
 			<TitlePage titleText="Tutorial" />
 
-			<div className=" row-span-4 h-full w-full">
-				<div className=" mx-auto flex h-full w-3/4 flex-col gap-4 overflow-y-auto rounded-sm bg-slate-500 p-6 shadow-lg">
-					<TutorialText />
-				</div>
+			<div className="z-0 row-span-4 mx-auto grid h-full w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-6 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)]">
+				<TutorialText />
 			</div>
 
-			<div className="mx-auto w-1/2 max-w-md text-center">
+			<div className=" group relative mx-auto rounded-[4px] bg-primaryColor text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 hover:bg-accentColor ">
 				<BtnPrimary
-					btnIcon={<GoBackIcon cls="w-full text-lg scale-150" />}
+					btnText="Back"
 					btnFunction={handle}
-					btnStyles="bg-slate-500 hover:bg-gray-700 "
+					btnStyles=" w-full p-3 flex items-center"
+					btnIcon={
+						<GoBackIcon className=" mr-3 h-6 w-6 text-accentColor group-hover:text-primaryColor" />
+					}
 				/>
 			</div>
 		</div>

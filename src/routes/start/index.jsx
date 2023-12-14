@@ -1,6 +1,7 @@
 import { useAtom, useSetAtom } from 'jotai';
 import { Link } from 'react-router-dom';
-import LOGOILUST from '../../assets/img/logo-Ilust.svg';
+import TEXTLOGO from '../../assets/img/Text Logo.svg';
+import LOGO from '../../assets/img/logo.svg';
 import BtnPrimary from '../../components/btnComponents/BtnPrimary';
 import {
 	gamePlayedStateAtom,
@@ -8,6 +9,7 @@ import {
 	userUIDAtom,
 } from '../../libs/atoms';
 import { AuthSignIn } from '../../libs/firebase/FirebaseAuth';
+import { AngleRightIcon } from '../../libs/icons';
 import BtnList from './components/BtnList';
 
 const Start = () => {
@@ -18,7 +20,7 @@ const Start = () => {
 	const textMenus = [
 		{
 			url: '/single',
-			text: 'Rock Paper Scissors (Single)',
+			text: 'Rock Paper Scissors',
 			func: async () => {
 				if (!userUID) {
 					const currentUID = await AuthSignIn();
@@ -40,12 +42,13 @@ const Start = () => {
 
 	return (
 		<div className="m-auto flex min-h-screen w-full flex-col justify-center text-center">
-			<div className=" w-full p-4">
-				<img
-					className=" m-auto w-3/4 max-w-xs"
-					src={LOGOILUST}
-					alt="Logo Hompimpah"
-				/>
+			<div className=" flex w-full items-center justify-center p-4">
+				<div className=" h-20 max-h-24 w-20">
+					<img src={LOGO} alt="App Logo" className="h-full w-full" />
+				</div>
+				<div className="">
+					<img src={TEXTLOGO} alt="App Text Logo" className="h-full" />
+				</div>
 			</div>
 
 			<div className=" w-full p-4">
@@ -59,26 +62,38 @@ const Start = () => {
 								func={textMenu.func}
 							/>
 						))}
-						<div className=" relative">
+
+						<div
+							className={`group relative w-full rounded-[4px] shadow-lg shadow-[rgba(0,0,0,0.3)] transition-colors duration-300 ${
+								gamePlayedState
+									? 'bg-primaryColor text-backColor hover:bg-accentColor '
+									: 'bg-backColor'
+							} `}
+						>
 							<Link to="/survey">
 								<BtnPrimary
 									btnText="App Survey"
-									btnStyles={
-										gamePlayedState
-											? 'bg-slate-300 text-slate-700 cursor-pointer hover:bg-opacity-80'
-											: 'bg-slate-600 text-slate-300 cursor-pointer hover:bg-slate-500'
-									}
 									btnDisabled={gamePlayedState ? false : true}
+									btnStyles=" w-full p-4 flex items-center"
+									btnIcon={
+										<AngleRightIcon
+											className={`mr-4 h-6 w-6 ${
+												gamePlayedState
+													? 'text-accentColor group-hover:text-primaryColor'
+													: 'text-primaryColor group-hover:text-accentColor'
+											} `}
+										/>
+									}
 								/>
 							</Link>
 							{gamePlayedState && (
 								<span className="absolute -right-2 -top-2 flex aspect-square w-5">
-									<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-									<span className="relative m-auto inline-flex aspect-square w-4 rounded-full bg-blue-500"></span>
+									<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accentColor opacity-75 transition-colors duration-300 group-hover:bg-primaryColor"></span>
+									<span className="relative m-auto inline-flex aspect-square w-4 rounded-full bg-orange-400 transition-colors duration-300 group-hover:bg-primaryColor"></span>
 								</span>
 							)}
 						</div>
-						<div className=" cursor-pointer"></div>
+						<div></div>
 					</ul>
 				</div>
 			</div>

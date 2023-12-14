@@ -28,3 +28,4 @@ export const plyMovedStateAtom = atom(false);
 export const sysMovedStateAtom = atom(false);
 export const gamePlayedStateAtom = atomWithStorage('isPlayed', false);
 export const checkingModelAtom = atomWithStorage('Checking', true);
+export const roundNumberAtom = atomWithStorage('Round', 1);
