@@ -7,7 +7,7 @@ export const AuthSignIn = async () => {
 		return auth?.currentUser.uid;
 	} catch (error) {
 		console.error(error);
-		return error;
+		return;
 	}
 };
 
@@ -17,6 +17,6 @@ export const AuthSignOut = async () => {
 		auth?.currentUser?.delete();
 	} catch (error) {
 		console.error(error);
-		return error;
+		return;
 	}
 };
