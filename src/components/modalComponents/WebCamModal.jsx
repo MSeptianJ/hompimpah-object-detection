@@ -18,8 +18,8 @@ import TitlePage from '../smallComponents/TitlePage';
 const WebCamModal = () => {
 	// Local State
 	const vites = import.meta.env;
-	const TIME = 5;
-	const TIMEMS = 5000;
+	const TIME = 10;
+	const TIMEMS = 10000;
 	const [isCamReady, setIsCamReady] = useState(false);
 	const [isCamDetecting, setIsCamDetecting] = useState(false);
 	const [timer, setTimer] = useState(TIME);
@@ -164,7 +164,7 @@ const WebCamModal = () => {
 			<Boxes />
 			<TitlePage titleText={textCondition()} accentText={String(timer)} isCol />
 
-			<div className=" z-0 row-span-3 mx-auto grid w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-6 px-5 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] lg:w-2/4">
+			<div className=" z-0 row-span-3 mx-auto grid w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-4 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] lg:w-2/4">
 				<div className="relative mx-auto aspect-square h-full w-full">
 					{!isCamReady && !checkingModel && (
 						<div className=" absolute top-0 grid aspect-square h-full w-full justify-items-center text-white">
@@ -196,7 +196,7 @@ const WebCamModal = () => {
 			</div>
 
 			{!checkingModel && (
-				<div className="z-0 row-span-2 m-auto flex w-2/5 flex-col items-center justify-center rounded-[4px] bg-primaryColor px-3 py-5 text-center text-white shadow-lg shadow-[rbga(0,0,0,0.3)]">
+				<div className="z-0 row-span-2 m-auto flex w-1/5 max-w-[100px] flex-col items-center justify-center rounded-[4px] bg-primaryColor px-3 py-5 text-center text-white shadow-lg shadow-[rbga(0,0,0,0.3)]">
 					<Choices choice={lastDetected(detection)} isDetecting />
 				</div>
 			)}

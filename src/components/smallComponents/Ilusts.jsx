@@ -7,7 +7,7 @@ export const RockIlust = () => {
 		<img
 			src={ROCK}
 			alt="Rock Illustration"
-			className=" mx-auto w-24 max-w-[150px] p-2"
+			className=" mx-auto w-full max-w-[100px] p-2"
 		/>
 	);
 };
@@ -17,7 +17,7 @@ export const PaperIlust = () => {
 		<img
 			src={PAPER}
 			alt="Paper Illustration"
-			className=" mx-auto w-24 max-w-[150px] p-2"
+			className=" mx-auto w-full max-w-[100px] p-2"
 		/>
 	);
 };
@@ -26,7 +26,7 @@ export const ScissorIlust = () => {
 		<img
 			src={SCISSOR}
 			alt="Scissor Illustration"
-			className=" mx-auto w-24 max-w-[150px] p-2"
+			className=" mx-auto w-full max-w-[100px] p-2"
 		/>
 	);
 };

@@ -9,7 +9,7 @@ import {
 import choiseSelector from '../../scripts/choiseSelector';
 import { db } from '../config/firebase';
 
-const COLNAME = 'Dev-games';
+const COLNAME = 'Beta-games';
 
 const gameColRef = () => {
 	return collection(db, COLNAME);
