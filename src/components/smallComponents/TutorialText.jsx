@@ -53,7 +53,7 @@ const TutorialText = () => {
 					</li>
 					<li className=" mb-2">
 						<b className=" text-accentColor">
-							Proses deteksi hanya berlangsung 5 detik
+							Proses deteksi hanya berlangsung 10 detik
 						</b>
 						. Pada akhir proses ini, bentuk yang terakhir terdeteksi akan
 						disimpan dan dijadikan pilihan pada ronde tersebut.
@@ -69,7 +69,7 @@ const TutorialText = () => {
 							sistem dapat mendeteksi kedua tangan tersebut
 						</b>
 						, tetapi yang akan dipilih adalah hasil deteksi dengan nilai
-						confidence(nilai persentase) yang paling tinggi.
+						confidence (nilai persentase) yang paling tinggi.
 					</li>
 					<li className=" mb-2">
 						<b className=" text-accentColor">
@@ -84,9 +84,14 @@ const TutorialText = () => {
 							device anda melambat
 						</b>
 						. Pastikan tidak ada aplikasi yang berjalan, dan hanya web app ini
-						yang anda mainkan. Disarankan untuk menggunakan device dengan RAM
-						dan Storage yang besar. Jika hal ini terjadi, tolong untuk mengisi
-						kolom kritik pada link survey dengan spesifikasi device anda.
+						yang anda mainkan.
+					</li>
+					<li className=" mb-2">
+						<b className=" text-accentColor">
+							Data kamera hanya digunakan untuk mendeteksi
+						</b>
+						. Semua data permainan akan dihapus setelah pemain kembali ke menu
+						awal.
 					</li>
 				</ul>
 			</section>

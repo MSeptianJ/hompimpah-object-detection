@@ -9,7 +9,7 @@ import {
 import choiseSelector from '../../scripts/choiseSelector';
 import { db } from '../config/firebase';
 
-const COLNAME = 'Dev-games';
+const COLNAME = 'Beta-games';
 
 const gameColRef = () => {
 	return collection(db, COLNAME);
@@ -52,7 +52,7 @@ export const addGameRound = async (uid) => {
 		await setDoc(docRef, newGame);
 	} catch (error) {
 		console.error(error);
-		return error;
+		return;
 	}
 };
 
@@ -76,7 +76,7 @@ export const addPlayerMove = async (gameRound, detection, uid) => {
 		await setDoc(docRef, newGameData);
 	} catch (error) {
 		console.error(error);
-		return error;
+		return;
 	}
 };
 
@@ -93,7 +93,7 @@ export const addSystemMove = async (gameRound, uid) => {
 		await setDoc(docRef, newGameData);
 	} catch (error) {
 		console.error(error);
-		return error;
+		return;
 	}
 };
 
@@ -110,7 +110,7 @@ export const addPlayerScore = async (gameRound, uid) => {
 		await setDoc(docRef, newGameData);
 	} catch (error) {
 		console.error(error);
-		return error;
+		return;
 	}
 };
 
@@ -127,7 +127,7 @@ export const addSystemScore = async (gameRound, uid) => {
 		await setDoc(docRef, newGameData);
 	} catch (error) {
 		console.error(error);
-		return error;
+		return;
 	}
 };
 
@@ -138,6 +138,6 @@ export const delGameRound = async (uid) => {
 		await deleteDoc(docRef);
 	} catch (error) {
 		console.error(error);
-		return error;
+		return;
 	}
 };

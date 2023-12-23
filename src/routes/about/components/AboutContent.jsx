@@ -66,9 +66,9 @@ const AboutContent = () => {
 					Development
 				</h4>
 				<p className=" mb-3 px-3 text-left">
-					Pengembangan permainan ini dilakukan oleh{' '}
+					Developed by{' '}
 					<a
-						href="https://www.instagram.com/jaelani.dev/"
+						href="https://github.com/MSeptianJ/hompimpah-object-detection"
 						className=" font-bold"
 						target="blank"
 					>
