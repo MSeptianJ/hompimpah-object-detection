@@ -86,6 +86,13 @@ const TutorialText = () => {
 						. Pastikan tidak ada aplikasi yang berjalan, dan hanya web app ini
 						yang anda mainkan.
 					</li>
+					<li className=" mb-2">
+						<b className=" text-accentColor">
+							Data kamera hanya digunakan untuk mendeteksi
+						</b>
+						. Semua data permainan akan dihapus setelah pemain kembali ke menu
+						awal.
+					</li>
 				</ul>
 			</section>
 		</>
