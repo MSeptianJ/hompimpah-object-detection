@@ -162,7 +162,11 @@ const WebCamModal = () => {
 	return (
 		<div className=" absolute grid h-full w-full grid-rows-6 items-center bg-backColor">
 			<Boxes />
-			<TitlePage titleText={textCondition()} accentText={String(timer)} isCol />
+			<TitlePage
+				titleText={textCondition()}
+				accentText={checkingModel ? 'Please Wait' : String(timer)}
+				isCol
+			/>
 
 			<div className=" z-0 row-span-3 mx-auto grid w-3/4 gap-4 overflow-y-auto rounded-[4px] bg-primaryColor p-4 text-backColor shadow-lg shadow-[rgba(0,0,0,0.3)] lg:w-2/4">
 				<div className="relative mx-auto aspect-square h-full w-full">
